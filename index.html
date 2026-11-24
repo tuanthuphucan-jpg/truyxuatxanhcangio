@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Playfair Display & Be Vietnam Pro -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-    <!-- Mammoth.js parsing file Word .docx -->
+    <!-- Mammoth.js for parsing Word (.docx) files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
     <!-- QRCode.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -48,7 +48,7 @@
             color: #374151;
         }
         .glass-header {
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
@@ -102,7 +102,7 @@
                     <span class="hidden sm:inline">Mã QR Web</span>
                 </button>
 
-                <!-- Admin Gate Entrance -->
+                <!-- Admin Gate Entrance Button -->
                 <button onclick="openAuthModal()" class="px-3.5 py-2 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md transition">
                     <i class="fa-solid fa-user-shield"></i>
                     <span class="hidden sm:inline">Quản Trị</span>
@@ -115,12 +115,12 @@
     <div id="admin-status-bar" class="hidden bg-bio-dark border-b border-emerald-500/30 text-white text-xs py-2 px-4 shadow-inner">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2">
-                <span id="role-badge" class="px-2.5 py-0.5 rounded-full bg-bio-gold text-white font-extrabold text-[10px] uppercase">OWNER</span>
-                <span>Đã xác thực: <strong id="user-email-display" class="text-bio-mint">tuanthuphucan@gmail.com</strong></span>
+                <span id="role-badge" class="px-2.5 py-0.5 rounded-full bg-bio-gold text-white font-extrabold text-[10px] uppercase">QUẢN TRỊ VIÊN</span>
+                <span>Trạng thái: <strong id="user-email-display" class="text-bio-mint">Đã xác thực Gmail Quản Trị</strong></span>
             </div>
             <div class="flex items-center gap-2">
                 <button onclick="openAdminDashboardModal()" class="px-3.5 py-1 rounded-lg bg-bio-green hover:bg-emerald-600 text-white font-bold transition flex items-center gap-1">
-                    <i class="fa-solid fa-gauge-high"></i> Mở Trang Chủ Quản Trị
+                    <i class="fa-solid fa-gauge-high"></i> Mở Trang Quản Trị
                 </button>
                 <button onclick="logoutAdmin()" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-600 text-white font-bold transition">
                     Thoát
@@ -245,7 +245,7 @@
         </div>
     </section>
 
-    <!-- SECTION 3: SẢN PHẨM TRƯNG BÀY (QUẢN LÝ DỘNG TRONG ADMIN TAB 5) -->
+    <!-- SECTION 3: SẢN PHẨM TRƯNG BÀY -->
     <section id="products-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -260,7 +260,7 @@
         </div>
     </section>
 
-    <!-- SECTION 4: BÀI THUYẾT MINH & CÂU CHUYỆN (SOẠN THẢO WORD TAB 3) -->
+    <!-- SECTION 4: BÀI THUYẾT MINH & CÂU CHUYỆN -->
     <section id="story-section" class="py-16 md:py-24 bg-bio-bg">
         <div class="max-w-4xl mx-auto px-4">
             <div class="bg-white rounded-3xl p-6 sm:p-12 shadow-lg border border-emerald-100">
@@ -282,7 +282,7 @@
         </div>
     </section>
 
-    <!-- SECTION 5: THƯ VIỆN HÌNH Ảnh & VIDEO (QUẢN LÝ TAB 4) -->
+    <!-- SECTION 5: THƯ VIỆN HÌNH ẢNH & VIDEO -->
     <section id="gallery-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -352,7 +352,7 @@
         </button>
     </div>
 
-    <!-- MODAL 1: CỔNG ĐĂNG NHẬP ADMIN GMAIL (XÁC THỰC TUANTHUPHUCAN@GMAIL.COM) -->
+    <!-- MODAL 1: CỔNG ĐĂNG NHẬP ADMIN GMAIL (BẢO MẬT ẨN EMAIL CHỦ SỞ HỮU) -->
     <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/70 backdrop-blur-sm hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-100 relative text-center">
             <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
@@ -364,16 +364,16 @@
             </div>
 
             <h3 class="font-serif text-2xl font-bold text-bio-dark mb-1">Cổng Quản Trị Hệ Thống</h3>
-            <p class="text-xs text-bio-gray mb-6">Nhập Gmail đã được ủy quyền để truy cập Trang Quản Trị.</p>
+            <p class="text-xs text-bio-gray mb-6">Nhập địa chỉ Gmail được ủy quyền để truy cập Trang Quản Trị.</p>
 
             <form onsubmit="handleGmailLogin(event)" class="space-y-4">
                 <div class="text-left">
                     <label class="block text-xs font-bold text-bio-dark mb-1">Địa chỉ Gmail của bạn:</label>
-                    <input type="email" id="input-admin-email" required class="w-full p-3 text-sm border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green" placeholder="tuanthuphucan@gmail.com">
+                    <input type="email" id="input-admin-email" required class="w-full p-3 text-sm border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green" placeholder="Nhập Gmail đã được cấp quyền...">
                 </div>
 
                 <div id="auth-error-msg" class="hidden p-3 rounded-xl bg-red-50 text-red-600 text-xs font-semibold text-left border border-red-200">
-                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Email này chưa được ủy quyền! Vui lòng liên hệ Chủ sở hữu <strong>tuanthuphucan@gmail.com</strong>.
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Gmail này chưa được cấp quyền truy cập! Vui lòng liên hệ Quản trị viên hệ thống.
                 </div>
 
                 <button type="submit" class="w-full py-3.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center gap-2">
@@ -381,11 +381,11 @@
                 </button>
             </form>
             
-            <p class="text-[11px] text-slate-400 mt-4">Chủ sở hữu hệ thống: tuanthuphucan@gmail.com</p>
+            <p class="text-[11px] text-slate-400 mt-4"><i class="fa-solid fa-lock mr-1"></i>Hệ thống bảo mật xác thực danh tính Quản Trị</p>
         </div>
     </div>
 
-    <!-- MODAL 2: TRANG CHỦ QUẢN TRỊ VIÊN (ĐẦY ĐỦ 6 TAB CHI TIẾT) -->
+    <!-- MODAL 2: TRANG CHỦ QUẢN TRỊ VIÊN (VỚI TÍNH NĂNG TẢI FILE INDEX.HTML MỚI) -->
     <div id="admin-dashboard-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/80 backdrop-blur-sm hidden p-2 sm:p-6">
         <div class="bg-white w-full max-w-5xl h-[92vh] rounded-3xl shadow-2xl border border-emerald-100 flex flex-col overflow-hidden">
             
@@ -397,6 +397,17 @@
                 </div>
                 <button onclick="closeAdminDashboardModal()" class="text-slate-300 hover:text-white p-1">
                     <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Save Instruction Notification Banner -->
+            <div class="bg-bio-mint border-b border-emerald-200 px-4 py-2.5 text-xs text-bio-dark flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 font-semibold">
+                    <i class="fa-solid fa-circle-info text-bio-green text-sm"></i>
+                    <span><strong>Lưu ý quan trọng:</strong> Để giữ thay đổi vĩnh viễn trên GitHub Pages, hãy bấm nút <strong>"Lưu & Tải File index.html Mới"</strong> rồi upload đè file đó lên kho GitHub!</span>
+                </div>
+                <button onclick="exportUpdatedIndexHtml()" class="px-3 py-1 rounded-lg bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-[11px] shadow transition flex items-center gap-1">
+                    <i class="fa-solid fa-download"></i> Tải index.html Ngay
                 </button>
             </div>
 
@@ -434,9 +445,9 @@
                             <span class="text-[11px] text-bio-gray block mt-1"><i class="fa-solid fa-arrow-trend-up text-bio-green"></i> Tự động tăng khi du khách vào web</span>
                         </div>
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/60 border border-amber-200">
-                            <span class="text-xs text-bio-gold font-bold uppercase tracking-wider block mb-1">Lượt Xem Hôm Nay (Ước tính)</span>
-                            <span id="dash-stat-today-views" class="font-serif text-3xl font-extrabold text-bio-gold">148</span>
-                            <span class="text-[11px] text-bio-gray block mt-1">Du khách đang tham quan</span>
+                            <span class="text-xs text-bio-gold font-bold uppercase tracking-wider block mb-1">Số Lần Đã Xuất File/Lưu Web</span>
+                            <span id="dash-stat-saves-count" class="font-serif text-3xl font-extrabold text-bio-gold">1</span>
+                            <span class="text-[11px] text-bio-gray block mt-1">Lần xuất bản file index.html mới</span>
                         </div>
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/60 border border-sky-200">
                             <span class="text-xs text-bio-blue font-bold uppercase tracking-wider block mb-1">Số Gmail Được Ủy Quyền</span>
@@ -445,16 +456,32 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <h4 class="font-bold text-bio-dark text-sm mb-3">Biểu Đồ Xu Hướng Du Khách Quét Mã QR Theo Tuần</h4>
-                        <div class="h-36 flex items-end gap-3 pt-6 border-b border-slate-200 pb-2">
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[40%] text-center text-[10px] pt-1 font-bold">T2</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[55%] text-center text-[10px] pt-1 font-bold">T3</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[70%] text-center text-[10px] pt-1 font-bold">T4</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[65%] text-center text-[10px] pt-1 font-bold">T5</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[80%] text-center text-[10px] pt-1 font-bold">T6</div>
-                            <div class="flex-1 bg-bio-green text-white rounded-t-lg h-[95%] text-center text-[10px] pt-1 font-bold">T7</div>
-                            <div class="flex-1 bg-bio-gold text-white rounded-t-lg h-[100%] text-center text-[10px] pt-1 font-bold">CN</div>
+                    <!-- Backup & Save Options Card -->
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
+                        <h4 class="font-bold text-bio-dark text-sm border-b border-slate-100 pb-2">
+                            <i class="fa-solid fa-floppy-disk text-bio-green"></i> Cơ Chế Lưu & Xuất File (Giống Save Word/Excel)
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-bio-mint/60 border border-emerald-200 space-y-2">
+                                <span class="font-bold text-bio-green block">1. Lưu & Tải File Web index.html Mới</span>
+                                <p class="text-[11px] text-bio-gray">Tạo ra file `index.html` hoàn chỉnh đã nhúng sẵn dữ liệu bạn vừa sửa. Tải về và đẩy đè lên GitHub Pages để lưu vĩnh viễn.</p>
+                                <button onclick="exportUpdatedIndexHtml()" class="w-full py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow transition flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-file-export"></i> Tải File index.html Cập Nhật
+                                </button>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-800 block">2. Xuất / Nhập Backup Dữ Liệu (.json)</span>
+                                <p class="text-[11px] text-bio-gray">Sao lưu toàn bộ dữ liệu cấu hình ra file `.json` hoặc nạp file backup sẵn có từ máy tính.</p>
+                                <div class="flex gap-2">
+                                    <button onclick="exportJsonData()" class="flex-1 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
+                                        <i class="fa-solid fa-download"></i> Xuất JSON
+                                    </button>
+                                    <input type="file" accept=".json" id="import-json-file" onchange="importJsonData(event)" class="hidden">
+                                    <button onclick="document.getElementById('import-json-file').click()" class="flex-1 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
+                                        <i class="fa-solid fa-upload"></i> Nhập JSON
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -465,11 +492,11 @@
                         <div class="font-bold text-sm flex items-center gap-1.5 text-bio-green">
                             <i class="fa-solid fa-user-gear"></i> Phân Quyền Ủy Viên Chỉnh Sửa Trang Web
                         </div>
-                        <p class="text-xs">Chủ sở hữu <strong>tuanthuphucan@gmail.com</strong> có thể thêm địa chỉ Gmail của thầy cô hoặc các bạn trong nhóm. Chỉ các Gmail nằm trong danh sách bên dưới mới có quyền đăng nhập và chỉnh sửa dữ liệu web.</p>
+                        <p class="text-xs">Tài khoản Quản trị cấp cao có thể thêm địa chỉ Gmail của thầy cô hoặc các bạn trong nhóm. Chỉ các Gmail nằm trong danh sách được cấp quyền mới có thể đăng nhập vào Trang Quản Trị.</p>
                     </div>
 
                     <div id="owner-add-form" class="flex gap-2">
-                        <input type="email" id="new-editor-email-input" class="flex-1 p-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green text-xs" placeholder="Nhập Gmail muốn ủy quyền (Ví dụ: thayco@gmail.com)...">
+                        <input type="email" id="new-editor-email-input" class="flex-1 p-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green text-xs" placeholder="Nhập Gmail muốn ủy quyền mới...">
                         <button onclick="addAuthorizedEditor()" class="px-5 py-3 bg-bio-green hover:bg-emerald-800 text-white font-bold rounded-xl text-xs transition whitespace-nowrap">
                             + Thêm Gmail Ủy Quyền
                         </button>
@@ -620,13 +647,18 @@
             </div>
 
             <!-- Admin Footer -->
-            <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+            <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
                 <button onclick="closeAdminDashboardModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-600 font-bold text-xs hover:bg-slate-100">
                     Đóng
                 </button>
-                <button onclick="saveAllContentToCloud()" class="px-6 py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Lưu & Đồng Bộ Dữ Liệu Web
-                </button>
+                <div class="flex items-center gap-2">
+                    <button onclick="saveTempChanges()" class="px-4 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-800 text-white font-bold text-xs transition">
+                        <i class="fa-solid fa-store mr-1"></i> Lưu Nháp Màn Hình
+                    </button>
+                    <button onclick="exportUpdatedIndexHtml()" class="px-6 py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Lưu & Tải File index.html Mới
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -659,127 +691,102 @@
         <img id="lightbox-img" src="" alt="Zoom Image" class="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl">
     </div>
 
-    <!-- FIREBASE AND APPLICATION LOGIC -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <!-- EMBEDDED DEFAULT STATE DATA -->
+    <script id="embedded-data-script" type="application/json">
+    {
+        "ownerEmailEnc": "dHVhbnRodXBodWNhbkBnbWFpbC5jb20=",
+        "editorsEnc": ["dHVhbnRodXBodWNhbkBnbWFpbC5jb20="],
+        "viewsCount": 1240,
+        "savesCount": 1,
+        "brandTitle": "TRUY XUẤT XANH - KHÁM PHÁ CẦN GIỜ",
+        "phone": "0987654321",
+        "address": "Ấp Lý Hòa Hiệp, Xã An Thới Đông, Huyện Cần Giờ, Thành phố Hồ Chí Minh.",
+        "heroTitle": "Khám Phá Thế Giới Yến Sào Quê Hương Cần Giờ",
+        "heroSubtitle": "Nơi những đàn chim yến tự nhiên chao lượn trên thảm rừng ngập mặn trù phú, kết tụ tinh túy dưỡng chất thiên nhiên ban tặng cho vùng đất biển Cần Giờ.",
+        "heroImg": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "localVideoData": null,
+        "storyTitle": "Giữ Nghề Nuôi Yến Nơi Đất Rừng Mặn Cần Giờ",
+        "storyBody": "<p>Sinh ra và gắn bó với mảnh đất Cần Giờ - Khu dự trữ sinh quyển thế giới được UNESCO công nhận, chúng tôi luôn tâm huyết gìn giữ bản sắc nguồn yến sinh thái thuần khiết.</p><p>Loài chim yến nơi đây hoàn toàn tự do kiếm ăn trên thảm rừng ngập mặn 75.000 ha, tự nhiên hấp thụ lượng sinh chất quý giá. Mỗi tổ yến được thu hoạch nhân đạo sau khi yến con trưởng thành rời tổ, qua công đoạn nhặt lông thủ công tỉ mỉ bằng nước sạch tinh khiết.</p><div class=\"my-6 p-4 rounded-2xl bg-bio-mint border-l-4 border-bio-green text-bio-dark\"><p class=\"font-bold italic\">\"Từng hũ yến chưng hay tổ yến gửi tới du khách là lời cam kết trọn vẹn về tâm huyết & sự tinh khiết của quê hương Cần Giờ.\"</p></div>",
+        "products": [
+            { "id": 1, "name": "Yến Thô Cần Giờ Loại 1", "price": "3.200.000đ / 100g", "desc": "Tổ yến thô nhặt trực tiếp từ nhà yến sinh thái rừng ngập mặn, tai yến dày dặn.", "img": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" },
+            { "id": 2, "name": "Yến Tinh Chế Thượng Hạng", "price": "4.500.000đ / 100g", "desc": "Đã làm sạch 99% lông tạp chất bằng thủ công, sấy lạnh tiệt trùng giữ trọn vi chất.", "img": "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" },
+            { "id": 3, "name": "Yến Chưng Tươi Đường Phèn", "price": "120.000đ / Hũ 180ml", "desc": "Chưng sẵn nguyên chất với đường phèn táo đỏ hạt sen, giao tận tay du khách.", "img": "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&w=600&q=80" }
+        ],
+        "gallery": [
+            "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&w=600&q=80"
+        ]
+    }
+    </script>
 
-        // Config & Fallback
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'yen-sao-can-gio-bio-app';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : {
-                apiKey: "AIzaSyDemoKeyOnlyForFallbackPreview123",
-                authDomain: "yen-sao-can-gio.firebaseapp.com",
-                projectId: "yen-sao-can-gio",
-                storageBucket: "yen-sao-can-gio.appspot.com",
-                messagingSenderId: "1234567890",
-                appId: "1:1234567890:web:demo123456"
-            };
+    <!-- APPLICATION LOGIC & DATA HANDLING -->
+    <script>
+        // Extract embedded state JSON
+        let defaultData = JSON.parse(document.getElementById('embedded-data-script').textContent);
 
-        let app, auth, db, docRef;
-
-        try {
-            app = initializeApp(firebaseConfig);
-            auth = getAuth(app);
-            db = getFirestore(app);
-            docRef = doc(db, 'artifacts', appId, 'public', 'data', 'yen_sao_content', 'main_data');
-        } catch (e) {
-            console.warn("Firebase Init Fallback:", e);
-        }
-
-        // Default App State
-        const defaultData = {
-            ownerEmail: "tuanthuphucan@gmail.com",
-            editors: ["tuanthuphucan@gmail.com"],
-            viewsCount: 1240,
-            brandTitle: "TRUY XUẤT XANH - KHÁM PHÁ CẦN GIỜ",
-            phone: "0987654321",
-            address: "Ấp Lý Hòa Hiệp, Xã An Thới Đông, Huyện Cần Giờ, Thành phố Hồ Chí Minh.",
-            heroTitle: "Khám Phá Thế Giới Yến Sào Quê Hương Cần Giờ",
-            heroSubtitle: "Nơi những đàn chim yến tự nhiên chao lượn trên thảm rừng ngập mặn trù phú, kết tụ tinh túy dưỡng chất thiên nhiên ban tặng cho vùng đất biển Cần Giờ.",
-            heroImg: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-            localVideoData: null,
-            storyTitle: "Giữ Nghề Nuôi Yến Nơi Đất Rừng Mặn Cần Giờ",
-            storyBody: `<p>Sinh ra và gắn bó với mảnh đất Cần Giờ - Khu dự trữ sinh quyển thế giới được UNESCO công nhận, chúng tôi luôn tâm huyết gìn giữ bản sắc nguồn yến sinh thái thuần khiết.</p><p>Loài chim yến nơi đây hoàn toàn tự do kiếm ăn trên thảm rừng ngập mặn 75.000 ha, tự nhiên hấp thụ lượng sinh chất quý giá. Mỗi tổ yến được thu hoạch nhân đạo sau khi yến con trưởng thành rời tổ, qua công đoạn nhặt lông thủ công tỉ mỉ bằng nước sạch tinh khiết.</p><div class="my-6 p-4 rounded-2xl bg-bio-mint border-l-4 border-bio-green text-bio-dark"><p class="font-bold italic">"Từng hũ yến chưng hay tổ yến gửi tới du khách là lời cam kết trọn vẹn về tâm huyết & sự tinh khiết của quê hương Cần Giờ."</p></div>`,
-            products: [
-                { id: 1, name: "Yến Thô Cần Giờ Loại 1", price: "3.200.000đ / 100g", desc: "Tổ yến thô nhặt trực tiếp từ nhà yến sinh thái rừng ngập mặn, tai yến dày dặn.", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" },
-                { id: 2, name: "Yến Tinh Chế Thượng Hạng", price: "4.500.000đ / 100g", desc: "Đã làm sạch 99% lông tạp chất bằng thủ công, sấy lạnh tiệt trùng giữ trọn vi chất.", img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" },
-                { id: 3, name: "Yến Chưng Tươi Đường Phèn", price: "120.000đ / Hũ 180ml", desc: "Chưng sẵn nguyên chất với đường phèn táo đỏ hạt sen, giao tận tay du khách.", img: "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&w=600&q=80" }
-            ],
-            gallery: [
-                "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80",
-                "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&w=600&q=80"
-            ]
+        // Security Helper Functions (Base64 encoding/decoding & email masking)
+        const encodeEmail = (email) => btoa(email.trim().toLowerCase());
+        const decodeEmail = (str) => {
+            try { return atob(str); } catch(e) { return ''; }
+        };
+        const maskEmailStr = (email) => {
+            if (!email || !email.includes('@')) return '******';
+            const parts = email.split('@');
+            const name = parts[0];
+            const maskedName = name.length <= 2 ? name[0] + '*' : name[0] + '***' + name[name.length - 1];
+            return maskedName + '@' + parts[1];
         };
 
-        // Load local fallback if available
-        const savedLocal = localStorage.getItem('yen_sao_app_data');
+        // Load saved state from LocalStorage or fall back to Embedded Data
+        let savedLocal = localStorage.getItem('yen_sao_app_data');
         let appData = savedLocal ? JSON.parse(savedLocal) : { ...defaultData };
         let currentAdminEmail = localStorage.getItem('logged_admin_email') || null;
 
-        // Toast Notification System
-        window.showToast = (msg, type = 'success') => {
+        // Ensure backward compatibility with encrypted fields
+        if (appData.ownerEmail && !appData.ownerEmailEnc) {
+            appData.ownerEmailEnc = encodeEmail(appData.ownerEmail);
+            delete appData.ownerEmail;
+        }
+        if (appData.editors && !appData.editorsEnc) {
+            appData.editorsEnc = appData.editors.map(encodeEmail);
+            delete appData.editors;
+        }
+
+        // Toast notification helper
+        window.showToast = (message, type = 'success') => {
             const container = document.getElementById('toast-container');
+            if (!container) return;
             const toast = document.createElement('div');
-            toast.className = `toast-notify p-3.5 px-5 rounded-2xl text-white text-xs font-bold shadow-xl flex items-center gap-2 ${type === 'success' ? 'bg-bio-green' : 'bg-red-600'}`;
-            toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i> <span>${msg}</span>`;
+            const isError = type === 'error';
+            toast.className = `toast-notify pointer-events-auto px-4 py-3 rounded-2xl shadow-xl border text-xs font-bold flex items-center gap-2 ${
+                isError
+                    ? 'bg-red-600 text-white border-red-400'
+                    : 'bg-bio-dark text-white border-emerald-500'
+            }`;
+            toast.innerHTML = `
+                <i class="fa-solid ${isError ? 'fa-circle-exclamation' : 'fa-circle-check text-bio-emerald'} text-sm"></i>
+                <span>${message}</span>
+            `;
             container.appendChild(toast);
             setTimeout(() => {
                 toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-8px)';
                 setTimeout(() => toast.remove(), 300);
             }, 3000);
         };
 
-        // Page Load Init
-        window.addEventListener('DOMContentLoaded', async () => {
-            if (auth) {
-                try {
-                    if (typeof __initial_auth_token !== 'undefined') {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                } catch (err) {
-                    console.warn("Auth Fallback:", err);
-                }
-
-                if (docRef) {
-                    onSnapshot(docRef, (docSnap) => {
-                        if (docSnap.exists()) {
-                            appData = { ...defaultData, ...docSnap.data() };
-                            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
-                        } else {
-                            setDoc(docRef, defaultData).catch(console.error);
-                        }
-                        
-                        // Increment Visitor Counter
-                        if (!sessionStorage.getItem('view_counted')) {
-                            sessionStorage.setItem('view_counted', 'true');
-                            appData.viewsCount = (appData.viewsCount || 1240) + 1;
-                            setDoc(docRef, { viewsCount: appData.viewsCount }, { merge: true }).catch(() => {});
-                        }
-
-                        renderUI();
-                        checkAdminState();
-                    }, (error) => {
-                        console.warn("Firestore Snapshot Fallback:", error);
-                        renderUI();
-                        checkAdminState();
-                    });
-                } else {
-                    renderUI();
-                    checkAdminState();
-                }
-            } else {
-                renderUI();
-                checkAdminState();
+        // Initialize app once DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('yen_sao_session_viewed')) {
+                appData.viewsCount = (appData.viewsCount || 1240) + 1;
+                localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+                localStorage.setItem('yen_sao_session_viewed', '1');
             }
-
+            renderUI();
+            checkAdminState();
             initPopupQR();
         });
 
@@ -793,8 +800,9 @@
             // Stats
             document.getElementById('public-views-count').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN') + "+";
             document.getElementById('dash-stat-total-views').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN');
+            document.getElementById('dash-stat-saves-count').innerText = (appData.savesCount || 1).toLocaleString('vi-VN');
 
-            // Article Content
+            // Story Section
             document.getElementById('story-title').innerText = appData.storyTitle || defaultData.storyTitle;
             document.getElementById('story-content-body').innerHTML = appData.storyBody || defaultData.storyBody;
 
@@ -807,7 +815,7 @@
             document.getElementById('mobile-zalo-btn').href = "https://zalo.me/" + phone;
             document.getElementById('contact-address').innerText = "Địa chỉ cơ sở: " + (appData.address || defaultData.address);
 
-            // Video Handling
+            // Video Player
             const iframeEl = document.getElementById('main-video-iframe');
             const videoEl = document.getElementById('main-video-player');
 
@@ -821,7 +829,7 @@
                 iframeEl.src = appData.videoUrl || defaultData.videoUrl;
             }
 
-            // Products Grid Rendering
+            // Render Products Grid
             const pGrid = document.getElementById('products-grid');
             pGrid.innerHTML = (appData.products || []).map(p => `
                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-emerald-100 flex flex-col justify-between hover:shadow-xl transition duration-300">
@@ -855,7 +863,7 @@
             `).join('');
         }
 
-        // Check Admin State
+        // Check Gmail Admin Authentication State
         function checkAdminState() {
             if (!currentAdminEmail) {
                 document.getElementById('admin-status-bar').classList.add('hidden');
@@ -863,15 +871,15 @@
             }
 
             const cleanEmail = currentAdminEmail.trim().toLowerCase();
-            const ownerEmail = (appData.ownerEmail || defaultData.ownerEmail).toLowerCase();
-            const editors = (appData.editors || [ownerEmail]).map(e => e.toLowerCase());
+            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
+            const editors = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail).map(e => e.toLowerCase());
 
             const isOwner = (cleanEmail === ownerEmail);
             const isEditor = isOwner || editors.includes(cleanEmail);
 
             if (isEditor) {
                 document.getElementById('admin-status-bar').classList.remove('hidden');
-                document.getElementById('user-email-display').innerText = currentAdminEmail;
+                document.getElementById('user-email-display').innerText = maskEmailStr(currentAdminEmail);
                 document.getElementById('role-badge').innerText = isOwner ? 'CHỦ SỞ HỮU (OWNER)' : 'ỦY VIÊN CHỈNH SỬA';
                 document.getElementById('owner-add-form').style.display = isOwner ? 'flex' : 'none';
                 renderEditorsList(isOwner);
@@ -882,13 +890,13 @@
             }
         }
 
-        // Gmail Authentication
+        // Handle Gmail Login
         window.handleGmailLogin = (e) => {
             e.preventDefault();
             const inputEmail = document.getElementById('input-admin-email').value.trim().toLowerCase();
             
-            const ownerEmail = (appData.ownerEmail || defaultData.ownerEmail).toLowerCase();
-            const editors = (appData.editors || [ownerEmail]).map(e => e.toLowerCase());
+            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
+            const editors = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail).map(e => e.toLowerCase());
 
             const isOwner = (inputEmail === ownerEmail);
             const isEditor = isOwner || editors.includes(inputEmail);
@@ -913,7 +921,7 @@
             window.showToast("Đã đăng xuất khỏi tài khoản Quản trị.");
         };
 
-        // Modals
+        // Modals Controls
         window.openAuthModal = () => document.getElementById('auth-modal').classList.remove('hidden');
         window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
 
@@ -928,7 +936,7 @@
             document.getElementById('edit-story-body').innerHTML = appData.storyBody || '';
             document.getElementById('dash-stat-editor-count').innerText = (appData.editors || []).length;
 
-            // Fill QR Input with default URL
+            // Default URL for QR Generator
             const webUrl = (window.location.href.startsWith('http')) 
                 ? window.location.href 
                 : 'https://tuanthuphucan-jpg.github.io/truyxuatxanhcangio/';
@@ -937,6 +945,7 @@
             renderAdminProductsList();
             document.getElementById('admin-dashboard-modal').classList.remove('hidden');
         };
+
         window.closeAdminDashboardModal = () => document.getElementById('admin-dashboard-modal').classList.add('hidden');
 
         // Admin Tab Switcher
@@ -959,35 +968,42 @@
             }
         };
 
-        // Render Editors List
+        // Render Authorized Editors
         function renderEditorsList(isOwner) {
             const container = document.getElementById('editors-list-container');
-            container.innerHTML = (appData.editors || []).map(e => `
-                <div class="flex items-center justify-between p-3">
-                    <div>
-                        <span class="font-bold text-bio-dark text-xs block">${e}</span>
-                        <span class="text-[10px] ${e.toLowerCase() === (appData.ownerEmail || defaultData.ownerEmail).toLowerCase() ? 'text-bio-gold font-bold' : 'text-bio-gray'}">
-                            ${e.toLowerCase() === (appData.ownerEmail || defaultData.ownerEmail).toLowerCase() ? 'Chủ sở hữu hệ thống (Owner)' : 'Ủy viên được cấp quyền chỉnh sửa'}
-                        </span>
+            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
+            const editorsList = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail);
+
+            container.innerHTML = editorsList.map(e => {
+                const isItemOwner = e.toLowerCase() === ownerEmail;
+                return `
+                    <div class="flex items-center justify-between p-3">
+                        <div>
+                            <span class="font-bold text-bio-dark text-xs block">${maskEmailStr(e)}</span>
+                            <span class="text-[10px] ${isItemOwner ? 'text-bio-gold font-bold' : 'text-bio-gray'}">
+                                ${isItemOwner ? 'Tài khoản Quản trị cao nhất (Owner)' : 'Ủy viên được cấp quyền chỉnh sửa'}
+                            </span>
+                        </div>
+                        ${(isOwner && !isItemOwner) ? `
+                            <button onclick="window.removeAuthorizedEditor('${e}')" class="text-red-600 hover:text-red-800 text-xs font-bold px-2 py-1 bg-red-50 rounded-lg">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Thu Hồi Quyền
+                            </button>
+                        ` : ''}
                     </div>
-                    ${(isOwner && e.toLowerCase() !== (appData.ownerEmail || defaultData.ownerEmail).toLowerCase()) ? `
-                        <button onclick="window.removeAuthorizedEditor('${e}')" class="text-red-600 hover:text-red-800 text-xs font-bold px-2 py-1 bg-red-50 rounded-lg">
-                            <i class="fa-solid fa-trash-can mr-1"></i> Thu Hồi Quyền
-                        </button>
-                    ` : ''}
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
-        // Add / Remove Authorized Editors
-        window.addAuthorizedEditor = async () => {
+        window.addAuthorizedEditor = () => {
             const input = document.getElementById('new-editor-email-input');
             const email = input.value.trim().toLowerCase();
             if (!email) return;
 
-            if (!appData.editors.map(e => e.toLowerCase()).includes(email)) {
-                appData.editors.push(email);
-                if (docRef) await setDoc(docRef, { editors: appData.editors }, { merge: true }).catch(() => {});
+            const existingEditors = (appData.editorsEnc || []).map(decodeEmail).map(e => e.toLowerCase());
+
+            if (!existingEditors.includes(email)) {
+                if (!appData.editorsEnc) appData.editorsEnc = [];
+                appData.editorsEnc.push(encodeEmail(email));
                 localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
                 input.value = '';
                 renderEditorsList(true);
@@ -995,15 +1011,15 @@
             }
         };
 
-        window.removeAuthorizedEditor = async (email) => {
-            appData.editors = appData.editors.filter(e => e.toLowerCase() !== email.toLowerCase());
-            if (docRef) await setDoc(docRef, { editors: appData.editors }, { merge: true }).catch(() => {});
+        window.removeAuthorizedEditor = (targetEmail) => {
+            const targetEnc = encodeEmail(targetEmail);
+            appData.editorsEnc = (appData.editorsEnc || []).filter(e => e !== targetEnc);
             localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
             renderEditorsList(true);
             window.showToast("Đã thu hồi quyền Gmail.");
         };
 
-        // Render & Manage Products in Admin Tab 5
+        // Render & Manage Products
         function renderAdminProductsList() {
             const container = document.getElementById('admin-products-editor-list');
             container.innerHTML = (appData.products || []).map((p, idx) => `
@@ -1055,9 +1071,7 @@
 
         window.updateProductField = (id, key, value) => {
             const p = appData.products.find(item => item.id === id);
-            if (p) {
-                p[key] = value;
-            }
+            if (p) p[key] = value;
         };
 
         window.uploadProductImage = (event, id) => {
@@ -1106,6 +1120,8 @@
             content = content
                 .replace(/\s+/g, ' ')
                 .replace(/\s+([.,?!;:])/g, '$1')
+                .replace(/\(\s+/g, '(')
+                .replace(/\s+\)/g, ')')
                 .replace(/<p>\s*<\/p>/gi, '')
                 .trim();
             box.innerHTML = content;
@@ -1138,33 +1154,87 @@
             }
         };
 
-        // Save All Changes to Cloud & LocalStorage
-        window.saveAllContentToCloud = async () => {
-            appData.brandTitle = document.getElementById('edit-brand-title').value;
-            appData.phone = document.getElementById('edit-phone-num').value;
-            appData.address = document.getElementById('edit-address-input').value;
-            appData.heroTitle = document.getElementById('edit-hero-title-input').value;
-            appData.heroImg = document.getElementById('edit-hero-img-url').value;
-            appData.videoUrl = document.getElementById('edit-video-url-input').value;
-            appData.storyTitle = document.getElementById('edit-story-title').value;
-            appData.storyBody = document.getElementById('edit-story-body').innerHTML;
-
+        // Save Temp Changes to Screen & LocalStorage
+        window.saveTempChanges = () => {
+            syncInputToAppData();
             localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
-
-            if (docRef) {
-                try {
-                    await setDoc(docRef, appData, { merge: true });
-                    window.showToast("Đã lưu và đồng bộ toàn bộ dữ liệu web!");
-                } catch (err) {
-                    console.warn("Cloud save error:", err);
-                    window.showToast("Đã lưu vào bộ nhớ máy (Offline).");
-                }
-            } else {
-                window.showToast("Đã lưu thành công!");
-            }
-
             renderUI();
-            window.closeAdminDashboardModal();
+            window.showToast("Đã lưu nháp hiển thị trên màn hình!");
+        };
+
+        function syncInputToAppData() {
+            if (document.getElementById('edit-brand-title')) {
+                appData.brandTitle = document.getElementById('edit-brand-title').value;
+                appData.phone = document.getElementById('edit-phone-num').value;
+                appData.address = document.getElementById('edit-address-input').value;
+                appData.heroTitle = document.getElementById('edit-hero-title-input').value;
+                appData.heroImg = document.getElementById('edit-hero-img-url').value;
+                appData.videoUrl = document.getElementById('edit-video-url-input').value;
+                appData.storyTitle = document.getElementById('edit-story-title').value;
+                appData.storyBody = document.getElementById('edit-story-body').innerHTML;
+            }
+        }
+
+        // =========================================================================
+        // CRITICAL "SAVE FILE" FUNCTION (DOWNLOAD UPDATED INDEX.HTML FOR GITHUB)
+        // =========================================================================
+        window.exportUpdatedIndexHtml = () => {
+            syncInputToAppData();
+            appData.savesCount = (appData.savesCount || 1) + 1;
+            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+            renderUI();
+
+            // Clone full HTML document content
+            const docHTML = document.documentElement.outerHTML;
+
+            // Replace embedded data script in HTML string
+            const jsonString = JSON.stringify(appData, null, 4);
+            const scriptRegex = /<script id="embedded-data-script" type="application\/json">[\s\S]*?<\/script>/;
+            const newScriptTag = `<script id="embedded-data-script" type="application\/json">\n${jsonString}\n    <\/script>`;
+            
+            const updatedHTML = "<!DOCTYPE html>\n" + docHTML.replace(scriptRegex, newScriptTag);
+
+            // Create download Blob
+            const blob = new Blob([updatedHTML], { type: 'text/html;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'index.html';
+            a.click();
+            URL.revokeObjectURL(a.href);
+
+            window.showToast("Đã tải file index.html mới! Upload đè file này lên GitHub nhé.");
+        };
+
+        // Export JSON Data Backup
+        window.exportJsonData = () => {
+            syncInputToAppData();
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData, null, 2));
+            const a = document.createElement('a');
+            a.href = dataStr;
+            a.download = 'yen-sao-can-gio-data.json';
+            a.click();
+            window.showToast("Đã xuất file dữ liệu JSON thành công!");
+        };
+
+        // Import JSON Data Backup
+        window.importJsonData = (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    appData = { ...defaultData, ...imported };
+                    localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+                    renderUI();
+                    window.openAdminDashboardModal();
+                    window.showToast("Đã nhập dữ liệu từ file JSON!");
+                } catch (err) {
+                    window.showToast("File JSON không hợp lệ!", 'error');
+                }
+            };
+            reader.readAsText(file);
         };
 
         // Text Formatting
@@ -1172,7 +1242,7 @@
             document.execCommand(cmd, false, null);
         };
 
-        // Lightbox Zoom
+        // Lightbox Zoom Controls
         window.openLightbox = (url) => {
             document.getElementById('lightbox-img').src = url;
             document.getElementById('lightbox-modal').classList.remove('hidden');
@@ -1189,8 +1259,8 @@
             const tempDiv = document.createElement('div');
             new QRCode(tempDiv, {
                 text: url,
-                width: 900,
-                height: 900,
+                width: 880,
+                height: 880,
                 colorDark: "#15803D",
                 colorLight: "#FFFFFF",
                 correctLevel: QRCode.CorrectLevel.H
@@ -1200,16 +1270,17 @@
                 const qrImg = tempDiv.querySelector('img');
                 if (qrImg && qrImg.src) {
                     const ctx = canvas.getContext('2d');
+                    // Draw White Quiet Zone Background
                     ctx.fillStyle = "#FFFFFF";
                     ctx.fillRect(0, 0, 1000, 1000);
                     
                     const img = new Image();
                     img.onload = () => {
-                        ctx.drawImage(img, 50, 50, 900, 900);
+                        ctx.drawImage(img, 60, 60, 880, 880);
                     };
                     img.src = qrImg.src;
                 }
-            }, 100);
+            }, 120);
         };
 
         window.downloadHighResQR = () => {
