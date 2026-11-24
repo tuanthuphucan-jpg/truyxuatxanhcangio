@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-head-title">Yến Sào Cần Giờ - Khu Dự Trữ Sinh Quyển Thế Giới UNESCO</title>
+    <title id="page-head-title">TRUY XUẤT XANH - KHÁM PHÁ CẦN GIỜ | Yến Sào Sinh Quyển UNESCO</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Playfair Display (Serif sang trọng) & Be Vietnam Pro (Chuẩn Tiếng Việt) -->
+    <!-- Google Fonts: Playfair Display & Be Vietnam Pro -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
     <!-- Mammoth.js parsing file Word .docx -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
@@ -28,13 +28,13 @@
                         bio: {
                             bg: '#F6FAF7',        // Trắng sương mai tươi mát
                             white: '#FFFFFF',
-                            green: '#15803D',     // Xanh Rừng Sinh Quyển (Forest Green)
-                            emerald: '#22C55E',   // Xanh Đước Non (Emerald)
+                            green: '#15803D',     // Xanh Rừng Sinh Quyển
+                            emerald: '#22C55E',   // Xanh Đước Non
                             mint: '#DCFCE7',      // Xanh mạ nhạt
                             gold: '#D97706',      // Vàng Mật Yến Sào
                             honey: '#F59E0B',     // Vàng mật tươi
                             blue: '#0EA5E9',      // Xanh Nước Biển Cửa Sông
-                            dark: '#0F291E',      // Xanh Rêu Đậm (Dễ đọc)
+                            dark: '#0F291E',      // Xanh Rêu Đậm
                             gray: '#374151',      // Xám Rừng
                         }
                     }
@@ -48,14 +48,9 @@
             color: #374151;
         }
         .glass-header {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-        }
-        .bio-gradient-text {
-            background: linear-gradient(135deg, #15803D 0%, #0EA5E9 50%, #D97706 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
@@ -67,12 +62,18 @@
             background: #15803D;
             border-radius: 4px;
         }
+        .toast-notify {
+            transition: all 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="font-sans antialiased pb-24 md:pb-0 selection:bg-bio-green selection:text-white custom-scrollbar">
 
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
     <!-- TOP HEADER -->
-    <header class="sticky top-0 z-40 w-full glass-header border-b border-emerald-100 shadow-sm transition-all">
+    <header class="sticky top-0 z-40 w-full glass-header border-b border-emerald-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
             <!-- Logo & Title -->
             <a href="#" class="flex items-center gap-3 group">
@@ -80,7 +81,7 @@
                     <i class="fa-solid fa-leaf"></i>
                 </div>
                 <div>
-                    <span id="nav-brand-title" class="font-serif font-extrabold text-base sm:text-xl text-bio-dark block tracking-wide">YẾN SÀO CẦN GIỜ</span>
+                    <span id="nav-brand-title" class="font-serif font-extrabold text-base sm:text-xl text-bio-dark block tracking-wide">TRUY XUẤT XANH - KHÁM PHÁ CẦN GIỜ</span>
                     <span class="text-[10px] sm:text-xs text-bio-green font-semibold tracking-wider uppercase block">Khu Dự Trữ Sinh Quyển Thế Giới UNESCO</span>
                 </div>
             </a>
@@ -89,14 +90,14 @@
             <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-bio-dark">
                 <a href="#about-section" class="hover:text-bio-green transition">Câu Chuyện Cần Giờ</a>
                 <a href="#process-section" class="hover:text-bio-green transition">Quy Trình Sinh Thái</a>
-                <a href="#products-section" class="hover:text-bio-green transition">Sản Phẩm Yến</a>
+                <a href="#products-section" class="hover:text-bio-green transition">Sản Phẩm Trưng Bày</a>
                 <a href="#story-section" class="hover:text-bio-green transition">Bài Thuyết Minh</a>
                 <a href="#gallery-section" class="hover:text-bio-green transition">Ảnh & Video</a>
             </nav>
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="openQRModal()" class="px-3.5 py-2 rounded-xl bg-bio-mint text-bio-green font-bold text-xs sm:text-sm border border-emerald-300 hover:bg-emerald-200 transition flex items-center gap-1.5">
+                <button onclick="openQRModal()" class="px-3.5 py-2 rounded-xl bg-bio-mint text-bio-green font-bold text-xs sm:text-sm border border-emerald-300 hover:bg-emerald-200 transition flex items-center gap-1.5 shadow-sm">
                     <i class="fa-solid fa-qrcode text-sm"></i>
                     <span class="hidden sm:inline">Mã QR Web</span>
                 </button>
@@ -110,16 +111,16 @@
         </div>
     </header>
 
-    <!-- ADMIN LOGGED-IN STATUS BAR (THÔNG BÁO CHO QUẢN TRỊ VIÊN) -->
+    <!-- ADMIN LOGGED-IN STATUS BAR -->
     <div id="admin-status-bar" class="hidden bg-bio-dark border-b border-emerald-500/30 text-white text-xs py-2 px-4 shadow-inner">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2">
                 <span id="role-badge" class="px-2.5 py-0.5 rounded-full bg-bio-gold text-white font-extrabold text-[10px] uppercase">OWNER</span>
-                <span>Đã đăng nhập: <strong id="user-email-display" class="text-bio-mint">tuanthuphucan@gmail.com</strong></span>
+                <span>Đã xác thực: <strong id="user-email-display" class="text-bio-mint">tuanthuphucan@gmail.com</strong></span>
             </div>
             <div class="flex items-center gap-2">
-                <button onclick="openAdminDashboardModal()" class="px-3 py-1 rounded-lg bg-bio-green hover:bg-emerald-600 text-white font-bold transition flex items-center gap-1">
-                    <i class="fa-solid fa-gauge-high"></i> Bảng Quản Trị Admin
+                <button onclick="openAdminDashboardModal()" class="px-3.5 py-1 rounded-lg bg-bio-green hover:bg-emerald-600 text-white font-bold transition flex items-center gap-1">
+                    <i class="fa-solid fa-gauge-high"></i> Mở Trang Chủ Quản Trị
                 </button>
                 <button onclick="logoutAdmin()" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-600 text-white font-bold transition">
                     Thoát
@@ -128,8 +129,8 @@
         </div>
     </div>
 
-    <!-- HERO SECTION (TƯƠI SÁNG, SINH THÁI) -->
-    <section class="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-emerald-50 via-bio-bg to-white text-bio-dark overflow-hidden py-16">
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[75vh] flex items-center justify-center bg-gradient-to-b from-emerald-50 via-bio-bg to-white text-bio-dark overflow-hidden py-16">
         <div class="absolute inset-0 z-0 opacity-15">
             <img id="hero-bg-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80" alt="Rừng Ngập Mặn Cần Giờ" class="w-full h-full object-cover">
         </div>
@@ -153,7 +154,7 @@
                     <i class="fa-solid fa-compass mr-2"></i>BẮT ĐẦU KHÁM PHÁ
                 </a>
                 <a href="#products-section" class="w-full sm:w-auto px-8 py-4 rounded-2xl border-2 border-bio-green text-bio-green hover:bg-emerald-50 font-bold text-center transition">
-                    <i class="fa-solid fa-basket-shopping mr-2"></i>XEM SẢN PHẨM YẾN
+                    <i class="fa-solid fa-basket-shopping mr-2"></i>SẢN PHẨM TRƯNG BÀY
                 </a>
             </div>
 
@@ -179,11 +180,10 @@
         </div>
     </section>
 
-    <!-- SECTION 1: CÂU CHUYỆN & GIỚI THIỆU RỪNG CẦN GIỜ -->
+    <!-- SECTION 1: CÂU CHUYỆN & GIỚI THIỆU -->
     <section id="about-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- Image Side -->
                 <div class="lg:col-span-5 relative">
                     <div class="relative z-10 rounded-3xl overflow-hidden shadow-xl border-4 border-emerald-50">
                         <img id="about-img" src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80" alt="Yến Sào Cần Giờ" class="w-full h-[380px] object-cover">
@@ -191,10 +191,9 @@
                     <div class="absolute -bottom-5 -right-5 w-44 h-44 rounded-3xl bg-bio-mint -z-0 hidden sm:block"></div>
                 </div>
 
-                <!-- Text Side -->
                 <div class="lg:col-span-7 space-y-5">
                     <span class="text-xs font-bold tracking-widest text-bio-gold uppercase flex items-center gap-1.5">
-                        <i class="fa-solid fa-tree"></i> Hành Trình Về Vùng Đất Mặn
+                        <i class="fa-solid fa-tree"></i> Hành Trình Về Vùng Đất Mặn Cần Giờ
                     </span>
                     <h2 id="about-title" class="font-serif text-2xl sm:text-4xl font-extrabold text-bio-dark leading-tight">
                         Tổ Yến Tinh Túy Giữa Lòng Rừng Ngập Mặn Cần Giờ
@@ -212,7 +211,7 @@
         </div>
     </section>
 
-    <!-- SECTION 2: QUY TRÌNH TINH CHẾ 4 BƯỚC SẠCH -->
+    <!-- SECTION 2: QUY TRÌNH TINH CHẾ 4 BƯỚC -->
     <section id="process-section" class="py-16 md:py-24 bg-bio-bg">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-14">
@@ -222,26 +221,22 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Step 1 -->
-                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm relative group hover:border-bio-green transition">
+                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:border-bio-green transition">
                     <div class="w-12 h-12 rounded-xl bg-bio-mint text-bio-green flex items-center justify-center font-serif font-extrabold text-xl mb-4">01</div>
                     <h3 class="font-serif font-bold text-lg text-bio-dark mb-2">Dẫn Dụ Sinh Thái</h3>
                     <p class="text-xs text-bio-gray leading-relaxed">Xây dựng nhà yến thông thoáng đúng chuẩn, thu hút chim yến sinh sống tự nhiên trong rừng ngập mặn.</p>
                 </div>
-                <!-- Step 2 -->
-                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm relative group hover:border-bio-green transition">
+                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:border-bio-green transition">
                     <div class="w-12 h-12 rounded-xl bg-bio-mint text-bio-green flex items-center justify-center font-serif font-extrabold text-xl mb-4">02</div>
                     <h3 class="font-serif font-bold text-lg text-bio-dark mb-2">Thu Hoạch Nhân Đạo</h3>
                     <p class="text-xs text-bio-gray leading-relaxed">Chỉ thu hái khi yến con đã bay đi tự do, đảm bảo vòng đời nhân giống chim yến bền vững.</p>
                 </div>
-                <!-- Step 3 -->
-                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm relative group hover:border-bio-green transition">
+                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:border-bio-green transition">
                     <div class="w-12 h-12 rounded-xl bg-bio-mint text-bio-green flex items-center justify-center font-serif font-extrabold text-xl mb-4">03</div>
                     <h3 class="font-serif font-bold text-lg text-bio-dark mb-2">Nhặt Lông Thủ Công</h3>
                     <p class="text-xs text-bio-gray leading-relaxed">Nghệ nhân dùng nhíp gắp tỉ mỉ từng tạp chất trong nước lọc tinh khiết, tuyệt đối không hóa chất.</p>
                 </div>
-                <!-- Step 4 -->
-                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm relative group hover:border-bio-green transition">
+                <div class="p-6 rounded-2xl bg-white border border-emerald-100 shadow-sm hover:border-bio-green transition">
                     <div class="w-12 h-12 rounded-xl bg-bio-mint text-bio-green flex items-center justify-center font-serif font-extrabold text-xl mb-4">04</div>
                     <h3 class="font-serif font-bold text-lg text-bio-dark mb-2">Sấy Lạnh Tiệt Trùng</h3>
                     <p class="text-xs text-bio-gray leading-relaxed">Sấy lạnh khép kín hiện đại giữ trọn vẹn 18 loại acid amin cùng hàm lượng vi chất quý giá.</p>
@@ -250,22 +245,22 @@
         </div>
     </section>
 
-    <!-- SECTION 3: SẢN PHẨM YẾN SÀO NỔI BẬT -->
+    <!-- SECTION 3: SẢN PHẨM TRƯNG BÀY (QUẢN LÝ DỘNG TRONG ADMIN TAB 5) -->
     <section id="products-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-xs font-bold tracking-widest text-bio-gold uppercase">Đặc Sản Quê Hương</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-bio-dark mt-2">Sản Phẩm Yến Sào Chọn Lọc</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-bio-dark mt-2">Sản Phẩm Yến Sào Trưng Bày</h2>
                 <p class="text-bio-gray text-sm mt-2">Quà tặng ý nghĩa cho sức khỏe gia đình & khách du lịch Cần Giờ</p>
             </div>
 
             <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Dynamic products rendering -->
+                <!-- Products rendered dynamically -->
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: BÀI THUYẾT MINH & CÂU CHUYỆN NGHỀ (TÍCH HỢP TẢI WORD) -->
+    <!-- SECTION 4: BÀI THUYẾT MINH & CÂU CHUYỆN (SOẠN THẢO WORD TAB 3) -->
     <section id="story-section" class="py-16 md:py-24 bg-bio-bg">
         <div class="max-w-4xl mx-auto px-4">
             <div class="bg-white rounded-3xl p-6 sm:p-12 shadow-lg border border-emerald-100">
@@ -281,13 +276,13 @@
                 </h2>
 
                 <div id="story-content-body" class="prose max-w-none text-bio-gray leading-relaxed text-sm sm:text-base space-y-4">
-                    <!-- Dynamic story content from Word/Editor -->
+                    <!-- Dynamic story content -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: THƯ VIỆN HÌNH Ảnh & VIDEO THỰC TẾ -->
+    <!-- SECTION 5: THƯ VIỆN HÌNH Ảnh & VIDEO (QUẢN LÝ TAB 4) -->
     <section id="gallery-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -296,7 +291,7 @@
                 <p class="text-bio-gray text-sm mt-2">Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế</p>
             </div>
 
-            <!-- Video Player Block (Supports YouTube link or Local Video File) -->
+            <!-- Video Player Block -->
             <div class="mb-12 max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-xl bg-bio-dark border-4 border-emerald-100" id="video-container">
                 <iframe id="main-video-iframe" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Yến Sào Cần Giờ" frameborder="0" allowfullscreen></iframe>
                 <video id="main-video-player" class="w-full h-full hidden" controls></video>
@@ -318,7 +313,7 @@
 
             <h2 class="font-serif text-2xl sm:text-4xl font-extrabold mb-3">Ghé Thăm & Đặt Mua Trực Tiếp</h2>
             <p id="contact-address" class="text-emerald-100 text-sm sm:text-base max-w-lg mx-auto mb-8 font-light">
-                Địa chỉ cơ sở: Xã Tam Thôn Hiệp, Huyện Cần Giờ, Thành phố Hồ Chí Minh.
+                Địa chỉ cơ sở: Xã An Thới Đông, Huyện Cần Giờ, Thành phố Hồ Chí Minh.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
@@ -333,12 +328,11 @@
             </div>
 
             <div class="mt-16 pt-8 border-t border-emerald-900 text-xs text-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p>© 2026 Yến Sào Quê Hương Cần Giờ. Khu Dự Trữ Sinh Quyển UNESCO.</p>
+                <p>© 2026 TRUY XUẤT XANH CẦN GIỜ. Khu Dự Trữ Sinh Quyển UNESCO.</p>
                 <div class="flex items-center gap-4">
                     <span>Du Lịch Cần Giờ - Quét QR Khám Phá</span>
-                    <!-- Hidden Admin Door Entrance -->
-                    <button onclick="openAuthModal()" class="text-emerald-300 hover:text-white transition">
-                        <i class="fa-solid fa-lock text-[10px] mr-1"></i> Quản Trị
+                    <button onclick="openAuthModal()" class="text-emerald-300 hover:text-white transition flex items-center gap-1">
+                        <i class="fa-solid fa-lock text-[10px]"></i> Cổng Quản Trị
                     </button>
                 </div>
             </div>
@@ -358,7 +352,7 @@
         </button>
     </div>
 
-    <!-- MODAL 1: CỔNG ĐĂNG NHẬP ADMIN BẰNG NHẬP GMAIL (ĐÃ ỦY QUYỀN TUANTHUPHUCAN@GMAIL.COM) -->
+    <!-- MODAL 1: CỔNG ĐĂNG NHẬP ADMIN GMAIL (XÁC THỰC TUANTHUPHUCAN@GMAIL.COM) -->
     <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/70 backdrop-blur-sm hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-100 relative text-center">
             <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
@@ -370,16 +364,16 @@
             </div>
 
             <h3 class="font-serif text-2xl font-bold text-bio-dark mb-1">Cổng Quản Trị Hệ Thống</h3>
-            <p class="text-xs text-bio-gray mb-6">Vui lòng nhập tài khoản Gmail đã được ủy quyền để truy cập Trang Quản Trị.</p>
+            <p class="text-xs text-bio-gray mb-6">Nhập Gmail đã được ủy quyền để truy cập Trang Quản Trị.</p>
 
             <form onsubmit="handleGmailLogin(event)" class="space-y-4">
                 <div class="text-left">
                     <label class="block text-xs font-bold text-bio-dark mb-1">Địa chỉ Gmail của bạn:</label>
-                    <input type="email" id="input-admin-email" required class="w-full p-3 text-sm border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green" placeholder="nhap-gmail-cua-ban@gmail.com">
+                    <input type="email" id="input-admin-email" required class="w-full p-3 text-sm border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green" placeholder="tuanthuphucan@gmail.com">
                 </div>
 
                 <div id="auth-error-msg" class="hidden p-3 rounded-xl bg-red-50 text-red-600 text-xs font-semibold text-left border border-red-200">
-                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Email này chưa được ủy quyền truy cập! Vui lòng liên hệ Chủ sở hữu <strong>tuanthuphucan@gmail.com</strong>.
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Email này chưa được ủy quyền! Vui lòng liên hệ Chủ sở hữu <strong>tuanthuphucan@gmail.com</strong>.
                 </div>
 
                 <button type="submit" class="w-full py-3.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center gap-2">
@@ -387,14 +381,15 @@
                 </button>
             </form>
             
-            <p class="text-[11px] text-slate-400 mt-4">Chủ sở hữu mặc định: tuanthuphucan@gmail.com</p>
+            <p class="text-[11px] text-slate-400 mt-4">Chủ sở hữu hệ thống: tuanthuphucan@gmail.com</p>
         </div>
     </div>
 
-    <!-- MODAL 2: TRANG CHỦ QUẢN TRỊ VIÊN (ADMIN DASHBOARD CAPABLE) -->
+    <!-- MODAL 2: TRANG CHỦ QUẢN TRỊ VIÊN (ĐẦY ĐỦ 6 TAB CHI TIẾT) -->
     <div id="admin-dashboard-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/80 backdrop-blur-sm hidden p-2 sm:p-6">
         <div class="bg-white w-full max-w-5xl h-[92vh] rounded-3xl shadow-2xl border border-emerald-100 flex flex-col overflow-hidden">
-            <!-- Admin Top Bar -->
+            
+            <!-- Admin Header -->
             <div class="p-4 bg-bio-dark text-white flex items-center justify-between border-b border-emerald-800">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-gauge-high text-bio-gold text-lg"></i>
@@ -407,33 +402,36 @@
 
             <!-- Dashboard Navigation Tabs -->
             <div class="flex bg-bio-bg border-b border-emerald-100 px-4 pt-2 gap-2 text-xs font-bold text-bio-dark overflow-x-auto">
-                <button onclick="switchAdminTab('dash-stats')" id="btn-dash-stats" class="py-2.5 px-4 rounded-t-xl bg-white border-t-2 border-bio-green text-bio-green">
-                    <i class="fa-solid fa-chart-line mr-1"></i> 1. Thống Kê Lượt Xem
+                <button onclick="switchAdminTab('dash-stats')" id="btn-dash-stats" class="tab-btn py-2.5 px-4 rounded-t-xl bg-white border-t-2 border-bio-green text-bio-green whitespace-nowrap">
+                    <i class="fa-solid fa-chart-line mr-1"></i> 1. Thống Kê
                 </button>
-                <button onclick="switchAdminTab('dash-team')" id="btn-dash-team" class="py-2.5 px-4 rounded-t-xl hover:bg-white/50">
+                <button onclick="switchAdminTab('dash-team')" id="btn-dash-team" class="tab-btn py-2.5 px-4 rounded-t-xl hover:bg-white/50 text-slate-600 whitespace-nowrap">
                     <i class="fa-solid fa-users-gear mr-1"></i> 2. Phân Quyền Gmail
                 </button>
-                <button onclick="switchAdminTab('dash-story')" id="btn-dash-story" class="py-2.5 px-4 rounded-t-xl hover:bg-white/50">
-                    <i class="fa-solid fa-file-word mr-1"></i> 3. Bài Viết & Word (.docx)
+                <button onclick="switchAdminTab('dash-story')" id="btn-dash-story" class="tab-btn py-2.5 px-4 rounded-t-xl hover:bg-white/50 text-slate-600 whitespace-nowrap">
+                    <i class="fa-solid fa-file-word mr-1"></i> 3. Bài Viết & Word
                 </button>
-                <button onclick="switchAdminTab('dash-media')" id="btn-dash-media" class="py-2.5 px-4 rounded-t-xl hover:bg-white/50">
+                <button onclick="switchAdminTab('dash-media')" id="btn-dash-media" class="tab-btn py-2.5 px-4 rounded-t-xl hover:bg-white/50 text-slate-600 whitespace-nowrap">
                     <i class="fa-solid fa-photo-film mr-1"></i> 4. Ảnh & Video
                 </button>
-                <button onclick="switchAdminTab('dash-info')" id="btn-dash-info" class="py-2.5 px-4 rounded-t-xl hover:bg-white/50">
-                    <i class="fa-solid fa-sliders mr-1"></i> 5. Thông Tin & Giá Bán
+                <button onclick="switchAdminTab('dash-products')" id="btn-dash-products" class="tab-btn py-2.5 px-4 rounded-t-xl hover:bg-white/50 text-slate-600 whitespace-nowrap">
+                    <i class="fa-solid fa-basket-shopping mr-1"></i> 5. Sản Phẩm & Thông Tin
+                </button>
+                <button onclick="switchAdminTab('dash-qr')" id="btn-dash-qr" class="tab-btn py-2.5 px-4 rounded-t-xl hover:bg-white/50 text-slate-600 whitespace-nowrap">
+                    <i class="fa-solid fa-qrcode mr-1"></i> 6. Tạo & In Mã QR Siêu Nét
                 </button>
             </div>
 
-            <!-- Dashboard Main Content Area -->
+            <!-- Dashboard Content Scroll Area -->
             <div class="p-6 flex-1 overflow-y-auto space-y-6 text-xs custom-scrollbar">
                 
-                <!-- TAB 1: THỐNG KÊ LƯỢT TRUY CẬP (ANALYTICS DASHBOARD) -->
-                <div id="dash-stats" class="space-y-6">
+                <!-- TAB 1: THỐNG KÊ LƯỢT XEM -->
+                <div id="dash-stats" class="tab-content space-y-6">
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100/60 border border-emerald-200">
                             <span class="text-xs text-bio-green font-bold uppercase tracking-wider block mb-1">Tổng Lượt Du Khách Quét QR</span>
                             <span id="dash-stat-total-views" class="font-serif text-3xl font-extrabold text-bio-dark">1.240</span>
-                            <span class="text-[11px] text-bio-gray block mt-1"><i class="fa-solid fa-arrow-trend-up text-bio-green"></i> Tăng tự động khi quét QR</span>
+                            <span class="text-[11px] text-bio-gray block mt-1"><i class="fa-solid fa-arrow-trend-up text-bio-green"></i> Tự động tăng khi du khách vào web</span>
                         </div>
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/60 border border-amber-200">
                             <span class="text-xs text-bio-gold font-bold uppercase tracking-wider block mb-1">Lượt Xem Hôm Nay (Ước tính)</span>
@@ -442,61 +440,58 @@
                         </div>
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/60 border border-sky-200">
                             <span class="text-xs text-bio-blue font-bold uppercase tracking-wider block mb-1">Số Gmail Được Ủy Quyền</span>
-                            <span id="dash-stat-editor-count" class="font-serif text-3xl font-extrabold text-bio-blue">2</span>
-                            <span class="text-[11px] text-bio-gray block mt-1">Thành viên có quyền chỉnh sửa</span>
+                            <span id="dash-stat-editor-count" class="font-serif text-3xl font-extrabold text-bio-blue">1</span>
+                            <span class="text-[11px] text-bio-gray block mt-1">Ủy viên có quyền chỉnh sửa</span>
                         </div>
                     </div>
 
-                    <!-- Visual Analytics Bar Chart Simulation -->
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                         <h4 class="font-bold text-bio-dark text-sm mb-3">Biểu Đồ Xu Hướng Du Khách Quét Mã QR Theo Tuần</h4>
                         <div class="h-36 flex items-end gap-3 pt-6 border-b border-slate-200 pb-2">
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[40%] text-center text-[10px] pt-1 font-bold">Thứ 2</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[55%] text-center text-[10px] pt-1 font-bold">Thứ 3</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[70%] text-center text-[10px] pt-1 font-bold">Thứ 4</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[65%] text-center text-[10px] pt-1 font-bold">Thứ 5</div>
-                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[80%] text-center text-[10px] pt-1 font-bold">Thứ 6</div>
-                            <div class="flex-1 bg-bio-green text-white rounded-t-lg h-[95%] text-center text-[10px] pt-1 font-bold">Thứ 7</div>
-                            <div class="flex-1 bg-bio-gold text-white rounded-t-lg h-[100%] text-center text-[10px] pt-1 font-bold">Chủ Nhật</div>
+                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[40%] text-center text-[10px] pt-1 font-bold">T2</div>
+                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[55%] text-center text-[10px] pt-1 font-bold">T3</div>
+                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[70%] text-center text-[10px] pt-1 font-bold">T4</div>
+                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[65%] text-center text-[10px] pt-1 font-bold">T5</div>
+                            <div class="flex-1 bg-bio-mint rounded-t-lg h-[80%] text-center text-[10px] pt-1 font-bold">T6</div>
+                            <div class="flex-1 bg-bio-green text-white rounded-t-lg h-[95%] text-center text-[10px] pt-1 font-bold">T7</div>
+                            <div class="flex-1 bg-bio-gold text-white rounded-t-lg h-[100%] text-center text-[10px] pt-1 font-bold">CN</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 2: ỦY QUYỀN CHỈNH SỬA GMAIL (PHÂN QUYỀN OWNER & EDITORS) -->
-                <div id="dash-team" class="space-y-4 hidden">
+                <!-- TAB 2: PHÂN QUYỀN GMAIL -->
+                <div id="dash-team" class="tab-content space-y-4 hidden">
                     <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-bio-dark space-y-2">
                         <div class="font-bold text-sm flex items-center gap-1.5 text-bio-green">
                             <i class="fa-solid fa-user-gear"></i> Phân Quyền Ủy Viên Chỉnh Sửa Trang Web
                         </div>
-                        <p class="text-xs">Chủ sở hữu <strong>tuanthuphucan@gmail.com</strong> có thể thêm địa chỉ Gmail của thầy cô hoặc các bạn trong nhóm. Chỉ các Gmail có tên trong danh sách bên dưới mới đăng nhập và chỉnh sửa được web.</p>
+                        <p class="text-xs">Chủ sở hữu <strong>tuanthuphucan@gmail.com</strong> có thể thêm địa chỉ Gmail của thầy cô hoặc các bạn trong nhóm. Chỉ các Gmail nằm trong danh sách bên dưới mới có quyền đăng nhập và chỉnh sửa dữ liệu web.</p>
                     </div>
 
-                    <!-- Add Email Input Form (Owner only) -->
                     <div id="owner-add-form" class="flex gap-2">
-                        <input type="email" id="new-editor-email-input" class="flex-1 p-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green text-xs" placeholder="Nhập địa chỉ Gmail muốn ủy quyền (Ví dụ: thayco@gmail.com)...">
+                        <input type="email" id="new-editor-email-input" class="flex-1 p-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-bio-green text-xs" placeholder="Nhập Gmail muốn ủy quyền (Ví dụ: thayco@gmail.com)...">
                         <button onclick="addAuthorizedEditor()" class="px-5 py-3 bg-bio-green hover:bg-emerald-800 text-white font-bold rounded-xl text-xs transition whitespace-nowrap">
                             + Thêm Gmail Ủy Quyền
                         </button>
                     </div>
 
-                    <!-- Authorized Editors Table -->
-                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm">
                         <div class="p-3 bg-slate-50 border-b border-slate-200 font-bold text-slate-700">
                             Danh Sách Gmail Được Cấp Quyền Truy Cập
                         </div>
                         <div id="editors-list-container" class="divide-y divide-slate-100">
-                            <!-- Editors dynamic list -->
+                            <!-- Editors list -->
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 3: SOẠN THẢO BÀI VIẾT & TẢI FILE WORD (.DOCX) -->
-                <div id="dash-story" class="space-y-4 hidden">
+                <!-- TAB 3: BÀI VIẾT & WORD (.DOCX) -->
+                <div id="dash-story" class="tab-content space-y-4 hidden">
                     <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-blue-900 space-y-2">
                         <div class="font-bold flex items-center gap-1.5 text-sm">
                             <i class="fa-solid fa-file-word text-blue-600"></i> Tải Bài Thuyết Minh Từ File Word (.docx)
                         </div>
-                        <p class="text-xs">Chọn file văn bản `.docx` từ máy tính. Hệ thống tự động trích xuất nội dung bài viết thuyết minh yến sào đưa vào khung chỉnh sửa bên dưới.</p>
+                        <p class="text-xs">Chọn file `.docx` từ máy tính. Hệ thống tự động trích xuất nội dung bài thuyết minh yến sào đưa vào khung chỉnh sửa bên dưới.</p>
                         <input type="file" accept=".docx" onchange="importDocxFile(event)" class="block w-full text-xs text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-bio-green file:text-white hover:file:bg-emerald-800 cursor-pointer">
                     </div>
 
@@ -505,7 +500,6 @@
                         <input type="text" id="edit-story-title" class="w-full p-3 border border-slate-300 rounded-xl font-bold text-sm outline-none focus:ring-2 focus:ring-bio-green">
                     </div>
 
-                    <!-- Toolbar formatting & clean-up -->
                     <div class="flex flex-wrap items-center justify-between gap-2 p-2 bg-slate-100 rounded-xl border border-slate-200">
                         <div class="flex items-center gap-1">
                             <button onclick="formatEditorText('bold')" title="In đậm" class="p-2 rounded hover:bg-slate-200 font-bold"><i class="fa-solid fa-bold"></i></button>
@@ -516,19 +510,18 @@
                         </button>
                     </div>
 
-                    <!-- Rich Content Editable Area -->
                     <div>
-                        <label class="block font-bold text-slate-800 mb-1">Nội Dung Thuyết Minh (Bật kiểm tra chính tả)</label>
+                        <label class="block font-bold text-slate-800 mb-1">Nội Dung Bài Thuyết Minh (Bật kiểm tra chính tả)</label>
                         <div id="edit-story-body" contenteditable="true" spellcheck="true" class="w-full min-h-[220px] p-4 border border-slate-300 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-bio-green leading-relaxed text-slate-800 text-sm overflow-y-auto max-h-[300px]">
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 4: HÌNH ẢNH & VIDEO TỪ MÁY / LINK -->
-                <div id="dash-media" class="space-y-4 hidden">
+                <!-- TAB 4: HÌNH ẢNH & VIDEO -->
+                <div id="dash-media" class="tab-content space-y-4 hidden">
                     <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900">
                         <h4 class="font-bold text-sm mb-1"><i class="fa-solid fa-video"></i> Quản Lý Video Khám Phá</h4>
-                        <p class="text-xs mb-3">Tải video MP4 trực tiếp từ máy tính của bạn HOẶC dán liên kết YouTube nhúng.</p>
+                        <p class="text-xs mb-3">Tải video MP4 trực tiếp từ máy tính HOẶC dán liên kết YouTube nhúng.</p>
                         
                         <div class="space-y-3">
                             <div>
@@ -545,51 +538,100 @@
                     <div>
                         <label class="block font-bold text-slate-800 mb-1">Ảnh Nền Bìa Banner Hero</label>
                         <div class="flex gap-2">
-                            <input type="text" id="edit-hero-img-url" class="flex-1 p-2.5 border border-slate-300 rounded-xl outline-none" placeholder="Link ảnh hoặc từ máy...">
+                            <input type="text" id="edit-hero-img-url" class="flex-1 p-2.5 border border-slate-300 rounded-xl outline-none" placeholder="Link ảnh hoặc chọn ảnh từ máy...">
                             <input type="file" accept="image/*" onchange="uploadLocalImage(event, 'edit-hero-img-url')" class="hidden" id="file-hero-img">
                             <button onclick="document.getElementById('file-hero-img').click()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold">Tải từ máy</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 5: THÔNG TIN CHUNG & BẢNG GIÁ SẢN PHẨM -->
-                <div id="dash-info" class="space-y-4 hidden">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block font-bold text-slate-800 mb-1">Tên Thương Hiệu Trụ Sở</label>
-                            <input type="text" id="edit-brand-title" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
+                <!-- TAB 5: SẢN PHẨM TRƯNG BÀY & THÔNG TIN -->
+                <div id="dash-products" class="tab-content space-y-6 hidden">
+                    <!-- Thông tin chung -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+                        <h4 class="font-bold text-sm text-bio-dark border-b border-slate-200 pb-2">1. Thông Tin Cơ Sở & Hotline</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Tên Thương Hiệu Trụ Sở</label>
+                                <input type="text" id="edit-brand-title" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Số Hotline / Zalo Liên Hệ</label>
+                                <input type="text" id="edit-phone-num" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
+                            </div>
                         </div>
+
                         <div>
-                            <label class="block font-bold text-slate-800 mb-1">Số Hotline / Zalo Liên Hệ</label>
-                            <input type="text" id="edit-phone-num" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
+                            <label class="block font-bold text-slate-800 mb-1">Tiêu Đề Banner Hero chính</label>
+                            <input type="text" id="edit-hero-title-input" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1">Địa Chỉ Cơ Sở Tại Cần Giờ</label>
+                            <input type="text" id="edit-address-input" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block font-bold text-slate-800 mb-1">Tiêu Đề Banner Hero chính</label>
-                        <input type="text" id="edit-hero-title-input" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
-                    </div>
+                    <!-- Quản lý Sản phẩm trưng bày -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <h4 class="font-bold text-sm text-bio-dark">2. Quản Lý Danh Sách Sản Phẩm Trưng Bày</h4>
+                            <button onclick="addNewProductItem()" class="px-4 py-2 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs transition">
+                                + Thêm Sản Phẩm Mới
+                            </button>
+                        </div>
 
-                    <div>
-                        <label class="block font-bold text-slate-800 mb-1">Địa Chỉ Cơ Sở Tại Cần Giờ</label>
-                        <input type="text" id="edit-address-input" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none">
+                        <div id="admin-products-editor-list" class="space-y-4">
+                            <!-- Products editor dynamic list -->
+                        </div>
                     </div>
                 </div>
+
+                <!-- TAB 6: TẠO & IN MÃ QR SIÊU NÉT (1000x1000px) -->
+                <div id="dash-qr" class="tab-content space-y-4 hidden">
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-bio-dark space-y-2">
+                        <h4 class="font-bold text-sm text-bio-green flex items-center gap-1.5">
+                            <i class="fa-solid fa-qrcode"></i> Trình Tạo Mã QR Siêu Nét 1000x1000px Để In Ấn
+                        </h4>
+                        <p class="text-xs">Mã QR xuất ra có độ phân giải cao 1000x1000px, chừa viền trắng an toàn và độ sửa lỗi cấp H giúp điện thoại quét nhạy ngay cả khi in nhỏ dán lên hộp yến.</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1">Đường Link Trang Web Của Bạn:</label>
+                            <input type="text" id="admin-qr-url-input" class="w-full p-3 border border-slate-300 rounded-xl outline-none font-bold text-bio-green text-xs" placeholder="https://tuanthuphucan-jpg.github.io/truyxuatxanhcangio/">
+                        </div>
+                        <button onclick="generateHighResQR()" class="px-5 py-3 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition">
+                            Tạo Mã QR Nét Căng 1000x1000px
+                        </button>
+                    </div>
+
+                    <div class="pt-4 text-center">
+                        <div class="inline-block p-4 bg-white rounded-2xl border border-slate-200 shadow-md mb-4">
+                            <canvas id="high-res-qr-canvas" class="max-w-[240px] h-auto border border-slate-100 rounded-lg mx-auto"></canvas>
+                        </div>
+                        <br>
+                        <button onclick="downloadHighResQR()" class="px-6 py-3.5 rounded-2xl bg-bio-gold hover:bg-amber-600 text-white font-extrabold text-xs shadow-lg transition inline-flex items-center gap-2">
+                            <i class="fa-solid fa-download text-base"></i> Tải Ảnh Mã QR PNG (1000x1000px)
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Dashboard Footer -->
+            <!-- Admin Footer -->
             <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
                 <button onclick="closeAdminDashboardModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-600 font-bold text-xs hover:bg-slate-100">
                     Đóng
                 </button>
-                <button onclick="saveAllContentToFirebase()" class="px-6 py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-1.5">
+                <button onclick="saveAllContentToCloud()" class="px-6 py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-1.5">
                     <i class="fa-solid fa-cloud-arrow-up"></i> Lưu & Đồng Bộ Dữ Liệu Web
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 3: MÃ QR QUẢNG BÁ TẢI PNG -->
+    <!-- MODAL 3: XEM MÃ QR POPUP DÀNH CHO DU KHÁCH -->
     <div id="qr-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/70 backdrop-blur-sm hidden p-4">
         <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl border border-emerald-100 text-center relative">
             <button onclick="closeQRModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
@@ -597,14 +639,14 @@
             </button>
 
             <h3 class="font-serif text-xl font-bold text-bio-dark mb-1">Mã QR Quét Trải Nghiệm</h3>
-            <p class="text-xs text-bio-gray mb-4">In mã QR dán tại cửa hàng hoặc hộp quà yến sào Cần Giờ.</p>
+            <p class="text-xs text-bio-gray mb-4">Quét mã QR để mở trang web khám phá Yến Sào Cần Giờ.</p>
 
             <div class="bg-bio-bg p-4 rounded-2xl border border-emerald-200 inline-block mb-4 shadow-inner">
                 <div id="qr-code-box" class="flex justify-center"></div>
             </div>
 
-            <button onclick="downloadQRImage()" class="w-full py-3.5 rounded-2xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-md transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-download"></i> Tải Ảnh Mã QR (.PNG)
+            <button onclick="downloadPopupQRImage()" class="w-full py-3.5 rounded-2xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-download"></i> Tải Ảnh Mã QR PNG
             </button>
         </div>
     </div>
@@ -617,13 +659,13 @@
         <img id="lightbox-img" src="" alt="Zoom Image" class="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl">
     </div>
 
-    <!-- FIREBASE INITIALIZATION & APPLICATION CODE -->
+    <!-- FIREBASE AND APPLICATION LOGIC -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration & Path
+        // Config & Fallback
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'yen-sao-can-gio-bio-app';
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config) 
@@ -636,21 +678,25 @@
                 appId: "1:1234567890:web:demo123456"
             };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+        let app, auth, db, docRef;
 
-        // Firestore Document Path (Rule 1)
-        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'yen_sao_content', 'main_data');
+        try {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            docRef = doc(db, 'artifacts', appId, 'public', 'data', 'yen_sao_content', 'main_data');
+        } catch (e) {
+            console.warn("Firebase Init Fallback:", e);
+        }
 
-        // Initial Default Data (Owner is tuanthuphucan@gmail.com)
+        // Default App State
         const defaultData = {
             ownerEmail: "tuanthuphucan@gmail.com",
             editors: ["tuanthuphucan@gmail.com"],
             viewsCount: 1240,
-            brandTitle: "YẾN SÀO CẦN GIỜ",
+            brandTitle: "TRUY XUẤT XANH - KHÁM PHÁ CẦN GIỜ",
             phone: "0987654321",
-            address: "Xã Tam Thôn Hiệp, Huyện Cần Giờ, Thành phố Hồ Chí Minh.",
+            address: "Ấp Lý Hòa Hiệp, Xã An Thới Đông, Huyện Cần Giờ, Thành phố Hồ Chí Minh.",
             heroTitle: "Khám Phá Thế Giới Yến Sào Quê Hương Cần Giờ",
             heroSubtitle: "Nơi những đàn chim yến tự nhiên chao lượn trên thảm rừng ngập mặn trù phú, kết tụ tinh túy dưỡng chất thiên nhiên ban tặng cho vùng đất biển Cần Giờ.",
             heroImg: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80",
@@ -671,73 +717,97 @@
             ]
         };
 
-        let appData = { ...defaultData };
+        // Load local fallback if available
+        const savedLocal = localStorage.getItem('yen_sao_app_data');
+        let appData = savedLocal ? JSON.parse(savedLocal) : { ...defaultData };
         let currentAdminEmail = localStorage.getItem('logged_admin_email') || null;
 
-        // Startup Logic
+        // Toast Notification System
+        window.showToast = (msg, type = 'success') => {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast-notify p-3.5 px-5 rounded-2xl text-white text-xs font-bold shadow-xl flex items-center gap-2 ${type === 'success' ? 'bg-bio-green' : 'bg-red-600'}`;
+            toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i> <span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        // Page Load Init
         window.addEventListener('DOMContentLoaded', async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined') {
-                    await signInWithCustomToken(auth, __initial_auth_token);
+            if (auth) {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined') {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (err) {
+                    console.warn("Auth Fallback:", err);
+                }
+
+                if (docRef) {
+                    onSnapshot(docRef, (docSnap) => {
+                        if (docSnap.exists()) {
+                            appData = { ...defaultData, ...docSnap.data() };
+                            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+                        } else {
+                            setDoc(docRef, defaultData).catch(console.error);
+                        }
+                        
+                        // Increment Visitor Counter
+                        if (!sessionStorage.getItem('view_counted')) {
+                            sessionStorage.setItem('view_counted', 'true');
+                            appData.viewsCount = (appData.viewsCount || 1240) + 1;
+                            setDoc(docRef, { viewsCount: appData.viewsCount }, { merge: true }).catch(() => {});
+                        }
+
+                        renderUI();
+                        checkAdminState();
+                    }, (error) => {
+                        console.warn("Firestore Snapshot Fallback:", error);
+                        renderUI();
+                        checkAdminState();
+                    });
                 } else {
-                    await signInAnonymously(auth);
+                    renderUI();
+                    checkAdminState();
                 }
-            } catch (err) {
-                console.warn("Auth initialization fallback:", err);
-            }
-
-            listenToDatabase();
-            initQR();
-        });
-
-        // Realtime Listener
-        function listenToDatabase() {
-            onSnapshot(docRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    appData = { ...defaultData, ...docSnap.data() };
-                } else {
-                    setDoc(docRef, defaultData).catch(console.error);
-                }
-                
-                // Increment page view counter once per session
-                if (!sessionStorage.getItem('view_counted')) {
-                    sessionStorage.setItem('view_counted', 'true');
-                    appData.viewsCount = (appData.viewsCount || 1240) + 1;
-                    setDoc(docRef, { viewsCount: appData.viewsCount }, { merge: true });
-                }
-
+            } else {
                 renderUI();
                 checkAdminState();
-            }, (error) => {
-                console.error("Firestore Error:", error);
-            });
-        }
+            }
 
-        // Render Public Web View
+            initPopupQR();
+        });
+
+        // Render Public Web UI
         function renderUI() {
-            document.getElementById('nav-brand-title').innerText = appData.brandTitle;
-            document.getElementById('hero-title').innerText = appData.heroTitle;
-            document.getElementById('hero-subtitle').innerText = appData.heroSubtitle;
-            document.getElementById('hero-bg-img').src = appData.heroImg;
+            document.getElementById('nav-brand-title').innerText = appData.brandTitle || defaultData.brandTitle;
+            document.getElementById('hero-title').innerText = appData.heroTitle || defaultData.heroTitle;
+            document.getElementById('hero-subtitle').innerText = appData.heroSubtitle || defaultData.heroSubtitle;
+            document.getElementById('hero-bg-img').src = appData.heroImg || defaultData.heroImg;
 
-            // Public Visitor Counter
+            // Stats
             document.getElementById('public-views-count').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN') + "+";
             document.getElementById('dash-stat-total-views').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN');
 
             // Article Content
-            document.getElementById('story-title').innerText = appData.storyTitle;
-            document.getElementById('story-content-body').innerHTML = appData.storyBody;
+            document.getElementById('story-title').innerText = appData.storyTitle || defaultData.storyTitle;
+            document.getElementById('story-content-body').innerHTML = appData.storyBody || defaultData.storyBody;
 
-            // Contact Phone & Zalo
-            const phone = appData.phone;
+            // Phone / Zalo / Address
+            const phone = appData.phone || defaultData.phone;
             document.getElementById('display-hotline').innerText = phone;
             document.getElementById('btn-call-hotline').href = "tel:" + phone;
             document.getElementById('mobile-call-btn').href = "tel:" + phone;
             document.getElementById('btn-chat-zalo').href = "https://zalo.me/" + phone;
             document.getElementById('mobile-zalo-btn').href = "https://zalo.me/" + phone;
-            document.getElementById('contact-address').innerText = "Địa chỉ cơ sở: " + appData.address;
+            document.getElementById('contact-address').innerText = "Địa chỉ cơ sở: " + (appData.address || defaultData.address);
 
-            // Media Video Handling
+            // Video Handling
             const iframeEl = document.getElementById('main-video-iframe');
             const videoEl = document.getElementById('main-video-player');
 
@@ -748,12 +818,12 @@
             } else {
                 videoEl.classList.add('hidden');
                 iframeEl.classList.remove('hidden');
-                iframeEl.src = appData.videoUrl;
+                iframeEl.src = appData.videoUrl || defaultData.videoUrl;
             }
 
-            // Products Grid
+            // Products Grid Rendering
             const pGrid = document.getElementById('products-grid');
-            pGrid.innerHTML = appData.products.map(p => `
+            pGrid.innerHTML = (appData.products || []).map(p => `
                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-emerald-100 flex flex-col justify-between hover:shadow-xl transition duration-300">
                     <div>
                         <div class="h-48 overflow-hidden bg-slate-100">
@@ -773,9 +843,9 @@
                 </div>
             `).join('');
 
-            // Gallery Photos Grid
+            // Photos Grid
             const gGrid = document.getElementById('gallery-photos-grid');
-            gGrid.innerHTML = appData.gallery.map(img => `
+            gGrid.innerHTML = (appData.gallery || []).map(img => `
                 <div onclick="window.openLightbox('${img}')" class="cursor-pointer group relative aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-emerald-100">
                     <img src="${img}" alt="Gallery" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
@@ -785,7 +855,7 @@
             `).join('');
         }
 
-        // Check & Verify Admin Rights
+        // Check Admin State
         function checkAdminState() {
             if (!currentAdminEmail) {
                 document.getElementById('admin-status-bar').classList.add('hidden');
@@ -793,8 +863,11 @@
             }
 
             const cleanEmail = currentAdminEmail.trim().toLowerCase();
-            const isOwner = (cleanEmail === appData.ownerEmail.toLowerCase());
-            const isEditor = isOwner || appData.editors.map(e => e.toLowerCase()).includes(cleanEmail);
+            const ownerEmail = (appData.ownerEmail || defaultData.ownerEmail).toLowerCase();
+            const editors = (appData.editors || [ownerEmail]).map(e => e.toLowerCase());
+
+            const isOwner = (cleanEmail === ownerEmail);
+            const isEditor = isOwner || editors.includes(cleanEmail);
 
             if (isEditor) {
                 document.getElementById('admin-status-bar').classList.remove('hidden');
@@ -803,20 +876,22 @@
                 document.getElementById('owner-add-form').style.display = isOwner ? 'flex' : 'none';
                 renderEditorsList(isOwner);
             } else {
-                // Reject unauthorized user
                 document.getElementById('admin-status-bar').classList.add('hidden');
                 currentAdminEmail = null;
                 localStorage.removeItem('logged_admin_email');
             }
         }
 
-        // Gmail Authentication Handler
+        // Gmail Authentication
         window.handleGmailLogin = (e) => {
             e.preventDefault();
             const inputEmail = document.getElementById('input-admin-email').value.trim().toLowerCase();
             
-            const isOwner = (inputEmail === appData.ownerEmail.toLowerCase());
-            const isEditor = isOwner || appData.editors.map(e => e.toLowerCase()).includes(inputEmail);
+            const ownerEmail = (appData.ownerEmail || defaultData.ownerEmail).toLowerCase();
+            const editors = (appData.editors || [ownerEmail]).map(e => e.toLowerCase());
+
+            const isOwner = (inputEmail === ownerEmail);
+            const isEditor = isOwner || editors.includes(inputEmail);
 
             if (isEditor) {
                 currentAdminEmail = inputEmail;
@@ -825,6 +900,7 @@
                 window.closeAuthModal();
                 checkAdminState();
                 window.openAdminDashboardModal();
+                window.showToast("Đăng nhập Admin thành công!");
             } else {
                 document.getElementById('auth-error-msg').classList.remove('hidden');
             }
@@ -834,47 +910,67 @@
             currentAdminEmail = null;
             localStorage.removeItem('logged_admin_email');
             document.getElementById('admin-status-bar').classList.add('hidden');
+            window.showToast("Đã đăng xuất khỏi tài khoản Quản trị.");
         };
 
-        // Modal Controls
+        // Modals
         window.openAuthModal = () => document.getElementById('auth-modal').classList.remove('hidden');
         window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
 
         window.openAdminDashboardModal = () => {
-            document.getElementById('edit-brand-title').value = appData.brandTitle;
-            document.getElementById('edit-phone-num').value = appData.phone;
-            document.getElementById('edit-address-input').value = appData.address;
-            document.getElementById('edit-hero-title-input').value = appData.heroTitle;
-            document.getElementById('edit-hero-img-url').value = appData.heroImg;
-            document.getElementById('edit-video-url-input').value = appData.videoUrl;
-            document.getElementById('edit-story-title').value = appData.storyTitle;
-            document.getElementById('edit-story-body').innerHTML = appData.storyBody;
-            document.getElementById('dash-stat-editor-count').innerText = appData.editors.length;
-            
+            document.getElementById('edit-brand-title').value = appData.brandTitle || '';
+            document.getElementById('edit-phone-num').value = appData.phone || '';
+            document.getElementById('edit-address-input').value = appData.address || '';
+            document.getElementById('edit-hero-title-input').value = appData.heroTitle || '';
+            document.getElementById('edit-hero-img-url').value = appData.heroImg || '';
+            document.getElementById('edit-video-url-input').value = appData.videoUrl || '';
+            document.getElementById('edit-story-title').value = appData.storyTitle || '';
+            document.getElementById('edit-story-body').innerHTML = appData.storyBody || '';
+            document.getElementById('dash-stat-editor-count').innerText = (appData.editors || []).length;
+
+            // Fill QR Input with default URL
+            const webUrl = (window.location.href.startsWith('http')) 
+                ? window.location.href 
+                : 'https://tuanthuphucan-jpg.github.io/truyxuatxanhcangio/';
+            document.getElementById('admin-qr-url-input').value = webUrl;
+
+            renderAdminProductsList();
             document.getElementById('admin-dashboard-modal').classList.remove('hidden');
         };
         window.closeAdminDashboardModal = () => document.getElementById('admin-dashboard-modal').classList.add('hidden');
 
         // Admin Tab Switcher
         window.switchAdminTab = (tabId) => {
-            ['dash-stats', 'dash-team', 'dash-story', 'dash-media', 'dash-info'].forEach(t => {
-                document.getElementById(t).classList.add('hidden');
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'border-t-2', 'border-bio-green', 'text-bio-green');
+                btn.classList.add('text-slate-600');
             });
+
             document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'border-t-2', 'border-bio-green', 'text-bio-green');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            if (tabId === 'dash-qr') {
+                window.generateHighResQR();
+            }
         };
 
         // Render Editors List
         function renderEditorsList(isOwner) {
             const container = document.getElementById('editors-list-container');
-            container.innerHTML = appData.editors.map(e => `
+            container.innerHTML = (appData.editors || []).map(e => `
                 <div class="flex items-center justify-between p-3">
                     <div>
                         <span class="font-bold text-bio-dark text-xs block">${e}</span>
-                        <span class="text-[10px] ${e.toLowerCase() === appData.ownerEmail.toLowerCase() ? 'text-bio-gold font-bold' : 'text-bio-gray'}">
-                            ${e.toLowerCase() === appData.ownerEmail.toLowerCase() ? 'Chủ sở hữu hệ thống (Owner)' : 'Ủy viên được cấp quyền chỉnh sửa'}
+                        <span class="text-[10px] ${e.toLowerCase() === (appData.ownerEmail || defaultData.ownerEmail).toLowerCase() ? 'text-bio-gold font-bold' : 'text-bio-gray'}">
+                            ${e.toLowerCase() === (appData.ownerEmail || defaultData.ownerEmail).toLowerCase() ? 'Chủ sở hữu hệ thống (Owner)' : 'Ủy viên được cấp quyền chỉnh sửa'}
                         </span>
                     </div>
-                    ${(isOwner && e.toLowerCase() !== appData.ownerEmail.toLowerCase()) ? `
+                    ${(isOwner && e.toLowerCase() !== (appData.ownerEmail || defaultData.ownerEmail).toLowerCase()) ? `
                         <button onclick="window.removeAuthorizedEditor('${e}')" class="text-red-600 hover:text-red-800 text-xs font-bold px-2 py-1 bg-red-50 rounded-lg">
                             <i class="fa-solid fa-trash-can mr-1"></i> Thu Hồi Quyền
                         </button>
@@ -883,7 +979,7 @@
             `).join('');
         }
 
-        // Add / Remove Authorized Editor (Owner Only)
+        // Add / Remove Authorized Editors
         window.addAuthorizedEditor = async () => {
             const input = document.getElementById('new-editor-email-input');
             const email = input.value.trim().toLowerCase();
@@ -891,20 +987,99 @@
 
             if (!appData.editors.map(e => e.toLowerCase()).includes(email)) {
                 appData.editors.push(email);
-                await setDoc(docRef, { editors: appData.editors }, { merge: true });
+                if (docRef) await setDoc(docRef, { editors: appData.editors }, { merge: true }).catch(() => {});
+                localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
                 input.value = '';
-                alert("Đã thêm thành công Gmail " + email + " vào danh sách ủy quyền!");
                 renderEditorsList(true);
+                window.showToast("Đã thêm Gmail ủy quyền thành công!");
             }
         };
 
         window.removeAuthorizedEditor = async (email) => {
             appData.editors = appData.editors.filter(e => e.toLowerCase() !== email.toLowerCase());
-            await setDoc(docRef, { editors: appData.editors }, { merge: true });
+            if (docRef) await setDoc(docRef, { editors: appData.editors }, { merge: true }).catch(() => {});
+            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
             renderEditorsList(true);
+            window.showToast("Đã thu hồi quyền Gmail.");
         };
 
-        // Word .docx Import using Mammoth.js
+        // Render & Manage Products in Admin Tab 5
+        function renderAdminProductsList() {
+            const container = document.getElementById('admin-products-editor-list');
+            container.innerHTML = (appData.products || []).map((p, idx) => `
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 relative">
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                        <span class="font-bold text-bio-green text-xs">Sản phẩm #${idx + 1}</span>
+                        <button onclick="deleteProductItem(${p.id})" class="text-red-600 hover:text-red-800 font-bold text-xs">
+                            <i class="fa-solid fa-trash"></i> Xóa
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold mb-1">Tên sản phẩm:</label>
+                            <input type="text" value="${p.name}" onchange="updateProductField(${p.id}, 'name', this.value)" class="w-full p-2 border border-slate-300 rounded-xl outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-semibold mb-1">Giá bán / Quy cách:</label>
+                            <input type="text" value="${p.price}" onchange="updateProductField(${p.id}, 'price', this.value)" class="w-full p-2 border border-slate-300 rounded-xl outline-none">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Mô tả ngắn sản phẩm:</label>
+                        <input type="text" value="${p.desc}" onchange="updateProductField(${p.id}, 'desc', this.value)" class="w-full p-2 border border-slate-300 rounded-xl outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-1">Hình ảnh sản phẩm (Link hoặc từ máy):</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="prod-img-input-${p.id}" value="${p.img}" onchange="updateProductField(${p.id}, 'img', this.value)" class="flex-1 p-2 border border-slate-300 rounded-xl outline-none">
+                            <input type="file" accept="image/*" onchange="uploadProductImage(event, ${p.id})" class="hidden" id="prod-file-${p.id}">
+                            <button onclick="document.getElementById('prod-file-${p.id}').click()" class="px-3 py-1.5 bg-slate-200 rounded-xl font-bold">Chọn từ máy</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.addNewProductItem = () => {
+            const newId = Date.now();
+            appData.products.push({
+                id: newId,
+                name: "Sản Phẩm Yến Mới",
+                price: "1.000.000đ / Hộp",
+                desc: "Mô tả sản phẩm yến sào sinh thái Cần Giờ.",
+                img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
+            });
+            renderAdminProductsList();
+            window.showToast("Đã thêm thẻ sản phẩm mới.");
+        };
+
+        window.updateProductField = (id, key, value) => {
+            const p = appData.products.find(item => item.id === id);
+            if (p) {
+                p[key] = value;
+            }
+        };
+
+        window.uploadProductImage = (event, id) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    updateProductField(id, 'img', e.target.result);
+                    document.getElementById(`prod-img-input-${id}`).value = e.target.result;
+                    window.showToast("Đã tải ảnh sản phẩm lên!");
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        window.deleteProductItem = (id) => {
+            appData.products = appData.products.filter(item => item.id !== id);
+            renderAdminProductsList();
+            window.showToast("Đã xóa sản phẩm.");
+        };
+
+        // Word .docx Import
         window.importDocxFile = (event) => {
             const file = event.target.files[0];
             if (!file) return;
@@ -915,16 +1090,16 @@
                 mammoth.convertToHtml({ arrayBuffer: arrayBuffer })
                     .then(function(result) {
                         document.getElementById('edit-story-body').innerHTML = result.value;
-                        alert("Đã nhập nội dung từ file Word (.docx) thành công!");
+                        window.showToast("Đã trích xuất nội dung file Word (.docx)!");
                     })
                     .catch(function(err) {
-                        alert("Lỗi đọc file Word: " + err.message);
+                        window.showToast("Lỗi đọc file Word: " + err.message, 'error');
                     });
             };
             reader.readAsArrayBuffer(file);
         };
 
-        // Clean-up Whitespace and Punctuation
+        // Clean-up Whitespace & Punctuation
         window.cleanupWhitespace = () => {
             const box = document.getElementById('edit-story-body');
             let content = box.innerHTML;
@@ -934,36 +1109,37 @@
                 .replace(/<p>\s*<\/p>/gi, '')
                 .trim();
             box.innerHTML = content;
-            alert("Đã chuẩn hóa khoảng trắng và dấu câu thành công!");
+            window.showToast("Đã chuẩn hóa khoảng trắng & dấu câu!");
         };
 
-        // Local Video File Upload Handler
+        // Local Video Upload
         window.uploadLocalVideo = (event) => {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     appData.localVideoData = e.target.result;
-                    alert("Đã tải video từ máy thành công! Nhấn 'Lưu & Đồng Bộ' để cập nhật.");
+                    window.showToast("Đã tải video từ máy thành công!");
                 };
                 reader.readAsDataURL(file);
             }
         };
 
-        // Local Image Upload Handler
+        // Local Image Upload Helper
         window.uploadLocalImage = (event, targetInputId) => {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     document.getElementById(targetInputId).value = e.target.result;
+                    window.showToast("Đã tải ảnh thành công!");
                 };
                 reader.readAsDataURL(file);
             }
         };
 
-        // Save All Changes to Firebase
-        window.saveAllContentToFirebase = async () => {
+        // Save All Changes to Cloud & LocalStorage
+        window.saveAllContentToCloud = async () => {
             appData.brandTitle = document.getElementById('edit-brand-title').value;
             appData.phone = document.getElementById('edit-phone-num').value;
             appData.address = document.getElementById('edit-address-input').value;
@@ -973,33 +1149,88 @@
             appData.storyTitle = document.getElementById('edit-story-title').value;
             appData.storyBody = document.getElementById('edit-story-body').innerHTML;
 
-            try {
-                await setDoc(docRef, appData, { merge: true });
-                alert("Đã đồng bộ toàn bộ nội dung web lên Cloud thành công!");
-                window.closeAdminDashboardModal();
-            } catch (err) {
-                alert("Lỗi khi lưu dữ liệu: " + err.message);
+            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+
+            if (docRef) {
+                try {
+                    await setDoc(docRef, appData, { merge: true });
+                    window.showToast("Đã lưu và đồng bộ toàn bộ dữ liệu web!");
+                } catch (err) {
+                    console.warn("Cloud save error:", err);
+                    window.showToast("Đã lưu vào bộ nhớ máy (Offline).");
+                }
+            } else {
+                window.showToast("Đã lưu thành công!");
             }
+
+            renderUI();
+            window.closeAdminDashboardModal();
         };
 
-        // Format Text in Rich Editor
+        // Text Formatting
         window.formatEditorText = (cmd) => {
             document.execCommand(cmd, false, null);
         };
 
-        // Lightbox
+        // Lightbox Zoom
         window.openLightbox = (url) => {
             document.getElementById('lightbox-img').src = url;
             document.getElementById('lightbox-modal').classList.remove('hidden');
         };
         window.closeLightbox = () => document.getElementById('lightbox-modal').classList.add('hidden');
 
-        // QR Code Generator
-        function initQR() {
+        // High-Res 1000x1000px QR Generator (Admin Tab 6)
+        window.generateHighResQR = () => {
+            const url = document.getElementById('admin-qr-url-input').value.trim() || window.location.href;
+            const canvas = document.getElementById('high-res-qr-canvas');
+            canvas.width = 1000;
+            canvas.height = 1000;
+
+            const tempDiv = document.createElement('div');
+            new QRCode(tempDiv, {
+                text: url,
+                width: 900,
+                height: 900,
+                colorDark: "#15803D",
+                colorLight: "#FFFFFF",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            setTimeout(() => {
+                const qrImg = tempDiv.querySelector('img');
+                if (qrImg && qrImg.src) {
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(0, 0, 1000, 1000);
+                    
+                    const img = new Image();
+                    img.onload = () => {
+                        ctx.drawImage(img, 50, 50, 900, 900);
+                    };
+                    img.src = qrImg.src;
+                }
+            }, 100);
+        };
+
+        window.downloadHighResQR = () => {
+            const canvas = document.getElementById('high-res-qr-canvas');
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL('image/png');
+            a.download = 'ma-qr-yen-sao-can-gio-1000x1000px.png';
+            a.click();
+            window.showToast("Đã tải ảnh mã QR PNG 1000x1000px siêu nét!");
+        };
+
+        // Popup Visitor QR Modal
+        function initPopupQR() {
             const qrBox = document.getElementById('qr-code-box');
             qrBox.innerHTML = '';
+            const webUrl = (window.location.href.startsWith('http')) 
+                ? window.location.href 
+                : 'https://tuanthuphucan-jpg.github.io/truyxuatxanhcangio/';
+                
             new QRCode(qrBox, {
-                text: window.location.href,
+                text: webUrl,
                 width: 180,
                 height: 180,
                 colorDark: "#15803D",
@@ -1011,7 +1242,7 @@
         window.openQRModal = () => document.getElementById('qr-modal').classList.remove('hidden');
         window.closeQRModal = () => document.getElementById('qr-modal').classList.add('hidden');
 
-        window.downloadQRImage = () => {
+        window.downloadPopupQRImage = () => {
             const img = document.querySelector('#qr-code-box img');
             if (img && img.src) {
                 const a = document.createElement('a');
