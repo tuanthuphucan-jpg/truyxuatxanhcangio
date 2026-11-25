@@ -1407,15 +1407,18 @@
         function checkAdminState() {
             if (!currentAdminEmail) {
                 document.getElementById('admin-status-bar').classList.add('hidden');
-                return;
+                return false;
             }
 
             const cleanEmail = currentAdminEmail.trim().toLowerCase();
-            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
-            const editors = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail).map(e => e.toLowerCase());
+            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).trim().toLowerCase();
+            const editors = (appData.editorsEnc || defaultData.editorsEnc)
+                .map(decodeEmail)
+                .map(e => (e || '').trim().toLowerCase())
+                .filter(Boolean);
 
-            const isOwner = (cleanEmail === ownerEmail);
-            const isEditor = isOwner || editors.includes(cleanEmail);
+            const isOwner = Boolean(ownerEmail && cleanEmail === ownerEmail);
+            const isEditor = isOwner || Boolean(cleanEmail && editors.includes(cleanEmail));
 
             if (isEditor) {
                 document.getElementById('admin-status-bar').classList.remove('hidden');
@@ -1423,22 +1426,28 @@
                 document.getElementById('role-badge').innerText = isOwner ? 'CHỦ SỞ HỮU (OWNER)' : 'ỦY VIÊN CHỈNH SỬA';
                 document.getElementById('owner-add-form').style.display = isOwner ? 'flex' : 'none';
                 renderEditorsList(isOwner);
+                return true;
             } else {
                 document.getElementById('admin-status-bar').classList.add('hidden');
                 currentAdminEmail = null;
+                sessionStorage.removeItem('active_admin_session');
                 localStorage.removeItem('logged_admin_email');
+                return false;
             }
         }
 
         window.handleGmailLogin = (e) => {
             e.preventDefault();
-            const inputEmail = document.getElementById('input-admin-email').value.trim().toLowerCase();
+            const inputEmail = (document.getElementById('input-admin-email').value || '').trim().toLowerCase();
             
-            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
-            const editors = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail).map(e => e.toLowerCase());
+            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).trim().toLowerCase();
+            const editors = (appData.editorsEnc || defaultData.editorsEnc)
+                .map(decodeEmail)
+                .map(e => (e || '').trim().toLowerCase())
+                .filter(Boolean);
 
-            const isOwner = (inputEmail === ownerEmail);
-            const isEditor = isOwner || editors.includes(inputEmail);
+            const isOwner = Boolean(ownerEmail && inputEmail === ownerEmail);
+            const isEditor = isOwner || Boolean(inputEmail && editors.includes(inputEmail));
 
             if (isEditor) {
                 currentAdminEmail = inputEmail;
@@ -1446,10 +1455,13 @@
                 document.getElementById('input-admin-email').value = '';
                 document.getElementById('auth-error-msg').classList.add('hidden');
                 window.closeAuthModal();
-                checkAdminState();
-                window.openAdminDashboardModal();
-                window.showToast("Đăng nhập Admin thành công!");
+                if (checkAdminState()) {
+                    window.openAdminDashboardModal();
+                    window.showToast("Đăng nhập Admin thành công!");
+                }
             } else {
+                currentAdminEmail = null;
+                sessionStorage.removeItem('active_admin_session');
                 document.getElementById('auth-error-msg').classList.remove('hidden');
             }
         };
@@ -1458,6 +1470,7 @@
             currentAdminEmail = null;
             sessionStorage.removeItem('active_admin_session');
             localStorage.removeItem('logged_admin_email');
+            window.closeAdminDashboardModal();
             document.getElementById('admin-status-bar').classList.add('hidden');
             window.showToast("Đã đăng xuất khỏi tài khoản Quản trị.");
         };
@@ -1470,7 +1483,8 @@
         window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
 
         window.openAdminDashboardModal = () => {
-            if (!currentAdminEmail) {
+            if (!checkAdminState()) {
+                window.closeAdminDashboardModal();
                 window.openAuthModal();
                 return;
             }
