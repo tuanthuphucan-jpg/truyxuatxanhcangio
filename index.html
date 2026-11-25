@@ -924,9 +924,24 @@
 
         let defaultData = JSON.parse(document.getElementById('embedded-data-script').textContent);
 
-        const encodeEmail = (email) => btoa(email.trim().toLowerCase());
+        const encodeEmail = (email) => {
+            try {
+                return btoa(unescape(encodeURIComponent((email || '').trim().toLowerCase())));
+            } catch (e) {
+                return '';
+            }
+        };
         const decodeEmail = (str) => {
-            try { return atob(str); } catch(e) { return ''; }
+            if (!str) return '';
+            try {
+                return decodeURIComponent(escape(atob(str)));
+            } catch (e) {
+                try {
+                    return atob(str);
+                } catch (inner) {
+                    return '';
+                }
+            }
         };
         const maskEmailStr = (email) => {
             if (!email || !email.includes('@')) return '******';
@@ -947,7 +962,6 @@
         let sharedDocRef = null;
         let lastAppliedRevision = 0;
 
-        // Upload video file to shared cloud storage (Google Drive-like persistent hosting) with XHR/Resumable fallback
         function uploadVideoToUnifiedStorage(file, onProgress) {
             return new Promise((resolve, reject) => {
                 if (cloudReady && cloudStorage && cloudUser) {
@@ -1030,6 +1044,12 @@
                     ...incomingData,
                     localVideoData: null
                 };
+                if (!appData.ownerEmailEnc) {
+                    appData.ownerEmailEnc = defaultData.ownerEmailEnc;
+                }
+                if (!Array.isArray(appData.editorsEnc) || appData.editorsEnc.length === 0) {
+                    appData.editorsEnc = [...defaultData.editorsEnc];
+                }
                 if (appData.videoSrc && prevLocalBlob) {
                     URL.revokeObjectURL(prevLocalBlob);
                     activeVideoObjectUrl = null;
@@ -1083,7 +1103,6 @@
                     await setDoc(sharedDocRef, seedPayload);
                 }
 
-                // Real-time listener across all devices (desktop, mobile QR scanners, other tabs)
                 onSnapshot(
                     sharedDocRef,
                     (snapshot) => {
@@ -1217,6 +1236,12 @@
             appData.editorsEnc = appData.editors.map(encodeEmail);
             delete appData.editors;
         }
+        if (!appData.ownerEmailEnc) {
+            appData.ownerEmailEnc = defaultData.ownerEmailEnc;
+        }
+        if (!Array.isArray(appData.editorsEnc) || appData.editorsEnc.length === 0) {
+            appData.editorsEnc = [...defaultData.editorsEnc];
+        }
 
         window.showToast = (message, type = 'success') => {
             const container = document.getElementById('toast-container');
@@ -1262,7 +1287,6 @@
             document.getElementById('hero-subtitle').innerText = appData.heroSubtitle || defaultData.heroSubtitle;
             document.getElementById('hero-bg-img').src = appData.heroImg || defaultData.heroImg;
 
-            // About Section
             document.getElementById('about-badge-text').innerText = appData.aboutBadge || defaultData.aboutBadge;
             document.getElementById('about-title').innerText = appData.aboutTitle || defaultData.aboutTitle;
             document.getElementById('about-img').src = appData.aboutImg || defaultData.aboutImg;
@@ -1273,7 +1297,6 @@
                 .map(line => `<p>${line.trim()}</p>`)
                 .join('');
 
-            // Process Section
             document.getElementById('process-badge-text').innerText = appData.processBadge || defaultData.processBadge;
             document.getElementById('process-title').innerText = appData.processTitle || defaultData.processTitle;
             document.getElementById('process-subtitle').innerText = appData.processSubtitle || defaultData.processSubtitle;
@@ -1286,26 +1309,21 @@
                 </div>
             `).join('');
 
-            // Products Section Header
             document.getElementById('products-badge-text').innerText = appData.productsBadge || defaultData.productsBadge;
             document.getElementById('products-title').innerText = appData.productsTitle || defaultData.productsTitle;
             document.getElementById('products-subtitle').innerText = appData.productsSubtitle || defaultData.productsSubtitle;
 
-            // Gallery Section Header
             document.getElementById('gallery-badge-text').innerText = appData.galleryBadge || defaultData.galleryBadge;
             document.getElementById('gallery-title').innerText = appData.galleryTitle || defaultData.galleryTitle;
             document.getElementById('gallery-subtitle').innerText = appData.gallerySubtitle || defaultData.gallerySubtitle;
 
-            // Stats
             document.getElementById('public-views-count').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN') + "+";
             document.getElementById('dash-stat-total-views').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN');
             document.getElementById('dash-stat-saves-count').innerText = (appData.savesCount || 1).toLocaleString('vi-VN');
 
-            // Story Section
             document.getElementById('story-title').innerText = appData.storyTitle || defaultData.storyTitle;
             document.getElementById('story-content-body').innerHTML = appData.storyBody || defaultData.storyBody;
 
-            // Phone / Zalo / Address
             const phone = appData.phone || defaultData.phone;
             document.getElementById('display-hotline').innerText = phone;
             document.getElementById('btn-call-hotline').href = "tel:" + phone;
@@ -1314,7 +1332,6 @@
             document.getElementById('mobile-zalo-btn').href = "https://zalo.me/" + phone;
             document.getElementById('contact-address').innerText = "Địa chỉ cơ sở: " + (appData.address || defaultData.address);
 
-            // Cloud / Streaming Video Player
             const videoEl = document.getElementById('main-video-player');
             const emptyPlaceholderEl = document.getElementById('video-empty-placeholder');
             const effectiveVideoSrc = getEffectiveVideoSource();
@@ -1335,7 +1352,6 @@
                 emptyPlaceholderEl.classList.remove('hidden');
             }
 
-            // Render Products Grid
             const pGrid = document.getElementById('products-grid');
             pGrid.innerHTML = (appData.products || []).map(p => `
                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-emerald-100 flex flex-col justify-between hover:shadow-xl transition duration-300">
@@ -1357,7 +1373,6 @@
                 </div>
             `).join('');
 
-            // Photos Grid
             const gGrid = document.getElementById('gallery-photos-grid');
             gGrid.innerHTML = (appData.gallery || []).map(img => `
                 <div onclick="window.openLightbox('${img}')" class="cursor-pointer group relative aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-emerald-100">
@@ -1404,61 +1419,57 @@
             }
         }
 
+        function isEmailAuthorized(emailToCheck) {
+            const cleanEmail = (emailToCheck || '').trim().toLowerCase();
+            if (!cleanEmail) return false;
+
+            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).trim().toLowerCase();
+            const defaultOwnerEmail = decodeEmail(defaultData.ownerEmailEnc).trim().toLowerCase();
+            const editors = (appData.editorsEnc || defaultData.editorsEnc)
+                .map(decodeEmail)
+                .map(e => (e || '').trim().toLowerCase())
+                .filter(Boolean);
+
+            return (
+                (ownerEmail && cleanEmail === ownerEmail) ||
+                (defaultOwnerEmail && cleanEmail === defaultOwnerEmail) ||
+                editors.includes(cleanEmail)
+            );
+        }
+
         function checkAdminState() {
-            if (!currentAdminEmail) {
+            if (!currentAdminEmail || !isEmailAuthorized(currentAdminEmail)) {
+                currentAdminEmail = null;
                 document.getElementById('admin-status-bar').classList.add('hidden');
                 return false;
             }
 
             const cleanEmail = currentAdminEmail.trim().toLowerCase();
             const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).trim().toLowerCase();
-            const editors = (appData.editorsEnc || defaultData.editorsEnc)
-                .map(decodeEmail)
-                .map(e => (e || '').trim().toLowerCase())
-                .filter(Boolean);
+            const defaultOwnerEmail = decodeEmail(defaultData.ownerEmailEnc).trim().toLowerCase();
+            const isOwner = Boolean((ownerEmail && cleanEmail === ownerEmail) || (defaultOwnerEmail && cleanEmail === defaultOwnerEmail));
 
-            const isOwner = Boolean(ownerEmail && cleanEmail === ownerEmail);
-            const isEditor = isOwner || Boolean(cleanEmail && editors.includes(cleanEmail));
-
-            if (isEditor) {
-                document.getElementById('admin-status-bar').classList.remove('hidden');
-                document.getElementById('user-email-display').innerText = maskEmailStr(currentAdminEmail);
-                document.getElementById('role-badge').innerText = isOwner ? 'CHỦ SỞ HỮU (OWNER)' : 'ỦY VIÊN CHỈNH SỬA';
-                document.getElementById('owner-add-form').style.display = isOwner ? 'flex' : 'none';
-                renderEditorsList(isOwner);
-                return true;
-            } else {
-                document.getElementById('admin-status-bar').classList.add('hidden');
-                currentAdminEmail = null;
-                sessionStorage.removeItem('active_admin_session');
-                localStorage.removeItem('logged_admin_email');
-                return false;
-            }
+            document.getElementById('admin-status-bar').classList.remove('hidden');
+            document.getElementById('user-email-display').innerText = maskEmailStr(cleanEmail);
+            document.getElementById('role-badge').innerText = isOwner ? 'CHỦ SỞ HỮU (OWNER)' : 'ỦY VIÊN CHỈNH SỬA';
+            document.getElementById('owner-add-form').style.display = isOwner ? 'flex' : 'none';
+            renderEditorsList(isOwner);
+            return true;
         }
 
         window.handleGmailLogin = (e) => {
             e.preventDefault();
             const inputEmail = (document.getElementById('input-admin-email').value || '').trim().toLowerCase();
-            
-            const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).trim().toLowerCase();
-            const editors = (appData.editorsEnc || defaultData.editorsEnc)
-                .map(decodeEmail)
-                .map(e => (e || '').trim().toLowerCase())
-                .filter(Boolean);
 
-            const isOwner = Boolean(ownerEmail && inputEmail === ownerEmail);
-            const isEditor = isOwner || Boolean(inputEmail && editors.includes(inputEmail));
-
-            if (isEditor) {
+            if (isEmailAuthorized(inputEmail)) {
                 currentAdminEmail = inputEmail;
                 sessionStorage.setItem('active_admin_session', '1');
                 document.getElementById('input-admin-email').value = '';
                 document.getElementById('auth-error-msg').classList.add('hidden');
                 window.closeAuthModal();
-                if (checkAdminState()) {
-                    window.openAdminDashboardModal();
-                    window.showToast("Đăng nhập Admin thành công!");
-                }
+                checkAdminState();
+                populateAndShowAdminDashboard();
+                window.showToast("Đăng nhập Admin thành công!");
             } else {
                 currentAdminEmail = null;
                 sessionStorage.removeItem('active_admin_session');
@@ -1482,12 +1493,7 @@
         };
         window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
 
-        window.openAdminDashboardModal = () => {
-            if (!checkAdminState()) {
-                window.closeAdminDashboardModal();
-                window.openAuthModal();
-                return;
-            }
+        function populateAndShowAdminDashboard() {
             document.getElementById('edit-brand-title').value = appData.brandTitle || '';
             document.getElementById('edit-phone-num').value = appData.phone || '';
             document.getElementById('edit-address-input').value = appData.address || '';
@@ -1523,6 +1529,15 @@
             renderAdminProcessSteps();
             renderAdminProductsList();
             document.getElementById('admin-dashboard-modal').classList.remove('hidden');
+        }
+
+        window.openAdminDashboardModal = () => {
+            if (!checkAdminState()) {
+                window.closeAdminDashboardModal();
+                window.openAuthModal();
+                return;
+            }
+            populateAndShowAdminDashboard();
         };
 
         window.closeAdminDashboardModal = () => document.getElementById('admin-dashboard-modal').classList.add('hidden');
@@ -1549,7 +1564,7 @@
         function renderEditorsList(isOwner) {
             const container = document.getElementById('editors-list-container');
             const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
-            const editorsList = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail);
+            const editorsList = (appData.editorsEnc || defaultData.editorsEnc).map(decodeEmail).filter(Boolean);
 
             container.innerHTML = editorsList.map(e => {
                 const isItemOwner = e.toLowerCase() === ownerEmail;
@@ -1625,7 +1640,7 @@
                     appData = { ...defaultData, ...parsed };
                     safeSaveLocalStorage('yen_sao_app_data', appData);
                     renderUI();
-                    window.openAdminDashboardModal();
+                    populateAndShowAdminDashboard();
                     window.showToast("Đã nạp dữ liệu từ file JSON thành công!");
                 } catch (err) {
                     window.showToast("File JSON không hợp lệ!", 'error');
@@ -1651,7 +1666,6 @@
             window.showToast("Đã chuẩn hóa khoảng trắng & dấu câu!");
         };
 
-        // Gallery Photos Management
         function renderAdminGalleryList() {
             if (!appData.gallery) {
                 appData.gallery = [...defaultData.gallery];
@@ -1713,7 +1727,6 @@
             window.showToast("Đã xóa ảnh khỏi thư viện.");
         };
 
-        // 4 Process Steps Management
         function renderAdminProcessSteps() {
             if (!appData.processSteps) {
                 appData.processSteps = JSON.parse(JSON.stringify(defaultData.processSteps));
@@ -1734,7 +1747,6 @@
             }
         };
 
-        // Products Management
         function renderAdminProductsList() {
             const container = document.getElementById('admin-products-editor-list');
             container.innerHTML = (appData.products || []).map((p, idx) => `
@@ -1835,7 +1847,6 @@
             reader.readAsArrayBuffer(file);
         };
 
-        // Cloud Video Upload (Google Drive-like persistent hosting) with local preview fallback
         window.uploadLocalVideo = async (event) => {
             const file = event.target.files[0];
             if (!file) return;
@@ -1927,7 +1938,6 @@
             window.showToast("Đã gỡ video hiện tại.");
         };
 
-        // Local Image Upload Helper
         window.uploadLocalImage = (event, targetInputId) => {
             const file = event.target.files[0];
             if (file) {
@@ -1989,7 +1999,6 @@
             return "<!DOCTYPE html>\n" + docHTML.replace(scriptRegex, newScriptTag);
         }
 
-        // Download a backup index.html file on demand without forcing a page reload
         window.downloadBackupIndexHtml = () => {
             syncInputToAppData();
             const updatedHTML = buildEmbeddedIndexHtmlString(appData);
@@ -2005,7 +2014,6 @@
             window.showToast("Đã tải file sao lưu index.html về máy!");
         };
 
-        // SINGLE-CLICK UNIFIED SERVER PUBLISH
         window.publishLiveAndExport = async () => {
             syncInputToAppData();
             const nextRevision = getActiveServerRevision(appData) + 1;
