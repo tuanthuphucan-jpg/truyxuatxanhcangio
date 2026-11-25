@@ -26,16 +26,16 @@
                     },
                     colors: {
                         bio: {
-                            bg: '#F6FAF7',        // Trắng sương mai tươi mát
+                            bg: '#F6FAF7',
                             white: '#FFFFFF',
-                            green: '#15803D',     // Xanh Rừng Sinh Quyển
-                            emerald: '#22C55E',   // Xanh Đước Non
-                            mint: '#DCFCE7',      // Xanh mạ nhạt
-                            gold: '#D97706',      // Vàng Mật Yến Sào
-                            honey: '#F59E0B',     // Vàng mật tươi
-                            blue: '#0EA5E9',      // Xanh Nước Biển Cửa Sông
-                            dark: '#0F291E',      // Xanh Rêu Đậm
-                            gray: '#374151',      // Xám Rừng
+                            green: '#15803D',
+                            emerald: '#22C55E',
+                            mint: '#DCFCE7',
+                            gold: '#D97706',
+                            honey: '#F59E0B',
+                            blue: '#0EA5E9',
+                            dark: '#0F291E',
+                            gray: '#374151',
                         }
                     }
                 }
@@ -111,7 +111,7 @@
         </div>
     </header>
 
-    <!-- SERVER UPDATE OVERLAY (ROBLOX-STYLE LIVE SERVER RESTART FOR ACTIVE VISITORS) -->
+    <!-- SERVER UPDATE OVERLAY -->
     <div id="server-update-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/90 backdrop-blur-md hidden p-4 text-white text-center">
         <div class="max-w-md w-full bg-emerald-950/90 border border-emerald-500/40 rounded-3xl p-7 shadow-2xl space-y-4">
             <div class="w-14 h-14 rounded-2xl bg-bio-green/30 border border-emerald-400/50 text-bio-emerald flex items-center justify-center text-2xl mx-auto">
@@ -281,7 +281,7 @@
         </div>
     </section>
 
-    <!-- SECTION 5: THƯ VIỆN HÌNH ẢNH & VIDEO -->
+    <!-- SECTION 5: THƯ VIỆN HÌNH ẢNH & VIDEO (CHỈ DÙNG VIDEO TẢI TRỰC TIẾP TỪ MÁY) -->
     <section id="gallery-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -290,10 +290,16 @@
                 <p id="gallery-subtitle" class="text-bio-gray text-sm mt-2">Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế</p>
             </div>
 
-            <!-- Video Player Block -->
-            <div class="mb-12 max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-xl bg-bio-dark border-4 border-emerald-100" id="video-container">
-                <iframe id="main-video-iframe" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Yến Sào Cần Giờ" frameborder="0" allowfullscreen></iframe>
-                <video id="main-video-player" class="w-full h-full hidden" controls></video>
+            <!-- Local Video Player Block -->
+            <div class="mb-12 max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-xl bg-bio-dark border-4 border-emerald-100 relative" id="video-container">
+                <video id="main-video-player" class="w-full h-full object-contain bg-black hidden" controls playsinline preload="metadata"></video>
+                <div id="video-empty-placeholder" class="w-full h-full flex flex-col items-center justify-center text-center p-6 text-emerald-100 bg-gradient-to-br from-bio-dark to-emerald-950">
+                    <div class="w-16 h-16 rounded-2xl bg-bio-green/30 border border-emerald-400/40 text-bio-emerald flex items-center justify-center text-2xl mb-3">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg sm:text-xl text-white">Video Giới Thiệu Yến Sào Cần Giờ</h3>
+                    <p class="text-xs text-emerald-200/80 max-w-md mt-1.5">Chưa có video được tải lên. Quản trị viên có thể vào mục Quản Trị &rarr; Ảnh & Video để tải file video MP4 từ máy tính lên trực tiếp.</p>
+                </div>
             </div>
 
             <!-- Photos Grid -->
@@ -351,7 +357,7 @@
         </button>
     </div>
 
-    <!-- MODAL 1: CỔNG ĐĂNG NHẬP ADMIN GMAIL (BẢO MẬT ẨN EMAIL CHỦ SỞ HỮU) -->
+    <!-- MODAL 1: CỔNG ĐĂNG NHẬP ADMIN GMAIL -->
     <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/70 backdrop-blur-sm hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-100 relative text-center">
             <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
@@ -384,7 +390,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: TRANG CHỦ QUẢN TRỊ VIÊN (VỚI TÍNH NĂNG TẢI FILE INDEX.HTML MỚI) -->
+    <!-- MODAL 2: TRANG CHỦ QUẢN TRỊ VIÊN -->
     <div id="admin-dashboard-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-bio-dark/80 backdrop-blur-sm hidden p-2 sm:p-6">
         <div class="bg-white w-full max-w-5xl h-[92vh] rounded-3xl shadow-2xl border border-emerald-100 flex flex-col overflow-hidden">
             
@@ -403,9 +409,9 @@
             <div class="bg-bio-mint border-b border-emerald-200 px-4 py-2.5 text-xs text-bio-dark flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-1.5 font-semibold">
                     <i class="fa-solid fa-circle-info text-bio-green text-sm"></i>
-                    <span><strong>Lưu ý quan trọng:</strong> Để giữ thay đổi vĩnh viễn trên GitHub Pages, hãy bấm nút <strong>"Lưu & Tải File index.html Mới"</strong> rồi upload đè file đó lên kho GitHub!</span>
+                    <span><strong>Lưu ý quan trọng:</strong> Để giữ thay đổi vĩnh viễn trên GitHub Pages, hãy bấm nút <strong>"Lưu & Cập Nhật Toàn Hệ Thống"</strong> rồi upload đè file `index.html` vừa tải lên kho GitHub!</span>
                 </div>
-                <button onclick="exportUpdatedIndexHtml()" class="px-3 py-1 rounded-lg bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-[11px] shadow transition flex items-center gap-1">
+                <button onclick="publishLiveAndExport()" class="px-3 py-1 rounded-lg bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-[11px] shadow transition flex items-center gap-1">
                     <i class="fa-solid fa-download"></i> Tải index.html Ngay
                 </button>
             </div>
@@ -463,8 +469,8 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="p-4 rounded-xl bg-bio-mint/60 border border-emerald-200 space-y-2">
                                 <span class="font-bold text-bio-green block">1. Lưu & Tải File Web index.html Mới</span>
-                                <p class="text-[11px] text-bio-gray">Tạo ra file `index.html` hoàn chỉnh đã nhúng sẵn dữ liệu bạn vừa sửa. Tải về và đẩy đè lên GitHub Pages để lưu vĩnh viễn.</p>
-                                <button onclick="exportUpdatedIndexHtml()" class="w-full py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow transition flex items-center justify-center gap-1.5">
+                                <p class="text-[11px] text-bio-gray">Tạo ra file `index.html` hoàn chỉnh đã nhúng sẵn dữ liệu bạn vừa sửa (bao gồm video & hình ảnh). Tải về và đẩy đè lên GitHub Pages để lưu vĩnh viễn.</p>
+                                <button onclick="publishLiveAndExport()" class="w-full py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow transition flex items-center justify-center gap-1.5">
                                     <i class="fa-solid fa-file-export"></i> Tải File index.html Cập Nhật
                                 </button>
                             </div>
@@ -543,21 +549,31 @@
                     </div>
                 </div>
 
-                <!-- TAB 4: HÌNH ẢNH & VIDEO -->
+                <!-- TAB 4: HÌNH ẢNH & VIDEO (TẢI VIDEO TRỰC TIẾP TỪ MÁY - KHÔNG YOUTUBE) -->
                 <div id="dash-media" class="tab-content space-y-5 hidden">
-                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900">
-                        <h4 class="font-bold text-sm mb-1"><i class="fa-solid fa-video"></i> 1. Quản Lý Video Khám Phá</h4>
-                        <p class="text-xs mb-3">Tải video MP4 trực tiếp từ máy tính HOẶC dán liên kết YouTube nhúng.</p>
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                                <h4 class="font-bold text-sm"><i class="fa-solid fa-video text-bio-gold"></i> 1. Tải File Video Trực Tiếp Từ Máy</h4>
+                                <p class="text-xs text-amber-900 mt-0.5">Chọn trực tiếp file video (`.mp4`, `.mov`, `.webm`) từ máy tính hoặc điện thoại của bạn. Hệ thống sẽ nhúng thẳng vào trang web (khuyên dùng video dưới 20MB để tải mượt nhất).</p>
+                            </div>
+                            <button id="btn-remove-local-video" onclick="removeLocalVideo()" class="hidden px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-[11px] transition">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Xóa Video Hiện Tại
+                            </button>
+                        </div>
                         
-                        <div class="space-y-3">
-                            <div>
-                                <label class="block font-semibold mb-1">Tải Video từ máy tính (.mp4):</label>
-                                <input type="file" accept="video/*" onchange="uploadLocalVideo(event)" class="block w-full text-xs text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-bio-gold file:text-white hover:file:bg-amber-700 cursor-pointer">
-                            </div>
-                            <div>
-                                <label class="block font-semibold mb-1">Hoặc Dán Link Video YouTube Embed:</label>
-                                <input type="text" id="edit-video-url-input" class="w-full p-2.5 border border-slate-300 rounded-xl bg-white outline-none" placeholder="https://www.youtube.com/embed/...">
-                            </div>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                            <input type="file" id="input-local-video-file" accept="video/*" onchange="uploadLocalVideo(event)" class="hidden">
+                            <button onclick="document.getElementById('input-local-video-file').click()" class="px-4 py-2.5 rounded-xl bg-bio-gold hover:bg-amber-700 text-white font-extrabold text-xs shadow transition flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Chọn File Video Từ Máy
+                            </button>
+                            <span id="local-video-status-text" class="text-xs font-semibold text-amber-900">Chưa chọn video nào</span>
+                        </div>
+
+                        <!-- Live Video Preview inside Admin -->
+                        <div id="admin-video-preview-wrap" class="hidden pt-2">
+                            <span class="text-[11px] font-bold text-bio-green block mb-1.5"><i class="fa-solid fa-circle-check"></i> Xem trước video đã tải lên:</span>
+                            <video id="admin-video-preview" class="w-full max-h-60 rounded-2xl bg-black border border-amber-300" controls playsinline></video>
                         </div>
                     </div>
 
@@ -582,7 +598,7 @@
                         </div>
                     </div>
 
-                    <!-- Thư Viện Hình Ảnh Cần Giờ (4+ ô ảnh phía dưới Video) -->
+                    <!-- Thư Viện Hình Ảnh Cần Giờ -->
                     <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-4">
                         <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
                             <div>
@@ -820,8 +836,8 @@
         "galleryBadge": "Trải Nghiệm Trực Quan",
         "galleryTitle": "Thư Viện Ảnh & Video Cần Giờ",
         "gallerySubtitle": "Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "localVideoData": null,
+        "localVideoName": "",
         "storyTitle": "Giữ Nghề Nuôi Yến Nơi Đất Rừng Mặn Cần Giờ",
         "storyBody": "<p>Sinh ra và gắn bó với mảnh đất Cần Giờ - Khu dự trữ sinh quyển thế giới được UNESCO công nhận, chúng tôi luôn tâm huyết gìn giữ bản sắc nguồn yến sinh thái thuần khiết.</p><p>Loài chim yến nơi đây hoàn toàn tự do kiếm ăn trên thảm rừng ngập mặn 75.000 ha, tự nhiên hấp thụ lượng sinh chất quý giá. Mỗi tổ yến được thu hoạch nhân đạo sau khi yến con trưởng thành rời tổ, qua công đoạn nhặt lông thủ công tỉ mỉ bằng nước sạch tinh khiết.</p><div class=\"my-6 p-4 rounded-2xl bg-bio-mint border-l-4 border-bio-green text-bio-dark\"><p class=\"font-bold italic\">\"Từng hũ yến chưng hay tổ yến gửi tới du khách là lời cam kết trọn vẹn về tâm huyết & sự tinh khiết của quê hương Cần Giờ.\"</p></div>",
         "products": [
@@ -840,10 +856,8 @@
 
     <!-- APPLICATION LOGIC & DATA HANDLING -->
     <script>
-        // Extract embedded state JSON
         let defaultData = JSON.parse(document.getElementById('embedded-data-script').textContent);
 
-        // Security Helper Functions (Base64 encoding/decoding & email masking)
         const encodeEmail = (email) => btoa(email.trim().toLowerCase());
         const decodeEmail = (str) => {
             try { return atob(str); } catch(e) { return ''; }
@@ -856,11 +870,26 @@
             return maskedName + '@' + parts[1];
         };
 
-        // Always start clean on every page load: never auto-open Admin modal or keep stale login across reloads
         sessionStorage.removeItem('active_admin_session');
         localStorage.removeItem('logged_admin_email');
 
-        // BroadcastChannel & Storage sync for Roblox-like live server update across open tabs
+        // Safe LocalStorage writer that prevents QuotaExceededError from breaking saves when large videos are uploaded
+        function safeSaveLocalStorage(key, valueObj) {
+            try {
+                localStorage.setItem(key, JSON.stringify(valueObj));
+                return true;
+            } catch (err) {
+                try {
+                    const slimCopy = { ...valueObj };
+                    if (slimCopy.localVideoData && slimCopy.localVideoData.length > 2 * 1024 * 1024) {
+                        slimCopy.localVideoData = null;
+                    }
+                    localStorage.setItem(key, JSON.stringify(slimCopy));
+                } catch (innerErr) {}
+                return false;
+            }
+        }
+
         const liveChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('yen_sao_live_server_channel') : null;
         let isServerRestarting = false;
 
@@ -868,7 +897,7 @@
             return Number(dataObj.serverRevision || defaultData.serverRevision || 1);
         }
 
-        function triggerLiveServerRefresh(nextRevision) {
+        function triggerLiveServerRefresh(nextRevision, hasLargeVideo = false) {
             if (isServerRestarting) return;
             isServerRestarting = true;
             currentAdminEmail = null;
@@ -880,12 +909,19 @@
             document.getElementById('server-update-overlay').classList.remove('hidden');
 
             setTimeout(() => {
-                try {
-                    const url = new URL(window.location.href);
-                    url.searchParams.set('v', String(nextRevision || Date.now()));
-                    window.location.replace(url.toString());
-                } catch (err) {
-                    window.location.reload();
+                if (hasLargeVideo) {
+                    // Keep large in-memory video intact on current screen without wiping RAM via full page reload
+                    renderUI();
+                    document.getElementById('server-update-overlay').classList.add('hidden');
+                    isServerRestarting = false;
+                } else {
+                    try {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('v', String(nextRevision || Date.now()));
+                        window.location.replace(url.toString());
+                    } catch (err) {
+                        window.location.reload();
+                    }
                 }
             }, 900);
         }
@@ -896,9 +932,9 @@
                 if (msg.type === 'SERVER_UPDATED') {
                     if (msg.payload) {
                         appData = { ...defaultData, ...msg.payload };
-                        localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+                        safeSaveLocalStorage('yen_sao_app_data', appData);
                     }
-                    triggerLiveServerRefresh(msg.revision || Date.now());
+                    triggerLiveServerRefresh(msg.revision || Date.now(), Boolean(appData.localVideoData && appData.localVideoData.length > 2 * 1024 * 1024));
                 }
             };
         }
@@ -908,13 +944,12 @@
                 try {
                     const signal = JSON.parse(event.newValue);
                     if (signal && signal.type === 'SERVER_UPDATED') {
-                        triggerLiveServerRefresh(signal.revision || Date.now());
+                        triggerLiveServerRefresh(signal.revision || Date.now(), false);
                     }
                 } catch (e) {}
             }
         });
 
-        // Load saved state from LocalStorage or fall back to Embedded Data
         let savedLocal = null;
         try {
             const rawSaved = localStorage.getItem('yen_sao_app_data');
@@ -923,18 +958,16 @@
             savedLocal = null;
         }
 
-        // If embedded data has a newer serverRevision than local cache, adopt the newer published data
         let appData;
         if (savedLocal && getActiveServerRevision(savedLocal) > getActiveServerRevision(defaultData)) {
             appData = { ...defaultData, ...savedLocal };
         } else {
             appData = { ...defaultData };
-            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+            safeSaveLocalStorage('yen_sao_app_data', appData);
         }
 
         let currentAdminEmail = null;
 
-        // Ensure backward compatibility with encrypted fields
         if (appData.ownerEmail && !appData.ownerEmailEnc) {
             appData.ownerEmailEnc = encodeEmail(appData.ownerEmail);
             delete appData.ownerEmail;
@@ -944,7 +977,6 @@
             delete appData.editors;
         }
 
-        // Toast notification helper
         window.showToast = (message, type = 'success') => {
             const container = document.getElementById('toast-container');
             if (!container) return;
@@ -964,19 +996,17 @@
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateY(-8px)';
                 setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            }, 3200);
         };
 
-        // Initialize app once DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
-            // Ensure Admin modals start strictly closed on every fresh open/QR scan
             document.getElementById('auth-modal').classList.add('hidden');
             document.getElementById('admin-dashboard-modal').classList.add('hidden');
             document.getElementById('admin-status-bar').classList.add('hidden');
 
             if (!localStorage.getItem('yen_sao_session_viewed')) {
                 appData.viewsCount = (appData.viewsCount || 1240) + 1;
-                localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+                safeSaveLocalStorage('yen_sao_app_data', appData);
                 localStorage.setItem('yen_sao_session_viewed', '1');
             }
             renderUI();
@@ -984,7 +1014,6 @@
             initPopupQR();
         });
 
-        // Render Public Web UI
         function renderUI() {
             document.getElementById('nav-brand-title').innerText = appData.brandTitle || defaultData.brandTitle;
             document.getElementById('hero-title').innerText = appData.heroTitle || defaultData.heroTitle;
@@ -1043,18 +1072,22 @@
             document.getElementById('mobile-zalo-btn').href = "https://zalo.me/" + phone;
             document.getElementById('contact-address').innerText = "Địa chỉ cơ sở: " + (appData.address || defaultData.address);
 
-            // Video Player
-            const iframeEl = document.getElementById('main-video-iframe');
+            // Local Video Player Only (No YouTube)
             const videoEl = document.getElementById('main-video-player');
+            const emptyPlaceholderEl = document.getElementById('video-empty-placeholder');
 
             if (appData.localVideoData) {
-                iframeEl.classList.add('hidden');
+                emptyPlaceholderEl.classList.add('hidden');
                 videoEl.classList.remove('hidden');
-                videoEl.src = appData.localVideoData;
+                if (videoEl.src !== appData.localVideoData) {
+                    videoEl.src = appData.localVideoData;
+                    videoEl.load();
+                }
             } else {
+                videoEl.pause();
+                videoEl.removeAttribute('src');
                 videoEl.classList.add('hidden');
-                iframeEl.classList.remove('hidden');
-                iframeEl.src = appData.videoUrl || defaultData.videoUrl;
+                emptyPlaceholderEl.classList.remove('hidden');
             }
 
             // Render Products Grid
@@ -1091,7 +1124,33 @@
             `).join('');
         }
 
-        // Check Gmail Admin Authentication State
+        function updateAdminVideoPreviewUI() {
+            const statusText = document.getElementById('local-video-status-text');
+            const previewWrap = document.getElementById('admin-video-preview-wrap');
+            const previewVideo = document.getElementById('admin-video-preview');
+            const removeBtn = document.getElementById('btn-remove-local-video');
+
+            if (appData.localVideoData) {
+                statusText.innerText = appData.localVideoName
+                    ? `Đã tải file: ${appData.localVideoName}`
+                    : 'Đã tải lên video từ máy';
+                statusText.className = 'text-xs font-bold text-bio-green';
+                previewWrap.classList.remove('hidden');
+                removeBtn.classList.remove('hidden');
+                if (previewVideo.src !== appData.localVideoData) {
+                    previewVideo.src = appData.localVideoData;
+                    previewVideo.load();
+                }
+            } else {
+                statusText.innerText = 'Chưa chọn video nào';
+                statusText.className = 'text-xs font-semibold text-amber-900';
+                previewWrap.classList.add('hidden');
+                removeBtn.classList.add('hidden');
+                previewVideo.pause();
+                previewVideo.removeAttribute('src');
+            }
+        }
+
         function checkAdminState() {
             if (!currentAdminEmail) {
                 document.getElementById('admin-status-bar').classList.add('hidden');
@@ -1118,7 +1177,6 @@
             }
         }
 
-        // Handle Gmail Login
         window.handleGmailLogin = (e) => {
             e.preventDefault();
             const inputEmail = document.getElementById('input-admin-email').value.trim().toLowerCase();
@@ -1151,7 +1209,6 @@
             window.showToast("Đã đăng xuất khỏi tài khoản Quản trị.");
         };
 
-        // Modals Controls
         window.openAuthModal = () => {
             document.getElementById('input-admin-email').value = '';
             document.getElementById('auth-error-msg').classList.add('hidden');
@@ -1182,12 +1239,12 @@
             document.getElementById('edit-gallery-badge').value = appData.galleryBadge || defaultData.galleryBadge;
             document.getElementById('edit-gallery-title').value = appData.galleryTitle || defaultData.galleryTitle;
             document.getElementById('edit-gallery-subtitle').value = appData.gallerySubtitle || defaultData.gallerySubtitle;
-            document.getElementById('edit-video-url-input').value = appData.videoUrl || '';
             document.getElementById('edit-story-title').value = appData.storyTitle || '';
             document.getElementById('edit-story-body').innerHTML = appData.storyBody || '';
             document.getElementById('dash-stat-editor-count').innerText = (appData.editorsEnc || []).length;
 
-            // Default URL for QR Generator (clean URL without temporary cache-busting query)
+            updateAdminVideoPreviewUI();
+
             const cleanCurrentUrl = window.location.origin + window.location.pathname;
             const webUrl = (window.location.href.startsWith('http'))
                 ? cleanCurrentUrl
@@ -1202,7 +1259,6 @@
 
         window.closeAdminDashboardModal = () => document.getElementById('admin-dashboard-modal').classList.add('hidden');
 
-        // Admin Tab Switcher
         window.switchAdminTab = (tabId) => {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1222,7 +1278,6 @@
             }
         };
 
-        // Render Authorized Editors
         function renderEditorsList(isOwner) {
             const container = document.getElementById('editors-list-container');
             const ownerEmail = decodeEmail(appData.ownerEmailEnc || defaultData.ownerEmailEnc).toLowerCase();
@@ -1264,7 +1319,7 @@
                 return;
             }
             appData.editorsEnc.push(enc);
-            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+            safeSaveLocalStorage('yen_sao_app_data', appData);
             input.value = '';
             document.getElementById('dash-stat-editor-count').innerText = appData.editorsEnc.length;
             renderEditorsList(true);
@@ -1274,13 +1329,12 @@
         window.removeAuthorizedEditor = (emailToRemove) => {
             const encToRemove = encodeEmail(emailToRemove);
             appData.editorsEnc = (appData.editorsEnc || []).filter(item => item !== encToRemove);
-            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+            safeSaveLocalStorage('yen_sao_app_data', appData);
             document.getElementById('dash-stat-editor-count').innerText = appData.editorsEnc.length;
             renderEditorsList(true);
             window.showToast("Đã thu hồi quyền của Gmail.");
         };
 
-        // JSON Backup Export & Import
         window.exportJsonData = () => {
             syncInputToAppData();
             const blob = new Blob([JSON.stringify(appData, null, 2)], { type: 'application/json' });
@@ -1301,7 +1355,7 @@
                 try {
                     const parsed = JSON.parse(e.target.result);
                     appData = { ...defaultData, ...parsed };
-                    localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+                    safeSaveLocalStorage('yen_sao_app_data', appData);
                     renderUI();
                     window.openAdminDashboardModal();
                     window.showToast("Đã nạp dữ liệu từ file JSON thành công!");
@@ -1312,13 +1366,12 @@
             reader.readAsText(file);
         };
 
-        // Rich Text Editor Formatting Helper
         window.formatEditorText = (command) => {
             document.getElementById('edit-story-body').focus();
             document.execCommand(command, false, null);
         };
 
-        // Render & Manage Gallery Photos (4+ grid items below video)
+        // Gallery Photos Management
         function renderAdminGalleryList() {
             if (!appData.gallery) {
                 appData.gallery = [...defaultData.gallery];
@@ -1380,7 +1433,7 @@
             window.showToast("Đã xóa ảnh khỏi thư viện.");
         };
 
-        // Render & Manage 4 Process Steps
+        // 4 Process Steps Management
         function renderAdminProcessSteps() {
             if (!appData.processSteps) {
                 appData.processSteps = JSON.parse(JSON.stringify(defaultData.processSteps));
@@ -1401,7 +1454,7 @@
             }
         };
 
-        // Render & Manage Products
+        // Products Management
         function renderAdminProductsList() {
             const container = document.getElementById('admin-products-editor-list');
             container.innerHTML = (appData.products || []).map((p, idx) => `
@@ -1510,17 +1563,41 @@
             window.showToast("Đã chuẩn hóa khoảng trắng & dấu câu!");
         };
 
-        // Local Video Upload
+        // Local Video Upload (Direct File Only - No YouTube)
         window.uploadLocalVideo = (event) => {
             const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    appData.localVideoData = e.target.result;
-                    window.showToast("Đã tải video từ máy thành công!");
-                };
-                reader.readAsDataURL(file);
+            if (!file) return;
+
+            if (file.size > 45 * 1024 * 1024) {
+                window.showToast("Video hơi nặng (>45MB), bạn nên chọn video dưới 25MB để GitHub tải nhanh nhất!", 'error');
             }
+
+            const statusText = document.getElementById('local-video-status-text');
+            statusText.innerText = `Đang nạp file "${file.name}"...`;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                appData.localVideoData = e.target.result;
+                appData.localVideoName = file.name;
+                safeSaveLocalStorage('yen_sao_app_data', appData);
+                updateAdminVideoPreviewUI();
+                renderUI();
+                window.showToast(`Đã tải video "${file.name}" lên thành công!`);
+            };
+            reader.onerror = () => {
+                window.showToast("Không thể đọc file video này, vui lòng thử file MP4 khác.", 'error');
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.removeLocalVideo = () => {
+            appData.localVideoData = null;
+            appData.localVideoName = '';
+            document.getElementById('input-local-video-file').value = '';
+            safeSaveLocalStorage('yen_sao_app_data', appData);
+            updateAdminVideoPreviewUI();
+            renderUI();
+            window.showToast("Đã gỡ video hiện tại.");
         };
 
         // Local Image Upload Helper
@@ -1556,32 +1633,26 @@
                 appData.galleryBadge = document.getElementById('edit-gallery-badge').value;
                 appData.galleryTitle = document.getElementById('edit-gallery-title').value;
                 appData.gallerySubtitle = document.getElementById('edit-gallery-subtitle').value;
-                appData.videoUrl = document.getElementById('edit-video-url-input').value;
                 appData.storyTitle = document.getElementById('edit-story-title').value;
                 appData.storyBody = document.getElementById('edit-story-body').innerHTML;
             }
         }
 
-        // =========================================================================
-        // SINGLE-CLICK LIVE SERVER PUBLISH & EXPORT (ROBLOX-STYLE SYSTEM UPDATE)
-        // =========================================================================
+        // SINGLE-CLICK LIVE SERVER PUBLISH & EXPORT
         window.publishLiveAndExport = () => {
             syncInputToAppData();
             const nextRevision = getActiveServerRevision(appData) + 1;
             appData.serverRevision = nextRevision;
             appData.savesCount = (appData.savesCount || 1) + 1;
 
-            // Save immediately as the new live system state
-            localStorage.setItem('yen_sao_app_data', JSON.stringify(appData));
+            safeSaveLocalStorage('yen_sao_app_data', appData);
             defaultData = { ...appData };
             renderUI();
 
-            // Build complete standalone HTML with embedded updated data
             const jsonString = JSON.stringify(appData, null, 4);
             const scriptRegex = /<script id="embedded-data-script" type="application\/json">[\s\S]*?<\/script>/;
             const newScriptTag = `<script id="embedded-data-script" type="application\/json">\n${jsonString}\n    <\/script>`;
 
-            // Temporarily ensure modals are hidden in the exported template so visitors never open Admin on load
             const authModalEl = document.getElementById('auth-modal');
             const dashModalEl = document.getElementById('admin-dashboard-modal');
             const statusBarEl = document.getElementById('admin-status-bar');
@@ -1594,7 +1665,6 @@
             const docHTML = document.documentElement.outerHTML;
             const updatedHTML = "<!DOCTYPE html>\n" + docHTML.replace(scriptRegex, newScriptTag);
 
-            // Download updated index.html for GitHub upload
             const blob = new Blob([updatedHTML], { type: 'text/html;charset=utf-8' });
             const downloadUrl = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -1605,13 +1675,14 @@
             a.remove();
             setTimeout(() => URL.revokeObjectURL(downloadUrl), 1500);
 
-            // Broadcast system-wide update signal like a Roblox server shutdown/restart for live update
             const signalObj = {
                 type: 'SERVER_UPDATED',
                 revision: nextRevision,
                 timestamp: Date.now()
             };
-            localStorage.setItem('yen_sao_live_signal', JSON.stringify(signalObj));
+            try {
+                localStorage.setItem('yen_sao_live_signal', JSON.stringify(signalObj));
+            } catch (e) {}
             if (liveChannel) {
                 liveChannel.postMessage({
                     type: 'SERVER_UPDATED',
@@ -1620,22 +1691,20 @@
                 });
             }
 
-            window.showToast("Đã cập nhật hệ thống & tải file index.html mới! Đang làm mới phiên...");
-            triggerLiveServerRefresh(nextRevision);
+            const hasLargeVideo = Boolean(appData.localVideoData && appData.localVideoData.length > 2 * 1024 * 1024);
+            window.showToast("Đã cập nhật hệ thống & tải file index.html mới kèm video!");
+            triggerLiveServerRefresh(nextRevision, hasLargeVideo);
         };
 
-        // Keep legacy alias pointing directly to the single-click live publish flow
         window.exportUpdatedIndexHtml = window.publishLiveAndExport;
         window.saveTempChanges = window.publishLiveAndExport;
 
-        // Lightbox Zoom Controls
         window.openLightbox = (url) => {
             document.getElementById('lightbox-img').src = url;
             document.getElementById('lightbox-modal').classList.remove('hidden');
         };
         window.closeLightbox = () => document.getElementById('lightbox-modal').classList.add('hidden');
 
-        // High-Res 1000x1000px QR Generator (Admin Tab 6)
         window.generateHighResQR = () => {
             const url = document.getElementById('admin-qr-url-input').value.trim() || window.location.href;
             const canvas = document.getElementById('high-res-qr-canvas');
@@ -1656,7 +1725,6 @@
                 const qrImg = tempDiv.querySelector('img');
                 if (qrImg && qrImg.src) {
                     const ctx = canvas.getContext('2d');
-                    // Draw White Quiet Zone Background
                     ctx.fillStyle = "#FFFFFF";
                     ctx.fillRect(0, 0, 1000, 1000);
                     
@@ -1678,7 +1746,6 @@
             window.showToast("Đã tải ảnh mã QR PNG 1000x1000px siêu nét!");
         };
 
-        // Popup Visitor QR Modal
         function initPopupQR() {
             const qrBox = document.getElementById('qr-code-box');
             qrBox.innerHTML = '';
