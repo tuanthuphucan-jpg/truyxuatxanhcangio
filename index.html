@@ -285,9 +285,9 @@
     <section id="gallery-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-xs font-bold tracking-widest text-bio-green uppercase">Trải Nghiệm Trực Quan</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-bio-dark mt-2">Thư Viện Ảnh & Video Cần Giờ</h2>
-                <p class="text-bio-gray text-sm mt-2">Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế</p>
+                <span id="gallery-badge-text" class="text-xs font-bold tracking-widest text-bio-green uppercase">Trải Nghiệm Trực Quan</span>
+                <h2 id="gallery-title" class="font-serif text-3xl sm:text-4xl font-extrabold text-bio-dark mt-2">Thư Viện Ảnh & Video Cần Giờ</h2>
+                <p id="gallery-subtitle" class="text-bio-gray text-sm mt-2">Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế</p>
             </div>
 
             <!-- Video Player Block -->
@@ -544,38 +544,73 @@
                 </div>
 
                 <!-- TAB 4: HÌNH ẢNH & VIDEO -->
-                <div id="dash-media" class="tab-content space-y-4 hidden">
+                <div id="dash-media" class="tab-content space-y-5 hidden">
                     <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900">
-                        <h4 class="font-bold text-sm mb-1"><i class="fa-solid fa-video"></i> Quản Lý Video Khám Phá</h4>
+                        <h4 class="font-bold text-sm mb-1"><i class="fa-solid fa-video"></i> 1. Quản Lý Video Khám Phá</h4>
                         <p class="text-xs mb-3">Tải video MP4 trực tiếp từ máy tính HOẶC dán liên kết YouTube nhúng.</p>
                         
                         <div class="space-y-3">
                             <div>
-                                <label class="block font-semibold mb-1">1. Tải Video từ máy tính (.mp4):</label>
+                                <label class="block font-semibold mb-1">Tải Video từ máy tính (.mp4):</label>
                                 <input type="file" accept="video/*" onchange="uploadLocalVideo(event)" class="block w-full text-xs text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-bio-gold file:text-white hover:file:bg-amber-700 cursor-pointer">
                             </div>
                             <div>
-                                <label class="block font-semibold mb-1">2. Hoặc Dán Link Video YouTube Embed:</label>
-                                <input type="text" id="edit-video-url-input" class="w-full p-2.5 border border-slate-300 rounded-xl outline-none" placeholder="https://www.youtube.com/embed/...">
+                                <label class="block font-semibold mb-1">Hoặc Dán Link Video YouTube Embed:</label>
+                                <input type="text" id="edit-video-url-input" class="w-full p-2.5 border border-slate-300 rounded-xl bg-white outline-none" placeholder="https://www.youtube.com/embed/...">
                             </div>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block font-bold text-slate-800 mb-1">Ảnh Nền Bìa Banner Hero</label>
-                        <div class="flex gap-2">
-                            <input type="text" id="edit-hero-img-url" class="flex-1 p-2.5 border border-slate-300 rounded-xl outline-none" placeholder="Link ảnh hoặc chọn ảnh từ máy...">
-                            <input type="file" accept="image/*" onchange="uploadLocalImage(event, 'edit-hero-img-url')" class="hidden" id="file-hero-img">
-                            <button onclick="document.getElementById('file-hero-img').click()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold">Tải từ máy</button>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+                        <h4 class="font-bold text-sm text-bio-dark border-b border-slate-200 pb-2"><i class="fa-solid fa-image text-bio-green"></i> 2. Ảnh Nền Banner & Ảnh Giới Thiệu</h4>
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1">Ảnh Nền Bìa Banner Hero</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="edit-hero-img-url" class="flex-1 p-2.5 border border-slate-300 rounded-xl bg-white outline-none" placeholder="Link ảnh hoặc chọn ảnh từ máy...">
+                                <input type="file" accept="image/*" onchange="uploadLocalImage(event, 'edit-hero-img-url')" class="hidden" id="file-hero-img">
+                                <button onclick="document.getElementById('file-hero-img').click()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold whitespace-nowrap">Tải từ máy</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-800 mb-1">Ảnh Phần Giới Thiệu (Hành Trình Về Vùng Đất Mặn Cần Giờ)</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="edit-about-img-url" class="flex-1 p-2.5 border border-slate-300 rounded-xl bg-white outline-none" placeholder="Link ảnh hoặc chọn ảnh từ máy...">
+                                <input type="file" accept="image/*" onchange="uploadLocalImage(event, 'edit-about-img-url')" class="hidden" id="file-about-img">
+                                <button onclick="document.getElementById('file-about-img').click()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold whitespace-nowrap">Tải từ máy</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block font-bold text-slate-800 mb-1">Ảnh Phần Giới Thiệu (Hành Trình Về Vùng Đất Mặn Cần Giờ)</label>
-                        <div class="flex gap-2">
-                            <input type="text" id="edit-about-img-url" class="flex-1 p-2.5 border border-slate-300 rounded-xl outline-none" placeholder="Link ảnh hoặc chọn ảnh từ máy...">
-                            <input type="file" accept="image/*" onchange="uploadLocalImage(event, 'edit-about-img-url')" class="hidden" id="file-about-img">
-                            <button onclick="document.getElementById('file-about-img').click()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold">Tải từ máy</button>
+                    <!-- Thư Viện Hình Ảnh Cần Giờ (4+ ô ảnh phía dưới Video) -->
+                    <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
+                            <div>
+                                <h4 class="font-bold text-sm text-bio-dark"><i class="fa-solid fa-images text-bio-green"></i> 3. Bộ Sưu Tập Ảnh Thư Viện (Dưới Video)</h4>
+                                <p class="text-[11px] text-bio-gray">Thay từng tấm ảnh thực tế hoặc thêm ảnh mới vào lưới hiển thị dưới video.</p>
+                            </div>
+                            <button onclick="addNewGalleryPhoto()" class="px-3.5 py-2 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs transition">
+                                + Thêm Ảnh Mới
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Nhãn Phụ Thư Viện</label>
+                                <input type="text" id="edit-gallery-badge" class="w-full p-2 border border-slate-300 rounded-xl bg-white outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Tiêu Đề Thư Viện Ảnh & Video</label>
+                                <input type="text" id="edit-gallery-title" class="w-full p-2 border border-slate-300 rounded-xl bg-white outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Mô Tả Ngắn Thư Viện</label>
+                                <input type="text" id="edit-gallery-subtitle" class="w-full p-2 border border-slate-300 rounded-xl bg-white outline-none">
+                            </div>
+                        </div>
+
+                        <div id="admin-gallery-editor-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Dynamic gallery photo editors -->
                         </div>
                     </div>
                 </div>
@@ -782,6 +817,9 @@
         "productsBadge": "Đặc Sản Quê Hương",
         "productsTitle": "Sản Phẩm Yến Sào Trưng Bày",
         "productsSubtitle": "Quà tặng ý nghĩa cho sức khỏe gia đình & khách du lịch Cần Giờ",
+        "galleryBadge": "Trải Nghiệm Trực Quan",
+        "galleryTitle": "Thư Viện Ảnh & Video Cần Giờ",
+        "gallerySubtitle": "Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế",
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "localVideoData": null,
         "storyTitle": "Giữ Nghề Nuôi Yến Nơi Đất Rừng Mặn Cần Giờ",
@@ -982,6 +1020,11 @@
             document.getElementById('products-title').innerText = appData.productsTitle || defaultData.productsTitle;
             document.getElementById('products-subtitle').innerText = appData.productsSubtitle || defaultData.productsSubtitle;
 
+            // Gallery Section Header
+            document.getElementById('gallery-badge-text').innerText = appData.galleryBadge || defaultData.galleryBadge;
+            document.getElementById('gallery-title').innerText = appData.galleryTitle || defaultData.galleryTitle;
+            document.getElementById('gallery-subtitle').innerText = appData.gallerySubtitle || defaultData.gallerySubtitle;
+
             // Stats
             document.getElementById('public-views-count').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN') + "+";
             document.getElementById('dash-stat-total-views').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN');
@@ -1040,7 +1083,7 @@
             const gGrid = document.getElementById('gallery-photos-grid');
             gGrid.innerHTML = (appData.gallery || []).map(img => `
                 <div onclick="window.openLightbox('${img}')" class="cursor-pointer group relative aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-emerald-100">
-                    <img src="${img}" alt="Gallery" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="${img}" alt="Gallery" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x600/15803D/ffffff?text=Yến+Sào+Cần+Giờ'">
                     <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white">
                         <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
                     </div>
@@ -1136,6 +1179,9 @@
             document.getElementById('edit-products-badge').value = appData.productsBadge || defaultData.productsBadge;
             document.getElementById('edit-products-title').value = appData.productsTitle || defaultData.productsTitle;
             document.getElementById('edit-products-subtitle').value = appData.productsSubtitle || defaultData.productsSubtitle;
+            document.getElementById('edit-gallery-badge').value = appData.galleryBadge || defaultData.galleryBadge;
+            document.getElementById('edit-gallery-title').value = appData.galleryTitle || defaultData.galleryTitle;
+            document.getElementById('edit-gallery-subtitle').value = appData.gallerySubtitle || defaultData.gallerySubtitle;
             document.getElementById('edit-video-url-input').value = appData.videoUrl || '';
             document.getElementById('edit-story-title').value = appData.storyTitle || '';
             document.getElementById('edit-story-body').innerHTML = appData.storyBody || '';
@@ -1148,6 +1194,7 @@
                 : 'https://tuanthuphucan-jpg.github.io/truyxuatxanhcangio/';
             document.getElementById('admin-qr-url-input').value = webUrl;
 
+            renderAdminGalleryList();
             renderAdminProcessSteps();
             renderAdminProductsList();
             document.getElementById('admin-dashboard-modal').classList.remove('hidden');
@@ -1269,6 +1316,68 @@
         window.formatEditorText = (command) => {
             document.getElementById('edit-story-body').focus();
             document.execCommand(command, false, null);
+        };
+
+        // Render & Manage Gallery Photos (4+ grid items below video)
+        function renderAdminGalleryList() {
+            if (!appData.gallery) {
+                appData.gallery = [...defaultData.gallery];
+            }
+            const container = document.getElementById('admin-gallery-editor-list');
+            container.innerHTML = appData.gallery.map((imgUrl, idx) => `
+                <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-bio-green text-xs">Ảnh Thư Viện #${idx + 1}</span>
+                        <button onclick="deleteGalleryPhoto(${idx})" class="text-red-600 hover:text-red-800 font-bold text-[11px]">
+                            <i class="fa-solid fa-trash"></i> Xóa
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <img src="${imgUrl}" alt="Ảnh ${idx + 1}" class="w-16 h-16 rounded-lg object-cover border border-slate-200 shrink-0" onerror="this.src='https://placehold.co/200x200/15803D/ffffff?text=Ảnh+${idx + 1}'">
+                        <div class="flex-1 space-y-1.5 min-w-0">
+                            <input type="text" value="${imgUrl}" onchange="updateGalleryPhotoUrl(${idx}, this.value)" class="w-full p-2 border border-slate-300 rounded-lg outline-none text-[11px]" placeholder="Dán link ảnh...">
+                            <div>
+                                <input type="file" accept="image/*" onchange="uploadGalleryPhoto(event, ${idx})" class="hidden" id="gallery-file-${idx}">
+                                <button onclick="document.getElementById('gallery-file-${idx}').click()" class="px-3 py-1.5 bg-bio-mint text-bio-green hover:bg-emerald-200 rounded-lg font-bold text-[11px] transition">
+                                    <i class="fa-solid fa-upload mr-1"></i> Chọn ảnh từ máy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.addNewGalleryPhoto = () => {
+            if (!appData.gallery) appData.gallery = [];
+            appData.gallery.push("https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80");
+            renderAdminGalleryList();
+            window.showToast("Đã thêm ô ảnh thư viện mới.");
+        };
+
+        window.updateGalleryPhotoUrl = (idx, url) => {
+            if (appData.gallery && appData.gallery[idx] !== undefined) {
+                appData.gallery[idx] = url;
+                renderAdminGalleryList();
+            }
+        };
+
+        window.uploadGalleryPhoto = (event, idx) => {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                appData.gallery[idx] = e.target.result;
+                renderAdminGalleryList();
+                window.showToast(`Đã thay Ảnh Thư Viện #${idx + 1} thành công!`);
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.deleteGalleryPhoto = (idx) => {
+            appData.gallery.splice(idx, 1);
+            renderAdminGalleryList();
+            window.showToast("Đã xóa ảnh khỏi thư viện.");
         };
 
         // Render & Manage 4 Process Steps
@@ -1444,6 +1553,9 @@
                 appData.productsBadge = document.getElementById('edit-products-badge').value;
                 appData.productsTitle = document.getElementById('edit-products-title').value;
                 appData.productsSubtitle = document.getElementById('edit-products-subtitle').value;
+                appData.galleryBadge = document.getElementById('edit-gallery-badge').value;
+                appData.galleryTitle = document.getElementById('edit-gallery-title').value;
+                appData.gallerySubtitle = document.getElementById('edit-gallery-subtitle').value;
                 appData.videoUrl = document.getElementById('edit-video-url-input').value;
                 appData.storyTitle = document.getElementById('edit-story-title').value;
                 appData.storyBody = document.getElementById('edit-story-body').innerHTML;
