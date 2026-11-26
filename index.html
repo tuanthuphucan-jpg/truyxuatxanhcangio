@@ -281,7 +281,7 @@
         </div>
     </section>
 
-    <!-- SECTION 5: THƯ VIỆN HÌNH ẢNH & VIDEO (CHỈ DÙNG VIDEO TẢI TRỰC TIẾP TỪ MÁY) -->
+    <!-- SECTION 5: THƯ VIỆN HÌNH ẢNH & VIDEO -->
     <section id="gallery-section" class="py-16 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -290,7 +290,7 @@
                 <p id="gallery-subtitle" class="text-bio-gray text-sm mt-2">Hình ảnh quy trình khai thác và chăm sóc yến sào thực tế</p>
             </div>
 
-            <!-- Local Video Player Block -->
+            <!-- Video Player Block -->
             <div class="mb-12 max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-xl bg-bio-dark border-4 border-emerald-100 relative" id="video-container">
                 <video id="main-video-player" class="w-full h-full object-contain bg-black hidden" controls playsinline preload="metadata"></video>
                 <div id="video-empty-placeholder" class="w-full h-full flex flex-col items-center justify-center text-center p-6 text-emerald-100 bg-gradient-to-br from-bio-dark to-emerald-950">
@@ -298,7 +298,7 @@
                         <i class="fa-solid fa-film"></i>
                     </div>
                     <h3 class="font-serif font-bold text-lg sm:text-xl text-white">Video Giới Thiệu Yến Sào Cần Giờ</h3>
-                    <p class="text-xs text-emerald-200/80 max-w-md mt-1.5">Chưa có video được tải lên. Quản trị viên có thể vào mục Quản Trị &rarr; Ảnh & Video để tải file video MP4 từ máy tính lên trực tiếp.</p>
+                    <p class="text-xs text-emerald-200/80 max-w-md mt-1.5">Chưa có video được tải lên. Quản trị viên có thể vào mục Quản Trị &rarr; Ảnh & Video để gắn link video MP4 trực tiếp.</p>
                 </div>
             </div>
 
@@ -406,22 +406,25 @@
             </div>
 
             <!-- Save Instruction Notification Banner -->
-            <div class="bg-bio-mint border-b border-emerald-200 px-4 py-2.5 text-xs text-bio-dark flex flex-wrap items-center justify-between gap-2">
+            <div class="bg-amber-50 border-b border-amber-200 px-4 py-2.5 text-xs text-amber-950 flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-1.5 font-semibold">
-                    <i class="fa-solid fa-circle-info text-bio-green text-sm"></i>
-                    <span><strong>Để điện thoại quét QR thấy y hệt máy tính:</strong> Sau khi sửa ảnh/chữ xong, bấm nút xanh <strong>"Lưu & Tải File Cập Nhật (index.html)"</strong> rồi tải file đó đè lên GitHub.</span>
+                    <i class="fa-solid fa-triangle-exclamation text-bio-gold text-sm"></i>
+                    <span><strong>Bắt buộc để điện thoại cập nhật:</strong> Bấm <strong>"1. Tải File index.html Mới"</strong> &rarr; Upload file đó đè lên GitHub.</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <button onclick="publishLiveAndExport()" class="px-3.5 py-1.5 rounded-lg bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-[11px] shadow transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-floppy-disk"></i> Lưu & Tải File Cập Nhật (index.html)
+                        <i class="fa-solid fa-download"></i> 1. Tải File index.html Mới
                     </button>
+                    <a href="https://github.com/tuanthuphucan-jpg/truyxuatxanhcangio/upload/main" target="_blank" class="px-3 py-1.5 rounded-lg bg-bio-dark hover:bg-slate-800 text-white font-bold text-[11px] shadow transition flex items-center gap-1">
+                        <i class="fa-brands fa-github"></i> 2. Mở Trang Upload GitHub
+                    </a>
                 </div>
             </div>
 
             <!-- Dashboard Navigation Tabs -->
             <div class="flex bg-bio-bg border-b border-emerald-100 px-4 pt-2 gap-2 text-xs font-bold text-bio-dark overflow-x-auto">
                 <button onclick="switchAdminTab('dash-stats')" id="btn-dash-stats" class="tab-btn py-2.5 px-4 rounded-t-xl bg-white border-t-2 border-bio-green text-bio-green whitespace-nowrap">
-                    <i class="fa-solid fa-chart-line mr-1"></i> 1. Thống Kê
+                    <i class="fa-solid fa-chart-line mr-1"></i> 1. Thống Kê & Đồng Bộ
                 </button>
                 <button onclick="switchAdminTab('dash-team')" id="btn-dash-team" class="tab-btn py-2.5 px-4 rounded-t-xl hover:bg-white/50 text-slate-600 whitespace-nowrap">
                     <i class="fa-solid fa-users-gear mr-1"></i> 2. Phân Quyền Gmail
@@ -452,9 +455,9 @@
                             <span class="text-[11px] text-bio-gray block mt-1"><i class="fa-solid fa-arrow-trend-up text-bio-green"></i> Tự động tăng khi du khách vào web</span>
                         </div>
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/60 border border-amber-200">
-                            <span class="text-xs text-bio-gold font-bold uppercase tracking-wider block mb-1">Số Lần Đã Xuất File/Lưu Web</span>
-                            <span id="dash-stat-saves-count" class="font-serif text-3xl font-extrabold text-bio-gold">1</span>
-                            <span class="text-[11px] text-bio-gray block mt-1">Lần xuất bản file index.html mới</span>
+                            <span class="text-xs text-bio-gold font-bold uppercase tracking-wider block mb-1">Phiên Bản Dữ Liệu Hiện Tại</span>
+                            <span id="dash-stat-saves-count" class="font-serif text-3xl font-extrabold text-bio-gold">v1</span>
+                            <span class="text-[11px] text-bio-gray block mt-1">Tăng mỗi khi xuất bản index.html mới</span>
                         </div>
                         <div class="p-5 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/60 border border-sky-200">
                             <span class="text-xs text-bio-blue font-bold uppercase tracking-wider block mb-1">Số Gmail Được Ủy Quyền</span>
@@ -466,28 +469,25 @@
                     <!-- Backup & Save Options Card -->
                     <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
                         <h4 class="font-bold text-bio-dark text-sm border-b border-slate-100 pb-2">
-                            <i class="fa-solid fa-floppy-disk text-bio-green"></i> Cơ Chế Lưu & Đồng Bộ Sang Điện Thoại
+                            <i class="fa-solid fa-cloud-arrow-up text-bio-green"></i> Quy Trình 2 Bước Để Điện Thoại Quét QR Hiện Giống Hệt Máy Tính
                         </h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl bg-bio-mint/60 border border-emerald-200 space-y-2">
-                            <span class="font-bold text-bio-green block">1. Lưu & Xuất File index.html Mới Nhất</span>
-                            <p class="text-[11px] text-bio-gray">Nhúng toàn bộ ảnh, bài viết và sản phẩm vừa sửa vào file <strong>index.html</strong> và tự tải về máy. Chỉ cần upload file này đè lên GitHub là điện thoại quét QR cập nhật 100%.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="publishLiveAndExport()" class="flex-1 py-2.5 px-3 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow transition flex items-center justify-center gap-1.5">
-                                    <i class="fa-solid fa-floppy-disk"></i> Lưu & Tải index.html Mới
+                            <div class="p-4 rounded-xl bg-bio-mint/60 border border-emerald-200 space-y-2.5">
+                                <span class="font-bold text-bio-green block text-sm">Bước 1: Xuất File index.html Đã Gắn Ảnh & Chữ Mới</span>
+                                <p class="text-[11px] text-bio-gray leading-relaxed">Bấm nút dưới đây để đóng gói toàn bộ ảnh yến sào, sản phẩm, bài thuyết minh và link video vừa sửa thành 1 file <strong>index.html</strong> duy nhất.</p>
+                                <button onclick="publishLiveAndExport()" class="w-full py-2.5 px-3 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow transition flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-download"></i> Tải File index.html Mới Về Máy
                                 </button>
                             </div>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-                                <span class="font-bold text-slate-800 block">2. Xuất / Nhập Backup Dữ Liệu (.json)</span>
-                                <p class="text-[11px] text-bio-gray">Sao lưu toàn bộ dữ liệu cấu hình ra file `.json` hoặc nạp file backup sẵn có từ máy tính.</p>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                                <span class="font-bold text-slate-800 block text-sm">Bước 2: Upload File index.html Lên GitHub</span>
+                                <p class="text-[11px] text-bio-gray leading-relaxed">Mở trang upload của kho <strong>truyxuatxanhcangio</strong>, kéo thả file <strong>index.html</strong> vừa tải vào và bấm <strong>Commit changes</strong>. Đợi 1 phút rồi quét lại QR trên điện thoại.</p>
                                 <div class="flex gap-2">
-                                    <button onclick="exportJsonData()" class="flex-1 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
-                                        <i class="fa-solid fa-download"></i> Xuất JSON
-                                    </button>
-                                    <input type="file" accept=".json" id="import-json-file" onchange="importJsonData(event)" class="hidden">
-                                    <button onclick="document.getElementById('import-json-file').click()" class="flex-1 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
-                                        <i class="fa-solid fa-upload"></i> Nhập JSON
+                                    <a href="https://github.com/tuanthuphucan-jpg/truyxuatxanhcangio/upload/main" target="_blank" class="flex-1 py-2.5 px-3 rounded-xl bg-bio-dark hover:bg-slate-800 text-white font-bold text-xs text-center flex items-center justify-center gap-1.5">
+                                        <i class="fa-brands fa-github"></i> Mở GitHub Upload
+                                    </a>
+                                    <button onclick="resetLocalCacheToGitHub()" class="py-2.5 px-3 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 font-bold text-[11px]" title="Xóa bộ nhớ tạm trên máy tính để xem đúng bản đang chạy trên điện thoại">
+                                        Xem Bản Gốc GitHub
                                     </button>
                                 </div>
                             </div>
@@ -552,52 +552,43 @@
                     </div>
                 </div>
 
-                <!-- TAB 4: HÌNH ẢNH & VIDEO (LƯU TRỮ ĐÁM MÂY NHƯ GOOGLE DRIVE - KHÔNG YOUTUBE) -->
+                <!-- TAB 4: HÌNH ẢNH & VIDEO -->
                 <div id="dash-media" class="tab-content space-y-5 hidden">
                     <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 space-y-3">
                         <div class="flex flex-wrap items-center justify-between gap-2">
                             <div>
-                                <h4 class="font-bold text-sm"><i class="fa-solid fa-cloud-arrow-up text-bio-gold"></i> 1. Tải & Lưu Trữ Video Trên Máy Chủ Đám Mây (Kiểu Google Drive)</h4>
-                                <p class="text-xs text-amber-900 mt-0.5">Chọn file video từ máy tính để tải trực tiếp lên kho lưu trữ đám mây chung. Sau khi tải xong và bấm <strong>Lưu & Cập Nhật Toàn Hệ Thống</strong>, điện thoại quét QR sẽ phát được video ngay lập tức mà không bị đen màn hình.</p>
+                                <h4 class="font-bold text-sm"><i class="fa-solid fa-film text-bio-gold"></i> 1. Video Giới Thiệu (Phát Được Trên Mọi Điện Thoại)</h4>
+                                <p class="text-xs text-amber-900 mt-0.5">
+                                    <strong>Lưu ý quan trọng:</strong> Nếu chọn video trực tiếp từ máy tính, video chỉ xem thử được trên máy tính đó (khi qua điện thoại sẽ báo chưa có video). Để <strong>điện thoại quét QR xem mượt video</strong>, hãy đăng file <code>.mp4</code> lên <strong>GitHub Releases</strong> rồi dán link vào ô dưới đây:
+                                </p>
                             </div>
                             <button id="btn-remove-local-video" onclick="removeLocalVideo()" class="hidden px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-[11px] transition">
-                                <i class="fa-solid fa-trash-can mr-1"></i> Xóa Video Hiện Tại
+                                <i class="fa-solid fa-trash-can mr-1"></i> Xóa Video
                             </button>
-                        </div>
-                        
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                            <input type="file" id="input-local-video-file" accept="video/*" onchange="uploadLocalVideo(event)" class="hidden">
-                            <button onclick="document.getElementById('input-local-video-file').click()" class="px-4 py-2.5 rounded-xl bg-bio-gold hover:bg-amber-700 text-white font-extrabold text-xs shadow transition flex items-center gap-2 shrink-0">
-                                <i class="fa-solid fa-cloud-arrow-up text-sm"></i> Tải File Video Lên Kho Lưu Trữ
-                            </button>
-                            <span id="local-video-status-text" class="text-xs font-semibold text-amber-900">Chưa có video nào trên máy chủ</span>
-                        </div>
-
-                        <!-- Cloud Upload Progress Bar -->
-                        <div id="video-upload-progress-wrap" class="hidden space-y-1">
-                            <div class="flex justify-between text-[11px] font-bold text-amber-950">
-                                <span id="video-upload-progress-label">Đang tải video lên máy chủ...</span>
-                                <span id="video-upload-progress-percent">0%</span>
-                            </div>
-                            <div class="w-full h-2.5 bg-amber-200/80 rounded-full overflow-hidden">
-                                <div id="video-upload-progress-bar" class="h-full bg-bio-green transition-all duration-200" style="width: 0%;"></div>
-                            </div>
                         </div>
 
                         <div class="pt-1">
-                            <label class="block font-bold text-amber-950 mb-1">Liên kết video lưu trữ đám mây (tự điền khi tải lên hoặc dán link trực tiếp):</label>
-                            <div class="flex gap-2">
-                                <input type="text" id="edit-video-src-url" onchange="updateVideoSrcFromInput(this.value)" class="flex-1 p-2.5 border border-amber-300 rounded-xl bg-white outline-none text-xs font-medium" placeholder="Tự động cập nhật link lưu trữ đám mây khi tải video lên...">
-                                <button onclick="updateVideoSrcFromInput(document.getElementById('edit-video-src-url').value)" class="px-4 py-2 bg-bio-green hover:bg-emerald-800 text-white rounded-xl font-bold text-xs whitespace-nowrap">Áp Dụng</button>
+                            <label class="block font-bold text-amber-950 mb-1">Dán Link Video Trực Tiếp (.mp4) Để Điện Thoại & Máy Tính Cùng Xem:</label>
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <input type="text" id="edit-video-src-url" onchange="updateVideoSrcFromInput(this.value)" class="flex-1 p-2.5 border border-amber-300 rounded-xl bg-white outline-none text-xs font-medium" placeholder="Ví dụ: https://github.com/tuanthuphucan-jpg/truyxuatxanhcangio/releases/download/v1/video.mp4">
+                                <button onclick="updateVideoSrcFromInput(document.getElementById('edit-video-src-url').value)" class="px-4 py-2 bg-bio-green hover:bg-emerald-800 text-white rounded-xl font-bold text-xs whitespace-nowrap">Áp Dụng Link Video</button>
+                                <a href="https://github.com/tuanthuphucan-jpg/truyxuatxanhcangio/releases/new" target="_blank" class="px-3.5 py-2 bg-bio-dark hover:bg-slate-800 text-white rounded-xl font-bold text-xs whitespace-nowrap text-center">
+                                    <i class="fa-brands fa-github mr-1"></i> Đăng Video Lên GitHub Releases
+                                </a>
                             </div>
-                            <p class="text-[11px] text-amber-800 mt-1">
-                                <i class="fa-solid fa-circle-check text-bio-green"></i> Mọi thiết bị (máy tính, điện thoại quét mã QR) đều đọc cùng một liên kết video từ máy chủ đám mây chung.
-                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-3 pt-1 border-t border-amber-200/80">
+                            <input type="file" id="input-local-video-file" accept="video/*" onchange="uploadLocalVideo(event)" class="hidden">
+                            <button onclick="document.getElementById('input-local-video-file').click()" class="px-3.5 py-2 rounded-xl bg-amber-200/80 hover:bg-amber-300 text-amber-950 font-bold text-xs transition flex items-center gap-1.5 shrink-0">
+                                <i class="fa-solid fa-play"></i> Xem Thử Video Từ Máy Tính (Chỉ Tạm Thời)
+                            </button>
+                            <span id="local-video-status-text" class="text-xs font-semibold text-amber-900">Chưa gắn link video công khai</span>
                         </div>
 
                         <!-- Live Video Preview inside Admin -->
                         <div id="admin-video-preview-wrap" class="hidden pt-2">
-                            <span class="text-[11px] font-bold text-bio-green block mb-1.5"><i class="fa-solid fa-circle-check"></i> Xem trước video đang phát:</span>
+                            <span class="text-[11px] font-bold text-bio-green block mb-1.5"><i class="fa-solid fa-circle-check"></i> Khung xem trước video:</span>
                             <video id="admin-video-preview" class="w-full max-h-60 rounded-2xl bg-black border border-amber-300" controls playsinline preload="metadata"></video>
                         </div>
                     </div>
@@ -628,7 +619,7 @@
                         <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
                             <div>
                                 <h4 class="font-bold text-sm text-bio-dark"><i class="fa-solid fa-images text-bio-green"></i> 3. Bộ Sưu Tập Ảnh Thư Viện (Dưới Video)</h4>
-                                <p class="text-[11px] text-bio-gray">Thay từng tấm ảnh thực tế hoặc thêm ảnh mới vào lưới hiển thị dưới video.</p>
+                                <p class="text-[11px] text-bio-gray">Tất cả ảnh chọn từ máy đều được tự động nén gọn và nhúng thẳng vào file <code>index.html</code> khi xuất bản.</p>
                             </div>
                             <button onclick="addNewGalleryPhoto()" class="px-3.5 py-2 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs transition">
                                 + Thêm Ảnh Mới
@@ -792,8 +783,11 @@
                     Đóng Bảng Sửa
                 </button>
                 <div class="flex items-center gap-2">
+                    <a href="https://github.com/tuanthuphucan-jpg/truyxuatxanhcangio/upload/main" target="_blank" class="px-4 py-2.5 rounded-xl bg-bio-dark hover:bg-slate-800 text-white font-bold text-xs shadow transition flex items-center gap-1.5">
+                        <i class="fa-brands fa-github"></i> Mở GitHub Upload
+                    </a>
                     <button onclick="publishLiveAndExport()" class="px-6 py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-floppy-disk"></i> Lưu & Tải File Cập Nhật (index.html)
+                        <i class="fa-solid fa-download"></i> Lưu & Tải File Cập Nhật (index.html)
                     </button>
                 </div>
             </div>
@@ -912,8 +906,6 @@
         };
 
         let activeVideoObjectUrl = null;
-        const liveChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('yen_sao_live_server_channel') : null;
-        let isServerRestarting = false;
 
         function getActiveServerRevision(dataObj) {
             return Number((dataObj && dataObj.serverRevision) || defaultData.serverRevision || 1);
@@ -921,30 +913,23 @@
 
         function safeSaveLocalStorage(key, valueObj) {
             try {
-                const slimCopy = { ...valueObj };
-                if (slimCopy.localVideoData && slimCopy.localVideoData.startsWith('blob:')) {
-                    slimCopy.localVideoData = null;
-                }
+                const slimCopy = { ...valueObj, localVideoData: null };
                 localStorage.setItem(key, JSON.stringify(slimCopy));
                 return true;
             } catch (err) {
-                try {
-                    const fallbackCopy = { ...valueObj, localVideoData: null };
-                    localStorage.setItem(key, JSON.stringify(fallbackCopy));
-                } catch (innerErr) {}
                 return false;
             }
         }
 
         function getEffectiveVideoSource() {
-            if (appData.videoSrc && appData.videoSrc.trim() !== '') return appData.videoSrc.trim();
+            if (appData.videoSrc && appData.videoSrc.trim() !== '' && !appData.videoSrc.trim().startsWith('blob:')) {
+                return appData.videoSrc.trim();
+            }
             if (activeVideoObjectUrl) return activeVideoObjectUrl;
-            if (appData.localVideoData) return appData.localVideoData;
             return '';
         }
 
-        // Compress uploaded images so embedded HTML stays fast, light, and reliable on GitHub & mobile
-        function compressImageFile(file, maxWidth = 1280, quality = 0.82) {
+        function compressImageFile(file, maxWidth = 1000, quality = 0.78) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
@@ -1015,7 +1000,15 @@
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateY(-8px)';
                 setTimeout(() => toast.remove(), 300);
-            }, 3800);
+            }, 4200);
+        };
+
+        window.resetLocalCacheToGitHub = () => {
+            localStorage.removeItem('yen_sao_app_data');
+            appData = { ...defaultData, localVideoData: null };
+            renderUI();
+            populateAndShowAdminDashboard();
+            window.showToast("Đã đồng bộ về đúng phiên bản đang lưu trên GitHub!");
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -1081,7 +1074,7 @@
 
             document.getElementById('public-views-count').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN') + "+";
             document.getElementById('dash-stat-total-views').innerText = (appData.viewsCount || 1240).toLocaleString('vi-VN');
-            document.getElementById('dash-stat-saves-count').innerText = (appData.savesCount || 1).toLocaleString('vi-VN');
+            document.getElementById('dash-stat-saves-count').innerText = "v" + getActiveServerRevision(appData);
 
             document.getElementById('story-title').innerText = appData.storyTitle || defaultData.storyTitle;
             document.getElementById('story-content-body').innerHTML = appData.storyBody || defaultData.storyBody;
@@ -1159,10 +1152,11 @@
             }
 
             if (effectiveSrc) {
-                statusText.innerText = appData.localVideoName
-                    ? `Video đang chọn: ${appData.localVideoName}`
-                    : `Liên kết video: ${appData.videoSrc || 'Video đã tải lên'}`;
-                statusText.className = 'text-xs font-bold text-bio-green';
+                const isPublicLink = Boolean(appData.videoSrc && appData.videoSrc.trim().startsWith('http'));
+                statusText.innerText = isPublicLink
+                    ? `Đã gắn link video công khai (xem được trên điện thoại)`
+                    : `Đang xem thử từ máy tính: ${appData.localVideoName} (chưa có link cho điện thoại)`;
+                statusText.className = isPublicLink ? 'text-xs font-bold text-bio-green' : 'text-xs font-bold text-amber-700';
                 previewWrap.classList.remove('hidden');
                 removeBtn.classList.remove('hidden');
                 if (previewVideo.getAttribute('data-current-src') !== effectiveSrc) {
@@ -1171,7 +1165,7 @@
                     previewVideo.load();
                 }
             } else {
-                statusText.innerText = 'Chưa có video nào trên máy chủ';
+                statusText.innerText = 'Chưa gắn link video công khai';
                 statusText.className = 'text-xs font-semibold text-amber-900';
                 previewWrap.classList.add('hidden');
                 removeBtn.classList.add('hidden');
@@ -1386,37 +1380,6 @@
             window.showToast("Đã thu hồi quyền của Gmail.");
         };
 
-        window.exportJsonData = () => {
-            syncInputToAppData();
-            const blob = new Blob([JSON.stringify(appData, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'yen-sao-can-gio-backup.json';
-            a.click();
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
-            window.showToast("Đã xuất file backup JSON!");
-        };
-
-        window.importJsonData = (event) => {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const parsed = JSON.parse(e.target.result);
-                    appData = { ...defaultData, ...parsed };
-                    safeSaveLocalStorage('yen_sao_app_data', appData);
-                    renderUI();
-                    populateAndShowAdminDashboard();
-                    window.showToast("Đã nạp dữ liệu từ file JSON thành công!");
-                } catch (err) {
-                    window.showToast("File JSON không hợp lệ!", 'error');
-                }
-            };
-            reader.readAsText(file);
-        };
-
         window.formatEditorText = (command) => {
             document.getElementById('edit-story-body').focus();
             document.execCommand(command, false, null);
@@ -1480,12 +1443,12 @@
         window.uploadGalleryPhoto = async (event, idx) => {
             const file = event.target.files[0];
             if (!file) return;
-            const compressedDataUrl = await compressImageFile(file, 1000, 0.82);
+            const compressedDataUrl = await compressImageFile(file, 900, 0.78);
             appData.gallery[idx] = compressedDataUrl;
             safeSaveLocalStorage('yen_sao_app_data', appData);
             renderAdminGalleryList();
             renderUI();
-            window.showToast(`Đã thay Ảnh Thư Viện #${idx + 1}! Nhớ bấm "Lưu & Tải File Cập Nhật (index.html)" để đưa lên điện thoại.`);
+            window.showToast(`Đã nén & gắn Ảnh #${idx + 1}! Bấm "Lưu & Tải File Cập Nhật (index.html)" rồi upload lên GitHub để điện thoại hiển thị.`);
         };
 
         window.deleteGalleryPhoto = (idx) => {
@@ -1580,13 +1543,13 @@
         window.uploadProductImage = async (event, id) => {
             const file = event.target.files[0];
             if (!file) return;
-            const compressedDataUrl = await compressImageFile(file, 900, 0.82);
+            const compressedDataUrl = await compressImageFile(file, 850, 0.78);
             window.updateProductField(id, 'img', compressedDataUrl);
             const inputEl = document.getElementById(`prod-img-input-${id}`);
             if (inputEl) inputEl.value = compressedDataUrl;
             safeSaveLocalStorage('yen_sao_app_data', appData);
             renderUI();
-            window.showToast("Đã tải ảnh sản phẩm! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" để đồng bộ sang điện thoại.");
+            window.showToast("Đã nén & tải ảnh sản phẩm! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" rồi upload lên GitHub.");
         };
 
         window.importDocxFile = (event) => {
@@ -1628,13 +1591,13 @@
 
             updateAdminVideoPreviewUI();
             renderUI();
-            window.showToast(`Đã mở xem thử video "${file.name}" (${sizeMB} MB). Để điện thoại quét QR xem được video, hãy dán link video trực tiếp (.mp4) vào ô liên kết phía dưới rồi bấm Lưu.`);
+            window.showToast(`Đang xem thử "${file.name}" trên máy tính. Để điện thoại quét QR xem được video, hãy đăng file .mp4 lên GitHub Releases rồi dán link vào ô bên trên.`);
         };
 
         window.updateVideoSrcFromInput = (val) => {
             const cleanVal = (val || '').trim();
             if (cleanVal.startsWith('blob:')) {
-                window.showToast("Link blob tạm thời chỉ chạy trên 1 trình duyệt. Hãy dùng link video .mp4 trực tiếp.", 'error');
+                window.showToast("Link blob chỉ chạy trên máy tính hiện tại. Hãy dùng link .mp4 trên GitHub Releases.", 'error');
                 return;
             }
             appData.videoSrc = cleanVal;
@@ -1645,7 +1608,7 @@
             updateAdminVideoPreviewUI();
             renderUI();
             if (cleanVal) {
-                window.showToast("Đã cập nhật liên kết video!");
+                window.showToast("Đã gắn link video công khai! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" rồi upload lên GitHub.");
             }
         };
 
@@ -1655,10 +1618,8 @@
                 activeVideoObjectUrl = null;
             }
             appData.videoSrc = '';
-            appData.videoStoragePath = '';
             appData.localVideoData = null;
             appData.localVideoName = '';
-            document.getElementById('video-upload-progress-wrap').classList.add('hidden');
             document.getElementById('input-local-video-file').value = '';
             document.getElementById('edit-video-src-url').value = '';
             safeSaveLocalStorage('yen_sao_app_data', appData);
@@ -1670,12 +1631,12 @@
         window.uploadLocalImage = async (event, targetInputId) => {
             const file = event.target.files[0];
             if (file) {
-                const compressedDataUrl = await compressImageFile(file, 1400, 0.84);
+                const compressedDataUrl = await compressImageFile(file, 1200, 0.8);
                 document.getElementById(targetInputId).value = compressedDataUrl;
                 syncInputToAppData();
                 safeSaveLocalStorage('yen_sao_app_data', appData);
                 renderUI();
-                window.showToast("Đã tải & nén ảnh chuẩn! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" để đồng bộ sang điện thoại.");
+                window.showToast("Đã nén & tải ảnh chuẩn! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" rồi upload lên GitHub.");
             }
         };
 
@@ -1736,21 +1697,6 @@
             return "<!DOCTYPE html>\n" + docHTML.replace(scriptRegex, newScriptTag);
         }
 
-        window.downloadBackupIndexHtml = () => {
-            syncInputToAppData();
-            const updatedHTML = buildEmbeddedIndexHtmlString(appData);
-            const blob = new Blob([updatedHTML], { type: 'text/html;charset=utf-8' });
-            const downloadUrl = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = downloadUrl;
-            a.download = 'index.html';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            setTimeout(() => URL.revokeObjectURL(downloadUrl), 1500);
-            window.showToast("Đã tải file index.html mới về máy! Hãy upload đè file này lên GitHub để điện thoại quét QR cập nhật theo.");
-        };
-
         window.publishLiveAndExport = () => {
             syncInputToAppData();
             const nextRevision = getActiveServerRevision(appData) + 1;
@@ -1777,7 +1723,7 @@
             a.remove();
             setTimeout(() => URL.revokeObjectURL(downloadUrl), 1500);
 
-            window.showToast("Đã lưu thay đổi & tải file index.html mới về máy! Bạn hãy upload đè file index.html này lên GitHub để điện thoại quét QR thấy bản mới nhất.");
+            window.showToast("Đã tải file index.html mới về thư mục Downloads! Hãy upload file index.html này đè lên GitHub để điện thoại quét QR cập nhật ngay.");
         };
 
         window.exportUpdatedIndexHtml = window.publishLiveAndExport;
