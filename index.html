@@ -408,15 +408,12 @@
             <!-- Save Instruction Notification Banner -->
             <div class="bg-bio-mint border-b border-emerald-200 px-4 py-2.5 text-xs text-bio-dark flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-1.5 font-semibold">
-                    <i class="fa-solid fa-cloud-arrow-up text-bio-green text-sm"></i>
-                    <span><strong>Máy Chủ Chung Đám Mây:</strong> Khi bấm <strong>"Lưu & Cập Nhật Toàn Hệ Thống"</strong>, dữ liệu và video sẽ đồng bộ lên máy chủ chung để điện thoại quét QR xem giống hệt máy tính. Bạn cũng có thể tải file `index.html` làm bản sao lưu.</span>
+                    <i class="fa-solid fa-circle-info text-bio-green text-sm"></i>
+                    <span><strong>Để điện thoại quét QR thấy y hệt máy tính:</strong> Sau khi sửa ảnh/chữ xong, bấm nút xanh <strong>"Lưu & Tải File Cập Nhật (index.html)"</strong> rồi tải file đó đè lên GitHub.</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button onclick="downloadBackupIndexHtml()" class="px-3 py-1 rounded-lg bg-white hover:bg-emerald-50 text-bio-green border border-emerald-300 font-bold text-[11px] shadow-sm transition flex items-center gap-1">
-                        <i class="fa-solid fa-download"></i> Sao Lưu index.html
-                    </button>
-                    <button onclick="publishLiveAndExport()" class="px-3 py-1 rounded-lg bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-[11px] shadow transition flex items-center gap-1">
-                        <i class="fa-solid fa-tower-broadcast"></i> Lưu & Đồng Bộ Máy Chủ
+                    <button onclick="publishLiveAndExport()" class="px-3.5 py-1.5 rounded-lg bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-[11px] shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-floppy-disk"></i> Lưu & Tải File Cập Nhật (index.html)
                     </button>
                 </div>
             </div>
@@ -469,18 +466,15 @@
                     <!-- Backup & Save Options Card -->
                     <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
                         <h4 class="font-bold text-bio-dark text-sm border-b border-slate-100 pb-2">
-                            <i class="fa-solid fa-floppy-disk text-bio-green"></i> Cơ Chế Lưu & Xuất File (Giống Save Word/Excel)
+                            <i class="fa-solid fa-floppy-disk text-bio-green"></i> Cơ Chế Lưu & Đồng Bộ Sang Điện Thoại
                         </h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="p-4 rounded-xl bg-bio-mint/60 border border-emerald-200 space-y-2">
-                            <span class="font-bold text-bio-green block">1. Lưu Lên Máy Chủ Chung & Sao Lưu index.html</span>
-                            <p class="text-[11px] text-bio-gray">Cập nhật trực tiếp lên máy chủ đám mây dùng chung (điện thoại quét QR thấy ngay) và hỗ trợ tải file `index.html` dự phòng về máy.</p>
+                            <span class="font-bold text-bio-green block">1. Lưu & Xuất File index.html Mới Nhất</span>
+                            <p class="text-[11px] text-bio-gray">Nhúng toàn bộ ảnh, bài viết và sản phẩm vừa sửa vào file <strong>index.html</strong> và tự tải về máy. Chỉ cần upload file này đè lên GitHub là điện thoại quét QR cập nhật 100%.</p>
                             <div class="flex flex-wrap gap-2">
                                 <button onclick="publishLiveAndExport()" class="flex-1 py-2.5 px-3 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow transition flex items-center justify-center gap-1.5">
-                                    <i class="fa-solid fa-tower-broadcast"></i> Lưu & Cập Nhật Máy Chủ
-                                </button>
-                                <button onclick="downloadBackupIndexHtml()" class="py-2.5 px-3 rounded-xl bg-white hover:bg-emerald-50 text-bio-green border border-emerald-300 font-bold text-xs transition flex items-center justify-center gap-1.5">
-                                    <i class="fa-solid fa-download"></i> Tải index.html
+                                    <i class="fa-solid fa-floppy-disk"></i> Lưu & Tải index.html Mới
                                 </button>
                             </div>
                         </div>
@@ -795,14 +789,11 @@
             <!-- Admin Footer -->
             <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
                 <button onclick="closeAdminDashboardModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-600 font-bold text-xs hover:bg-slate-100">
-                    Đóng
+                    Đóng Bảng Sửa
                 </button>
                 <div class="flex items-center gap-2">
-                    <button onclick="downloadBackupIndexHtml()" class="px-4 py-2.5 rounded-xl bg-white hover:bg-emerald-50 text-bio-green border border-emerald-300 font-bold text-xs transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-download"></i> Tải Sao Lưu index.html
-                    </button>
                     <button onclick="publishLiveAndExport()" class="px-6 py-2.5 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-tower-broadcast"></i> Lưu & Cập Nhật Toàn Hệ Thống
+                        <i class="fa-solid fa-floppy-disk"></i> Lưu & Tải File Cập Nhật (index.html)
                     </button>
                 </div>
             </div>
@@ -890,38 +881,7 @@
     </script>
 
     <!-- APPLICATION LOGIC & DATA HANDLING -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
-
-        // Single shared cloud configuration for unified server sync across desktop & mobile QR scans
-        const SHARED_CLOUD_CONFIG = {
-            apiKey: "AIzaSyD-SharedServerPlaceholderKey-CanGio2026",
-            authDomain: "truyxuatxanhcangio-shared.firebaseapp.com",
-            projectId: "truyxuatxanhcangio-shared",
-            storageBucket: "truyxuatxanhcangio-shared.appspot.com",
-            messagingSenderId: "102938475610",
-            appId: "1:102938475610:web:cangioyensao2026shared"
-        };
-
-        const envConfigRaw = (typeof __firebase_config !== 'undefined' && __firebase_config) ? __firebase_config : null;
-        let firebaseConfig = SHARED_CLOUD_CONFIG;
-        if (envConfigRaw) {
-            try {
-                const parsedEnvCfg = typeof envConfigRaw === 'string' ? JSON.parse(envConfigRaw) : envConfigRaw;
-                if (parsedEnvCfg && parsedEnvCfg.apiKey && parsedEnvCfg.projectId) {
-                    firebaseConfig = parsedEnvCfg;
-                }
-            } catch (e) {
-                firebaseConfig = SHARED_CLOUD_CONFIG;
-            }
-        }
-
-        const appId = (typeof __app_id !== 'undefined' && __app_id) ? __app_id : 'truyxuatxanhcangio-unified-server';
-        const initialAuthToken = (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) ? __initial_auth_token : null;
-
+    <script>
         let defaultData = JSON.parse(document.getElementById('embedded-data-script').textContent);
 
         const encodeEmail = (email) => {
@@ -951,55 +911,12 @@
             return maskedName + '@' + parts[1];
         };
 
-        sessionStorage.removeItem('active_admin_session');
-        localStorage.removeItem('logged_admin_email');
-
         let activeVideoObjectUrl = null;
-        let cloudReady = false;
-        let cloudDb = null;
-        let cloudStorage = null;
-        let cloudUser = null;
-        let sharedDocRef = null;
-        let lastAppliedRevision = 0;
+        const liveChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('yen_sao_live_server_channel') : null;
+        let isServerRestarting = false;
 
-        function uploadVideoToUnifiedStorage(file, onProgress) {
-            return new Promise((resolve, reject) => {
-                if (cloudReady && cloudStorage && cloudUser) {
-                    try {
-                        const safeName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
-                        const fileRef = storageRef(cloudStorage, `artifacts/${appId}/public/videos/${safeName}`);
-                        const uploadTask = uploadBytesResumable(fileRef, file, {
-                            contentType: file.type || 'video/mp4'
-                        });
-
-                        uploadTask.on(
-                            'state_changed',
-                            (snapshot) => {
-                                const pct = snapshot.totalBytes > 0
-                                    ? Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-                                    : 0;
-                                if (onProgress) onProgress(pct);
-                            },
-                            (err) => {
-                                reject(err);
-                            },
-                            async () => {
-                                try {
-                                    const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
-                                    resolve({ url: downloadUrl, storagePath: `artifacts/${appId}/public/videos/${safeName}` });
-                                } catch (urlErr) {
-                                    reject(urlErr);
-                                }
-                            }
-                        );
-                        return;
-                    } catch (storageErr) {
-                        reject(storageErr);
-                        return;
-                    }
-                }
-                reject(new Error("Cloud storage unavailable"));
-            });
+        function getActiveServerRevision(dataObj) {
+            return Number((dataObj && dataObj.serverRevision) || defaultData.serverRevision || 1);
         }
 
         function safeSaveLocalStorage(key, valueObj) {
@@ -1026,188 +943,33 @@
             return '';
         }
 
-        const liveChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('yen_sao_live_server_channel') : null;
-        let isServerRestarting = false;
-
-        function getActiveServerRevision(dataObj) {
-            return Number((dataObj && dataObj.serverRevision) || defaultData.serverRevision || 1);
-        }
-
-        function applyUnifiedServerPayload(incomingData, triggerRefreshOverlay = false) {
-            if (!incomingData || typeof incomingData !== 'object') return;
-            const incomingRev = getActiveServerRevision(incomingData);
-            const currentRev = getActiveServerRevision(appData);
-            if (incomingRev > currentRev || incomingRev !== lastAppliedRevision) {
-                const prevLocalBlob = activeVideoObjectUrl;
-                appData = {
-                    ...defaultData,
-                    ...incomingData,
-                    localVideoData: null
-                };
-                if (!appData.ownerEmailEnc) {
-                    appData.ownerEmailEnc = defaultData.ownerEmailEnc;
-                }
-                if (!Array.isArray(appData.editorsEnc) || appData.editorsEnc.length === 0) {
-                    appData.editorsEnc = [...defaultData.editorsEnc];
-                }
-                if (appData.videoSrc && prevLocalBlob) {
-                    URL.revokeObjectURL(prevLocalBlob);
-                    activeVideoObjectUrl = null;
-                }
-                lastAppliedRevision = incomingRev;
-                safeSaveLocalStorage('yen_sao_app_data', appData);
-
-                if (triggerRefreshOverlay && incomingRev > currentRev) {
-                    triggerLiveServerRefresh(incomingRev, false);
-                } else {
-                    renderUI();
-                    checkAdminState();
-                    if (!document.getElementById('admin-dashboard-modal').classList.contains('hidden')) {
-                        updateAdminVideoPreviewUI();
-                    }
-                }
-            }
-        }
-
-        async function initUnifiedCloudServer() {
-            try {
-                const app = initializeApp(firebaseConfig, 'unified-cangio-server');
-                const auth = getAuth(app);
-                cloudDb = getFirestore(app);
-                cloudStorage = getStorage(app);
-
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                cloudUser = auth.currentUser;
-                cloudReady = Boolean(cloudUser);
-
-                if (!cloudUser) return;
-
-                sharedDocRef = doc(cloudDb, 'artifacts', appId, 'public', 'data', 'yen_sao_unified_state');
-
-                const initialSnap = await getDoc(sharedDocRef);
-                if (initialSnap.exists()) {
-                    const cloudPayload = initialSnap.data();
-                    if (cloudPayload) {
-                        applyUnifiedServerPayload(cloudPayload, false);
-                    }
-                } else {
-                    const seedPayload = {
-                        ...appData,
-                        localVideoData: null,
-                        updatedAt: Date.now()
-                    };
-                    await setDoc(sharedDocRef, seedPayload);
-                }
-
-                onSnapshot(
-                    sharedDocRef,
-                    (snapshot) => {
-                        if (!snapshot.exists()) return;
-                        const livePayload = snapshot.data();
-                        if (!livePayload) return;
-                        const liveRev = getActiveServerRevision(livePayload);
-                        if (liveRev > getActiveServerRevision(appData)) {
-                            applyUnifiedServerPayload(livePayload, true);
+        // Compress uploaded images so embedded HTML stays fast, light, and reliable on GitHub & mobile
+        function compressImageFile(file, maxWidth = 1280, quality = 0.82) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        let w = img.width;
+                        let h = img.height;
+                        if (w > maxWidth) {
+                            h = Math.round((h * maxWidth) / w);
+                            w = maxWidth;
                         }
-                    },
-                    (err) => {
-                        console.warn("Cloud snapshot listener notice:", err);
-                    }
-                );
-            } catch (err) {
-                cloudReady = false;
-                console.warn("Running in fallback sync mode:", err);
-            }
-        }
-
-        async function pushStateToUnifiedCloud(payloadObj) {
-            if (!cloudReady || !cloudDb || !cloudUser) {
-                try {
-                    const app = initializeApp(firebaseConfig, 'unified-cangio-server-retry');
-                    const auth = getAuth(app);
-                    cloudDb = getFirestore(app);
-                    if (initialAuthToken) {
-                        await signInWithCustomToken(auth, initialAuthToken);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                    cloudUser = auth.currentUser;
-                    cloudReady = Boolean(cloudUser);
-                    if (cloudUser) {
-                        sharedDocRef = doc(cloudDb, 'artifacts', appId, 'public', 'data', 'yen_sao_unified_state');
-                    }
-                } catch (e) {}
-            }
-
-            if (cloudReady && sharedDocRef && cloudUser) {
-                const cleanCloudDoc = {
-                    ...payloadObj,
-                    localVideoData: null,
-                    updatedAt: Date.now(),
-                    updatedByUid: cloudUser.uid
+                        const canvas = document.createElement('canvas');
+                        canvas.width = w;
+                        canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = () => resolve(e.target.result);
+                    img.src = e.target.result;
                 };
-                await setDoc(sharedDocRef, cleanCloudDoc);
-                return true;
-            }
-            return false;
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
         }
-
-        function triggerLiveServerRefresh(nextRevision, hasLargeVideo = false) {
-            if (isServerRestarting) return;
-            isServerRestarting = true;
-            currentAdminEmail = null;
-            sessionStorage.removeItem('active_admin_session');
-            localStorage.removeItem('logged_admin_email');
-            window.closeAdminDashboardModal();
-            window.closeAuthModal();
-            document.getElementById('admin-status-bar').classList.add('hidden');
-            document.getElementById('server-update-overlay').classList.remove('hidden');
-
-            setTimeout(() => {
-                if (hasLargeVideo) {
-                    renderUI();
-                    document.getElementById('server-update-overlay').classList.add('hidden');
-                    isServerRestarting = false;
-                } else {
-                    try {
-                        const url = new URL(window.location.href);
-                        url.searchParams.set('v', String(nextRevision || Date.now()));
-                        window.location.replace(url.toString());
-                    } catch (err) {
-                        window.location.reload();
-                    }
-                }
-            }, 900);
-        }
-
-        if (liveChannel) {
-            liveChannel.onmessage = (event) => {
-                const msg = event.data || {};
-                if (msg.type === 'SERVER_UPDATED') {
-                    if (msg.payload) {
-                        appData = { ...defaultData, ...msg.payload, localVideoData: null };
-                        lastAppliedRevision = getActiveServerRevision(appData);
-                        safeSaveLocalStorage('yen_sao_app_data', appData);
-                    }
-                    triggerLiveServerRefresh(msg.revision || Date.now(), false);
-                }
-            };
-        }
-
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'yen_sao_live_signal' && event.newValue) {
-                try {
-                    const signal = JSON.parse(event.newValue);
-                    if (signal && signal.type === 'SERVER_UPDATED') {
-                        triggerLiveServerRefresh(signal.revision || Date.now(), false);
-                    }
-                } catch (e) {}
-            }
-        });
 
         let savedLocal = null;
         try {
@@ -1218,24 +980,15 @@
         }
 
         let appData;
-        if (savedLocal && getActiveServerRevision(savedLocal) > getActiveServerRevision(defaultData)) {
+        if (savedLocal && getActiveServerRevision(savedLocal) >= getActiveServerRevision(defaultData)) {
             appData = { ...defaultData, ...savedLocal, localVideoData: null };
         } else {
             appData = { ...defaultData, localVideoData: null };
             safeSaveLocalStorage('yen_sao_app_data', appData);
         }
-        lastAppliedRevision = getActiveServerRevision(appData);
 
-        let currentAdminEmail = null;
+        let currentAdminEmail = sessionStorage.getItem('active_admin_session') || null;
 
-        if (appData.ownerEmail && !appData.ownerEmailEnc) {
-            appData.ownerEmailEnc = encodeEmail(appData.ownerEmail);
-            delete appData.ownerEmail;
-        }
-        if (appData.editors && !appData.editorsEnc) {
-            appData.editorsEnc = appData.editors.map(encodeEmail);
-            delete appData.editors;
-        }
         if (!appData.ownerEmailEnc) {
             appData.ownerEmailEnc = defaultData.ownerEmailEnc;
         }
@@ -1262,13 +1015,12 @@
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateY(-8px)';
                 setTimeout(() => toast.remove(), 300);
-            }, 3200);
+            }, 3800);
         };
 
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('auth-modal').classList.add('hidden');
             document.getElementById('admin-dashboard-modal').classList.add('hidden');
-            document.getElementById('admin-status-bar').classList.add('hidden');
 
             if (!localStorage.getItem('yen_sao_session_viewed')) {
                 appData.viewsCount = (appData.viewsCount || 1240) + 1;
@@ -1278,7 +1030,6 @@
             renderUI();
             checkAdminState();
             initPopupQR();
-            await initUnifiedCloudServer();
         });
 
         function renderUI() {
@@ -1398,13 +1149,13 @@
 
             if (effectiveSrc) {
                 statusText.innerText = appData.localVideoName
-                    ? `Video đám mây: ${appData.localVideoName}`
+                    ? `Video đang chọn: ${appData.localVideoName}`
                     : `Liên kết video: ${appData.videoSrc || 'Video đã tải lên'}`;
                 statusText.className = 'text-xs font-bold text-bio-green';
                 previewWrap.classList.remove('hidden');
                 removeBtn.classList.remove('hidden');
                 if (previewVideo.getAttribute('data-current-src') !== effectiveSrc) {
-                    previewVideo.setAttribute('data-current-src', effectiveVideoSrc);
+                    previewVideo.setAttribute('data-current-src', effectiveSrc);
                     previewVideo.src = effectiveSrc;
                     previewVideo.load();
                 }
@@ -1440,6 +1191,7 @@
         function checkAdminState() {
             if (!currentAdminEmail || !isEmailAuthorized(currentAdminEmail)) {
                 currentAdminEmail = null;
+                sessionStorage.removeItem('active_admin_session');
                 document.getElementById('admin-status-bar').classList.add('hidden');
                 return false;
             }
@@ -1463,13 +1215,13 @@
 
             if (isEmailAuthorized(inputEmail)) {
                 currentAdminEmail = inputEmail;
-                sessionStorage.setItem('active_admin_session', '1');
+                sessionStorage.setItem('active_admin_session', inputEmail);
                 document.getElementById('input-admin-email').value = '';
                 document.getElementById('auth-error-msg').classList.add('hidden');
                 window.closeAuthModal();
                 checkAdminState();
                 populateAndShowAdminDashboard();
-                window.showToast("Đăng nhập Admin thành công!");
+                window.showToast("Đăng nhập Admin thành công! Bảng chỉnh sửa đã mở.");
             } else {
                 currentAdminEmail = null;
                 sessionStorage.removeItem('active_admin_session');
@@ -1487,6 +1239,11 @@
         };
 
         window.openAuthModal = () => {
+            if (currentAdminEmail && isEmailAuthorized(currentAdminEmail)) {
+                checkAdminState();
+                populateAndShowAdminDashboard();
+                return;
+            }
             document.getElementById('input-admin-email').value = '';
             document.getElementById('auth-error-msg').classList.add('hidden');
             document.getElementById('auth-modal').classList.remove('hidden');
@@ -1710,15 +1467,15 @@
         };
 
         window.uploadGalleryPhoto = (event, idx) => {
+        window.uploadGalleryPhoto = async (event, idx) => {
             const file = event.target.files[0];
             if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                appData.gallery[idx] = e.target.result;
-                renderAdminGalleryList();
-                window.showToast(`Đã thay Ảnh Thư Viện #${idx + 1} thành công!`);
-            };
-            reader.readAsDataURL(file);
+            const compressedDataUrl = await compressImageFile(file, 1000, 0.82);
+            appData.gallery[idx] = compressedDataUrl;
+            safeSaveLocalStorage('yen_sao_app_data', appData);
+            renderAdminGalleryList();
+            renderUI();
+            window.showToast(`Đã thay Ảnh Thư Viện #${idx + 1}! Nhớ bấm "Lưu & Tải File Cập Nhật (index.html)" để đưa lên điện thoại.`);
         };
 
         window.deleteGalleryPhoto = (idx) => {
@@ -1811,16 +1568,16 @@
         };
 
         window.uploadProductImage = (event, id) => {
+        window.uploadProductImage = async (event, id) => {
             const file = event.target.files[0];
             if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                window.updateProductField(id, 'img', e.target.result);
-                const inputEl = document.getElementById(`prod-img-input-${id}`);
-                if (inputEl) inputEl.value = e.target.result;
-                window.showToast("Đã tải ảnh sản phẩm thành công!");
-            };
-            reader.readAsDataURL(file);
+            const compressedDataUrl = await compressImageFile(file, 900, 0.82);
+            window.updateProductField(id, 'img', compressedDataUrl);
+            const inputEl = document.getElementById(`prod-img-input-${id}`);
+            if (inputEl) inputEl.value = compressedDataUrl;
+            safeSaveLocalStorage('yen_sao_app_data', appData);
+            renderUI();
+            window.showToast("Đã tải ảnh sản phẩm! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" để đồng bộ sang điện thoại.");
         };
 
         window.importDocxFile = (event) => {
@@ -1884,23 +1641,28 @@
                 safeSaveLocalStorage('yen_sao_app_data', appData);
                 updateAdminVideoPreviewUI();
                 renderUI();
-                window.showToast(`Đã tải video "${file.name}" lên đám mây! Hãy bấm "Lưu & Cập Nhật Toàn Hệ Thống" để áp dụng cho mọi thiết bị.`);
-            } catch (cloudErr) {
-                progressWrap.classList.add('hidden');
-                if (!appData.videoSrc || appData.videoSrc.startsWith('blob:')) {
-                    appData.videoSrc = '';
-                }
-                safeSaveLocalStorage('yen_sao_app_data', appData);
-                updateAdminVideoPreviewUI();
-                renderUI();
-                window.showToast(`Đang xem thử cục bộ "${file.name}" (${sizeMB} MB). Nếu muốn phát trên điện thoại khi quét QR, hãy dán link video trực tiếp (.mp4) vào ô liên kết phía dưới.`, 'error');
+        window.uploadLocalVideo = (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+            if (activeVideoObjectUrl) {
+                URL.revokeObjectURL(activeVideoObjectUrl);
+                activeVideoObjectUrl = null;
             }
+            activeVideoObjectUrl = URL.createObjectURL(file);
+            appData.localVideoName = `${file.name} (${sizeMB} MB)`;
+            appData.localVideoData = null;
+
+            updateAdminVideoPreviewUI();
+            renderUI();
+            window.showToast(`Đã mở xem thử video "${file.name}" (${sizeMB} MB). Để điện thoại quét QR xem được video, hãy dán link video trực tiếp (.mp4) vào ô liên kết phía dưới rồi bấm Lưu.`);
         };
 
         window.updateVideoSrcFromInput = (val) => {
             const cleanVal = (val || '').trim();
             if (cleanVal.startsWith('blob:')) {
-                window.showToast("Link blob tạm thời chỉ chạy trên 1 trình duyệt. Hãy tải lên đám mây hoặc dùng link trực tiếp.", 'error');
+                window.showToast("Link blob tạm thời chỉ chạy trên 1 trình duyệt. Hãy dùng link video .mp4 trực tiếp.", 'error');
                 return;
             }
             appData.videoSrc = cleanVal;
@@ -1915,15 +1677,10 @@
             }
         };
 
-        window.removeLocalVideo = async () => {
+        window.removeLocalVideo = () => {
             if (activeVideoObjectUrl) {
                 URL.revokeObjectURL(activeVideoObjectUrl);
                 activeVideoObjectUrl = null;
-            }
-            if (cloudReady && cloudStorage && appData.videoStoragePath) {
-                try {
-                    await deleteObject(storageRef(cloudStorage, appData.videoStoragePath));
-                } catch (e) {}
             }
             appData.videoSrc = '';
             appData.videoStoragePath = '';
@@ -1938,15 +1695,15 @@
             window.showToast("Đã gỡ video hiện tại.");
         };
 
-        window.uploadLocalImage = (event, targetInputId) => {
+        window.uploadLocalImage = async (event, targetInputId) => {
             const file = event.target.files[0];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    document.getElementById(targetInputId).value = e.target.result;
-                    window.showToast("Đã tải ảnh thành công!");
-                };
-                reader.readAsDataURL(file);
+                const compressedDataUrl = await compressImageFile(file, 1400, 0.84);
+                document.getElementById(targetInputId).value = compressedDataUrl;
+                syncInputToAppData();
+                safeSaveLocalStorage('yen_sao_app_data', appData);
+                renderUI();
+                window.showToast("Đã tải & nén ảnh chuẩn! Nhớ bấm \"Lưu & Tải File Cập Nhật (index.html)\" để đồng bộ sang điện thoại.");
             }
         };
 
@@ -1990,12 +1747,20 @@
             const dashModalEl = document.getElementById('admin-dashboard-modal');
             const statusBarEl = document.getElementById('admin-status-bar');
             const overlayEl = document.getElementById('server-update-overlay');
+
+            const wasDashOpen = !dashModalEl.classList.contains('hidden');
+            const wasStatusOpen = !statusBarEl.classList.contains('hidden');
+
             authModalEl.classList.add('hidden');
             dashModalEl.classList.add('hidden');
             statusBarEl.classList.add('hidden');
             overlayEl.classList.add('hidden');
 
             const docHTML = document.documentElement.outerHTML;
+
+            if (wasDashOpen) dashModalEl.classList.remove('hidden');
+            if (wasStatusOpen) statusBarEl.classList.remove('hidden');
+
             return "<!DOCTYPE html>\n" + docHTML.replace(scriptRegex, newScriptTag);
         }
 
@@ -2011,15 +1776,14 @@
             a.click();
             a.remove();
             setTimeout(() => URL.revokeObjectURL(downloadUrl), 1500);
-            window.showToast("Đã tải file sao lưu index.html về máy!");
+            window.showToast("Đã tải file index.html mới về máy! Hãy upload đè file này lên GitHub để điện thoại quét QR cập nhật theo.");
         };
 
-        window.publishLiveAndExport = async () => {
+        window.publishLiveAndExport = () => {
             syncInputToAppData();
             const nextRevision = getActiveServerRevision(appData) + 1;
             appData.serverRevision = nextRevision;
             appData.savesCount = (appData.savesCount || 1) + 1;
-            lastAppliedRevision = nextRevision;
 
             if (appData.videoSrc && appData.videoSrc.startsWith('blob:')) {
                 appData.videoSrc = '';
@@ -2030,27 +1794,18 @@
             defaultData = { ...exportableData };
             renderUI();
 
-            await pushStateToUnifiedCloud(exportableData);
+            const updatedHTML = buildEmbeddedIndexHtmlString(exportableData);
+            const blob = new Blob([updatedHTML], { type: 'text/html;charset=utf-8' });
+            const downloadUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(downloadUrl), 1500);
 
-            const signalObj = {
-                type: 'SERVER_UPDATED',
-                revision: nextRevision,
-                timestamp: Date.now()
-            };
-            try {
-                localStorage.setItem('yen_sao_live_signal', JSON.stringify(signalObj));
-            } catch (e) {}
-            if (liveChannel) {
-                liveChannel.postMessage({
-                    type: 'SERVER_UPDATED',
-                    revision: nextRevision,
-                    payload: exportableData
-                });
-            }
-
-            const hasLargeVideo = Boolean(activeVideoObjectUrl);
-            window.showToast("Đã lưu & đồng bộ toàn bộ hệ thống lên máy chủ chung!");
-            triggerLiveServerRefresh(nextRevision, hasLargeVideo);
+            window.showToast("Đã lưu thay đổi & tải file index.html mới về máy! Bạn hãy upload đè file index.html này lên GitHub để điện thoại quét QR thấy bản mới nhất.");
         };
 
         window.exportUpdatedIndexHtml = window.publishLiveAndExport;
