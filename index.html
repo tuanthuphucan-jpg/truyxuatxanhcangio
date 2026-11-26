@@ -97,13 +97,13 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="openQRModal()" class="px-3.5 py-2 rounded-xl bg-bio-mint text-bio-green font-bold text-xs sm:text-sm border border-emerald-300 hover:bg-emerald-200 transition flex items-center gap-1.5 shadow-sm">
+                <button type="button" id="btn-header-qr" onclick="window.openQRModal && window.openQRModal()" class="px-3.5 py-2 rounded-xl bg-bio-mint text-bio-green font-bold text-xs sm:text-sm border border-emerald-300 hover:bg-emerald-200 transition flex items-center gap-1.5 shadow-sm cursor-pointer">
                     <i class="fa-solid fa-qrcode text-sm"></i>
                     <span class="hidden sm:inline">Mã QR Web</span>
                 </button>
 
                 <!-- Admin Gate Entrance Button -->
-                <button onclick="openAuthModal()" class="px-3.5 py-2 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md transition">
+                <button type="button" id="btn-header-admin" onclick="window.openAuthModal && window.openAuthModal()" class="px-3.5 py-2 rounded-xl bg-bio-green hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md transition cursor-pointer">
                     <i class="fa-solid fa-user-shield"></i>
                     <span class="hidden sm:inline">Quản Trị</span>
                 </button>
@@ -336,7 +336,7 @@
                 <p>© 2026 TRUY XUẤT XANH CẦN GIỜ. Khu Dự Trữ Sinh Quyển UNESCO.</p>
                 <div class="flex items-center gap-4">
                     <span>Du Lịch Cần Giờ - Quét QR Khám Phá</span>
-                    <button onclick="openAuthModal()" class="text-emerald-300 hover:text-white transition flex items-center gap-1">
+                    <button type="button" id="btn-footer-admin" onclick="window.openAuthModal && window.openAuthModal()" class="text-emerald-300 hover:text-white transition flex items-center gap-1 cursor-pointer">
                         <i class="fa-solid fa-lock text-[10px]"></i> Cổng Quản Trị
                     </button>
                 </div>
@@ -1022,6 +1022,17 @@
             document.getElementById('auth-modal').classList.add('hidden');
             document.getElementById('admin-dashboard-modal').classList.add('hidden');
 
+            const bindClick = (id, handler) => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handler();
+                });
+            };
+            bindClick('btn-header-admin', () => window.openAuthModal());
+            bindClick('btn-footer-admin', () => window.openAuthModal());
+            bindClick('btn-header-qr', () => window.openQRModal());
+
             if (!localStorage.getItem('yen_sao_session_viewed')) {
                 appData.viewsCount = (appData.viewsCount || 1240) + 1;
                 safeSaveLocalStorage('yen_sao_app_data', appData);
@@ -1466,7 +1477,6 @@
             }
         };
 
-        window.uploadGalleryPhoto = (event, idx) => {
         window.uploadGalleryPhoto = async (event, idx) => {
             const file = event.target.files[0];
             if (!file) return;
@@ -1567,7 +1577,6 @@
             window.showToast("Đã xóa sản phẩm trưng bày.");
         };
 
-        window.uploadProductImage = (event, id) => {
         window.uploadProductImage = async (event, id) => {
             const file = event.target.files[0];
             if (!file) return;
@@ -1604,43 +1613,6 @@
             reader.readAsArrayBuffer(file);
         };
 
-        window.uploadLocalVideo = async (event) => {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
-            const progressWrap = document.getElementById('video-upload-progress-wrap');
-            const progressBar = document.getElementById('video-upload-progress-bar');
-            const progressPercent = document.getElementById('video-upload-progress-percent');
-            const progressLabel = document.getElementById('video-upload-progress-label');
-
-            if (activeVideoObjectUrl) {
-                URL.revokeObjectURL(activeVideoObjectUrl);
-                activeVideoObjectUrl = null;
-            }
-            activeVideoObjectUrl = URL.createObjectURL(file);
-            appData.localVideoName = `${file.name} (${sizeMB} MB)`;
-            appData.localVideoData = null;
-
-            progressWrap.classList.remove('hidden');
-            progressBar.style.width = '10%';
-            progressPercent.innerText = '10%';
-            progressLabel.innerText = `Đang tải "${file.name}" (${sizeMB} MB) lên kho đám mây...`;
-
-            try {
-                const uploaded = await uploadVideoToUnifiedStorage(file, (pct) => {
-                    progressBar.style.width = `${pct}%`;
-                    progressPercent.innerText = `${pct}%`;
-                });
-                appData.videoSrc = uploaded.url;
-                appData.videoStoragePath = uploaded.storagePath;
-                document.getElementById('edit-video-src-url').value = uploaded.url;
-                progressBar.style.width = '100%';
-                progressPercent.innerText = '100%';
-                progressLabel.innerText = 'Đã lưu video lên máy chủ đám mây thành công!';
-                safeSaveLocalStorage('yen_sao_app_data', appData);
-                updateAdminVideoPreviewUI();
-                renderUI();
         window.uploadLocalVideo = (event) => {
             const file = event.target.files[0];
             if (!file) return;
